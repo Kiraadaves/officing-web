@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
+import Link from "next/link";
 
 const alegreya_sans = Alegreya_Sans({
   subsets: ["latin"],
@@ -137,15 +138,31 @@ const NewItem3 = () => {
             <rect width="570" height="2" fill="#38869B" />
           </svg>
         </div>
-        <div className="absolute top-[20px] left-[39.6rem]">
+        <div className="absolute top-[20px] left-[37.8rem]">
           <svg
-            width="440"
+            width="478"
             height="2"
             viewBox="0 0 440 2"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <rect width="440" height="2" fill="#38869B" />
+            <rect width="478" height="2" fill="#38869B" />
+          </svg>
+        </div>
+        <div className="absolute top-[20px] right-11">
+          <svg
+            width="41"
+            height="2"
+            viewBox="0 0 41 2"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect
+              width="40"
+              height="2"
+              transform="translate(0.5)"
+              fill="#D3D7D9"
+            />
           </svg>
         </div>
       </div>
@@ -301,6 +318,16 @@ const NewItem3 = () => {
             </div>
           </form>
         </FormProvider>
+      </div>
+      <div className="flex justify-end">
+        <div className="flex gap-8">
+          <Button className="py-[10px] h-[48px] w-[86px] border-solid border-[1px] border-[#BFC3C5] shadow-md font-medium text-xl text-center px-6 bg-[#FFFFFF] hover:bg-[#FFFFFF] rounded-[6px]">
+            <Link href="/Invoice/NewItem2">Back</Link>
+          </Button>
+          <Button className="py-[10px] h-[48px] w-[112px] font-medium text-xl text-center px-6 bg-[#2F345D] hover:bg-[#2F345D] rounded-[6px] text-[#FFFFFF]">
+            <Link href="/Invoice/NewItem4">Proceed</Link>
+          </Button>
+        </div>
       </div>
     </InvoiceBody>
   );
