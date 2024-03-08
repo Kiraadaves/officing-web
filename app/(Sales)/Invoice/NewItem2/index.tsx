@@ -22,6 +22,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import ItemList from "@/components/InvoiceItems/ItemList";
+import Link from "next/link";
 
 const alegreya_sans = Alegreya_Sans({
   subsets: ["latin"],
@@ -593,10 +594,10 @@ const NewItem2 = () => {
         <div className="flex justify-end">
           <div className="flex gap-8">
             <Button className="py-[10px] h-[48px] w-[86px] border-solid border-[1px] border-[#BFC3C5] shadow-md font-medium text-xl text-center px-6 bg-[#FFFFFF] hover:bg-[#FFFFFF] rounded-[6px]">
-              Back
+              <Link href="/Invoice/NewItem">Back</Link>
             </Button>
             <Button className="py-[10px] h-[48px] w-[112px] font-medium text-xl text-center px-6 bg-[#2F345D] hover:bg-[#2F345D] rounded-[6px] text-[#FFFFFF]">
-              Proceed
+              <Link href="/Invoice/NewItem3">Proceed</Link>
             </Button>
           </div>
         </div>
