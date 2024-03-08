@@ -23,6 +23,15 @@ import {
 } from "@/components/ui/popover";
 import ItemList from "@/components/InvoiceItems/ItemList";
 import Link from "next/link";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 const alegreya_sans = Alegreya_Sans({
   subsets: ["latin"],
@@ -349,14 +358,29 @@ const NewItem2 = () => {
                             Tax
                           </FormLabel>
                         </div>
-                        <div className="flex items-center justify-center">
-                          <FormControl className="mt-4 ">
-                            <Input
-                              type="text"
-                              {...field}
-                              className="h-[52px] w-[117px] focus-visible:ring-0 focus-visible:ring-offset-0 shadow-md px-4 py-3 border-[#BFC3C5] bg-[#FFFFFF] rounded-[6px] "
-                            />
-                          </FormControl>
+                        <div className="flex items-center  justify-center">
+                          
+                          <Select
+                            onValueChange={field.onChange}
+                            defaultValue={field.value}
+                          >
+                            <FormControl>
+                              <SelectTrigger className="mt-4 h-[52px] w-[117px] focus-visible:ring-0 focus-visible:ring-offset-0 shadow-md px-4 py-3 border-[#BFC3C5] bg-[#FFFFFF] rounded-[6px] text-left">
+                                <SelectValue placeholder="select tax" className="placeholder:text-[#9fa5a8] placeholder:text-base" />
+                              </SelectTrigger>
+                            </FormControl>
+                            <SelectContent className="bg-[#ffffff] py-4 pr-4 rounded-[6px]">
+                              <SelectItem value="m@example.com">
+                                m@example.com
+                              </SelectItem>
+                              <SelectItem value="m@google.com">
+                                m@google.com
+                              </SelectItem>
+                              <SelectItem value="m@support.com">
+                                m@support.com
+                              </SelectItem>
+                            </SelectContent>
+                          </Select>
                         </div>
 
                         <FormMessage />
