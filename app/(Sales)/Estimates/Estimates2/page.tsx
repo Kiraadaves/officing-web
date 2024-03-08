@@ -1,10 +1,10 @@
 import Header from '@/components/Header';
-import Estimates3 from '.';
+import Estimates2 from '.'
 import Sidebar from '@/components/Sidebar';
 
 const page = () => {
-  <><Sidebar /><Header pageTitle="Invoice" /></>
-  return <Estimates3 />
+  <><Header pageTitle="Estimates" /><Sidebar /></>
+  return <Estimates2 />
 }
 
 export default page;
