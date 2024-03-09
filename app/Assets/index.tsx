@@ -122,7 +122,7 @@ const New = () => {
         </div>
         <div className={`${alegreya_sans.className} flex justify-center`}>
           <button className="bg-[#1F233E] text-[#FFFFFF] py-[10px] px-6 text-xl font-medium rounded-[0.375rem]">
-            <Link href="/Assets/addNew">Add new item</Link>
+            <Link href="/Assets/Table">Add new item</Link>
           </button>
         </div>
       </div>
