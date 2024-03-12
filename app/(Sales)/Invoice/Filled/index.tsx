@@ -16,6 +16,15 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
+import {
   Popover,
   PopoverContent,
   PopoverTrigger,
@@ -495,6 +504,46 @@ const Filled = () => {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+        <div className="mt-12 items-center flex justify-between">
+          <div>
+            <p>
+              Showing <span>20</span>per page
+            </p>
+          </div>
+          <div>
+            <p>1-20 of 154</p>
+          </div>
+          <div>
+            <Pagination>
+              <PaginationContent className="flex gap-2">
+                <PaginationItem>
+                  <PaginationPrevious href="#" />
+                </PaginationItem>
+                <div className="flex gap-1">
+                  <PaginationItem className="w-[36px] h-[36px] rounded-[6px] bg-[#d7e7eb]  focus:text-[#38869b] text-sm rounded-6 ">
+                    <PaginationLink href="#">1</PaginationLink>
+                  </PaginationItem>
+                  <PaginationItem className="w-[36px] h-[36px] rounded-[6px] focus:bg-[#d7e7eb] bg-[#ffffff] focus:text-[#38869b] text-sm rounded-6 ">
+                    <PaginationLink href="#">2</PaginationLink>
+                  </PaginationItem>
+                  <PaginationItem className="w-[36px] h-[36px] rounded-[6px] focus:bg-[#d7e7eb] bg-[#ffffff] focus:text-[#38869b] text-sm rounded-6 ">
+                    <PaginationLink href="#">3</PaginationLink>
+                  </PaginationItem>
+                  <PaginationItem className="w-[36px] h-[36px] rounded-[6px] focus:bg-[#d7e7eb] bg-[#ffffff] focus:text-[#38869b] text-sm rounded-6 ">
+                    <PaginationEllipsis />
+                  </PaginationItem>
+                  <PaginationItem className="w-[36px] h-[36px] rounded-[6px] focus:bg-[#d7e7eb] bg-[#ffffff] focus:text-[#38869b] text-sm rounded-6 ">
+                    <PaginationLink href="#">20</PaginationLink>
+                  </PaginationItem>
+                </div>
+
+                <PaginationItem>
+                  <PaginationNext href="#" />
+                </PaginationItem>
+              </PaginationContent>
+            </Pagination>
           </div>
         </div>
       </div>
