@@ -12,6 +12,9 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import CustomersList from "@/components/InvoiceItems/CustomersList";
+import BillingBadge from "@/components/InvoiceItems/BillingBadge";
+import ShippingBadge from "@/components/InvoiceItems/ShippingBadge";
+import RemarkBadge from "@/components/InvoiceItems/RemarkBadge";
 
 const eczar = Eczar({ subsets: ["latin"] });
 const alegreya_sans = Alegreya_Sans({
@@ -25,9 +28,21 @@ const Contact = () => (
   </div>
 );
 
-const Billing = () => <div>Billing</div>;
-const Shipping = () => <div>Shipping</div>;
-const Remark = () => <div>Remark</div>;
+const Billing = () => (
+  <div>
+    <BillingBadge />
+  </div>
+);
+const Shipping = () => (
+  <div>
+    <ShippingBadge />
+  </div>
+);
+const Remark = () => (
+  <div>
+    <RemarkBadge />
+  </div>
+);
 
 const NewItem = () => {
   const [activeTab, setActiveTab] = useState("contact");
@@ -270,7 +285,7 @@ const NewItem = () => {
               </Button>
             </div>
           </div>
-          <div className="">
+          <div className="mt-4">
             {activeTab === "contact" && <Contact />}
             {activeTab === "billing" && <Billing />}
             {activeTab === "shipping" && <Shipping />}
