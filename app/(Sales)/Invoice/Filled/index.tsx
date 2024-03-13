@@ -224,13 +224,25 @@ const Filled = () => {
                   </div>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className="bg-[#fafafa] w-[163px] rounded shadow-lg flex flex-col gap-3 ">
-                  <DropdownMenuItem>All</DropdownMenuItem>
-                  <DropdownMenuItem>Active</DropdownMenuItem>
-                  <DropdownMenuItem>Draft</DropdownMenuItem>
+                  <DropdownMenuItem className="text-sm font-medium text-[#101618]">
+                    All
+                  </DropdownMenuItem>
+                  <DropdownMenuItem className="text-sm font-medium text-[#101618]">
+                    Active
+                  </DropdownMenuItem>
+                  <DropdownMenuItem className="text-sm font-medium text-[#101618]">
+                    Draft
+                  </DropdownMenuItem>
                   <DropdownMenuSeparator className="border-[1px] border-solid border-[#e6e9ea]" />
-                  <DropdownMenuItem>Paid</DropdownMenuItem>
-                  <DropdownMenuItem>Unpaid</DropdownMenuItem>
-                  <DropdownMenuItem>Overdue</DropdownMenuItem>
+                  <DropdownMenuItem className="text-sm font-medium text-[#101618]">
+                    Paid
+                  </DropdownMenuItem>
+                  <DropdownMenuItem className="text-sm font-medium text-[#101618]">
+                    Unpaid
+                  </DropdownMenuItem>
+                  <DropdownMenuItem className="text-sm font-medium text-[#101618]">
+                    Overdue
+                  </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
             </div>
@@ -439,7 +451,7 @@ const Filled = () => {
                 </h1>
               </div>
             </div>
-            {searchList.map((items) => (
+            {showFilter.map((items) => (
               <div
                 key={items.id}
                 className="flex justify-between items-center py-4  px-2 border-b-solid border-b-[1px] border-b-[#E6E9EA]"
@@ -479,27 +491,57 @@ const Filled = () => {
                     {items.status === "unpaid" && <Unpaid />}
                     {items.status === "overdue" && <Overdue />}
                   </div>
-                  <div>
-                    <svg
-                      width="6"
-                      height="20"
-                      viewBox="0 0 6 20"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M3.0001 14.7996C4.32558 14.7996 5.4001 15.8741 5.4001 17.1996C5.4001 18.5251 4.32558 19.5996 3.0001 19.5996C1.67461 19.5996 0.600098 18.5251 0.600098 17.1996C0.600098 15.8741 1.67461 14.7996 3.0001 14.7996Z"
-                        fill="#3C4448"
-                      />
-                      <path
-                        d="M3.0001 7.59961C4.32558 7.59961 5.4001 8.67413 5.4001 9.99961C5.4001 11.3251 4.32558 12.3996 3.0001 12.3996C1.67461 12.3996 0.600098 11.3251 0.600098 9.99961C0.600098 8.67413 1.67461 7.59961 3.0001 7.59961Z"
-                        fill="#3C4448"
-                      />
-                      <path
-                        d="M5.4001 2.79961C5.4001 1.47413 4.32558 0.399611 3.0001 0.399611C1.67461 0.399611 0.600098 1.47413 0.600098 2.79961C0.600098 4.12509 1.67461 5.19961 3.0001 5.19961C4.32558 5.19961 5.4001 4.12509 5.4001 2.79961Z"
-                        fill="#3C4448"
-                      />
-                    </svg>
+                  <div className="w-[40px] flex justify-center items-center">
+                    <DropdownMenu>
+                      <DropdownMenuTrigger className="">
+                        <svg
+                          width="6"
+                          height="20"
+                          viewBox="0 0 6 20"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M3.0001 14.7996C4.32558 14.7996 5.4001 15.8741 5.4001 17.1996C5.4001 18.5251 4.32558 19.5996 3.0001 19.5996C1.67461 19.5996 0.600098 18.5251 0.600098 17.1996C0.600098 15.8741 1.67461 14.7996 3.0001 14.7996Z"
+                            fill="#3C4448"
+                          />
+                          <path
+                            d="M3.0001 7.59961C4.32558 7.59961 5.4001 8.67413 5.4001 9.99961C5.4001 11.3251 4.32558 12.3996 3.0001 12.3996C1.67461 12.3996 0.600098 11.3251 0.600098 9.99961C0.600098 8.67413 1.67461 7.59961 3.0001 7.59961Z"
+                            fill="#3C4448"
+                          />
+                          <path
+                            d="M5.4001 2.79961C5.4001 1.47413 4.32558 0.399611 3.0001 0.399611C1.67461 0.399611 0.600098 1.47413 0.600098 2.79961C0.600098 4.12509 1.67461 5.19961 3.0001 5.19961C4.32558 5.19961 5.4001 4.12509 5.4001 2.79961Z"
+                            fill="#3C4448"
+                          />
+                        </svg>
+                      </DropdownMenuTrigger>
+
+                      <DropdownMenuContent className="bg-[#fafafa] w-[163px] rounded shadow-lg flex flex-col gap-3 ">
+                        <DropdownMenuItem className="text-sm font-medium text-[#101618]">
+                          View
+                        </DropdownMenuItem>
+                        <DropdownMenuItem className="text-sm font-medium text-[#101618]">
+                          Edit
+                        </DropdownMenuItem>
+                        <DropdownMenuItem className="text-sm font-medium text-[#101618]">
+                          Duplicate
+                        </DropdownMenuItem>
+                        <DropdownMenuItem className="text-sm font-medium text-[#101618]">
+                          Print
+                        </DropdownMenuItem>
+                        <DropdownMenuSeparator className="border-[1px] border-solid border-[#e6e9ea]" />
+                        <DropdownMenuItem className="text-sm font-medium text-[#101618]">
+                          Share/Download
+                        </DropdownMenuItem>
+                        <DropdownMenuItem className="text-sm font-medium text-[#101618]">
+                          Record Payment
+                        </DropdownMenuItem>
+                        <DropdownMenuSeparator className="border-[1px] border-solid border-[#e6e9ea]" />
+                        <DropdownMenuItem className="text-sm font-medium text-[#D42620]">
+                          Delete
+                        </DropdownMenuItem>
+                      </DropdownMenuContent>
+                    </DropdownMenu>
                   </div>
                 </div>
               </div>
@@ -507,40 +549,92 @@ const Filled = () => {
           </div>
         </div>
         <div className="mt-12 items-center flex justify-between">
-          <div>
-            <p>
-              Showing <span>20</span>per page
-            </p>
+          <div className="flex items-center gap-2">
+            <div>
+              <p className="text-[#60686c] text-base">Showing</p>
+            </div>
+            <div>
+              <DropdownMenu>
+                <DropdownMenuTrigger className="w-[60px] bg-[#ffffff] rounded-[6px] py-1 px-2 flex items-center gap-2 text-[#60686C] text-base outline-none">
+                  20{" "}
+                  <svg
+                    width="16"
+                    height="9"
+                    viewBox="0 0 16 9"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M0.345693 2.27318L6.85789 8.4023C7.49964 9.0063 8.50069 9.0063 9.14244 8.4023L15.6546 2.27318C15.9898 1.95775 16.0058 1.43035 15.6903 1.09521C15.3749 0.760063 14.8475 0.744081 14.5124 1.05951L8.00016 7.18864L1.48797 1.05951C1.15282 0.74408 0.625428 0.760061 0.309999 1.09521C-0.00543195 1.43035 0.01055 1.95775 0.345693 2.27318Z"
+                      fill="#9FA5A8"
+                    />
+                  </svg>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="bg-[#fafafa] w-[50px] rounded-[8px] shadow-lg flex flex-col gap-3 ">
+                  <DropdownMenuItem className="text-sm font-medium text-[#101618]">
+                    5
+                  </DropdownMenuItem>
+                  <DropdownMenuSeparator className="border-[1px] border-solid border-[#e6e9ea]" />
+
+                  <DropdownMenuItem className="text-sm font-medium text-[#101618]">
+                    10
+                  </DropdownMenuItem>
+                  <DropdownMenuSeparator className="border-[1px] border-solid border-[#e6e9ea]" />
+
+                  <DropdownMenuItem className="text-sm font-medium text-[#101618]">
+                    15
+                  </DropdownMenuItem>
+                  <DropdownMenuSeparator className="border-[1px] border-solid border-[#e6e9ea]" />
+
+                  <DropdownMenuItem className="text-sm font-medium text-[#101618]">
+                    20
+                  </DropdownMenuItem>
+                  <DropdownMenuSeparator className="border-[1px] border-solid border-[#e6e9ea]" />
+                  <DropdownMenuItem className="text-sm font-medium text-[#101618]">
+                    25
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </div>
+            <div>
+              {" "}
+              <p className="text-[#60686c] text-base">per page</p>
+            </div>
           </div>
           <div>
-            <p>1-20 of 154</p>
+            <p className="text-[#60686c] text-base">1-20 of 154</p>
           </div>
           <div>
             <Pagination>
               <PaginationContent className="flex gap-2">
                 <PaginationItem>
-                  <PaginationPrevious href="#" />
+                  <PaginationPrevious
+                    href="#"
+                    className="text-[#3C4448] text-base"
+                  />
                 </PaginationItem>
                 <div className="flex gap-1">
-                  <PaginationItem className="w-[36px] h-[36px] rounded-[6px] bg-[#d7e7eb]  focus:text-[#38869b] text-sm rounded-6 ">
+                  <PaginationItem className="w-[36px] h-[36px] text-[#3C4448] rounded-[6px] bg-[#d7e7eb]  focus:text-[#38869b] text-base rounded-6 ">
                     <PaginationLink href="#">1</PaginationLink>
                   </PaginationItem>
-                  <PaginationItem className="w-[36px] h-[36px] rounded-[6px] focus:bg-[#d7e7eb] bg-[#ffffff] focus:text-[#38869b] text-sm rounded-6 ">
+                  <PaginationItem className="w-[36px] h-[36px] text-[#3C4448] rounded-[6px] focus:bg-[#d7e7eb] bg-[#ffffff] focus:text-[#38869b] text-base rounded-6 ">
                     <PaginationLink href="#">2</PaginationLink>
                   </PaginationItem>
-                  <PaginationItem className="w-[36px] h-[36px] rounded-[6px] focus:bg-[#d7e7eb] bg-[#ffffff] focus:text-[#38869b] text-sm rounded-6 ">
+                  <PaginationItem className="w-[36px] h-[36px] text-[#3C4448] rounded-[6px] focus:bg-[#d7e7eb] bg-[#ffffff] focus:text-[#38869b] text-base rounded-6 ">
                     <PaginationLink href="#">3</PaginationLink>
                   </PaginationItem>
-                  <PaginationItem className="w-[36px] h-[36px] rounded-[6px] focus:bg-[#d7e7eb] bg-[#ffffff] focus:text-[#38869b] text-sm rounded-6 ">
+                  <PaginationItem className="w-[36px] h-[36px] text-[#3C4448] rounded-[6px] focus:bg-[#d7e7eb] bg-[#ffffff] focus:text-[#38869b] text-base rounded-6 ">
                     <PaginationEllipsis />
                   </PaginationItem>
-                  <PaginationItem className="w-[36px] h-[36px] rounded-[6px] focus:bg-[#d7e7eb] bg-[#ffffff] focus:text-[#38869b] text-sm rounded-6 ">
+                  <PaginationItem className="w-[36px] h-[36px] text-[#3C4448] rounded-[6px] focus:bg-[#d7e7eb] bg-[#ffffff] focus:text-[#38869b] text-base rounded-6 ">
                     <PaginationLink href="#">20</PaginationLink>
                   </PaginationItem>
                 </div>
-
                 <PaginationItem>
-                  <PaginationNext href="#" />
+                  <PaginationNext
+                    href="#"
+                    className="text-[#3C4448] text-base"
+                  />
                 </PaginationItem>
               </PaginationContent>
             </Pagination>
