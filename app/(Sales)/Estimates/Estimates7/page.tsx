@@ -1,10 +1,10 @@
 import React from "react";
-import Estimates5 from ".";
+import Estimates7 from ".";
 
 const page = () => {
   return (
     <div>
-      <Estimates5 />
+      <Estimates7/>
     </div>
   );
 };
