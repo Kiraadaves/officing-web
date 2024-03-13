@@ -31,7 +31,13 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 const alegreya_sans = Alegreya_Sans({
   subsets: ["latin"],
@@ -121,7 +127,7 @@ const Estimates4 = () => {
                     height="34"
                     rx="17"
                     stroke="#38869B"
-                    stroke-width="2"
+                    strokeWidth="2"
                   />
                   <path
                     d="M16.86 19.928C18.072 19.928 19.008 20.324 19.668 21.116C20.34 21.896 20.676 23.012 20.676 24.464C20.676 25.952 20.328 27.104 19.632 27.92C18.936 28.724 17.952 29.126 16.68 29.126C15.456 29.126 14.508 28.736 13.836 27.956C13.176 27.176 12.846 26.072 12.846 24.644C12.846 23.132 13.194 21.968 13.89 21.152C14.586 20.336 15.576 19.928 16.86 19.928ZM16.734 21.242C15.822 21.242 15.132 21.518 14.664 22.07C14.208 22.622 13.98 23.444 13.98 24.536C13.98 25.64 14.214 26.474 14.682 27.038C15.15 27.59 15.84 27.866 16.752 27.866C17.664 27.866 18.354 27.596 18.822 27.056C19.302 26.504 19.542 25.694 19.542 24.626C19.542 23.51 19.302 22.67 18.822 22.106C18.354 21.53 17.658 21.242 16.734 21.242ZM25.6498 19.964C26.3698 19.964 26.9578 20.15 27.4138 20.522C27.8818 20.882 28.1158 21.362 28.1158 21.962C28.1158 22.442 27.9478 22.982 27.6118 23.582C27.2758 24.17 26.7418 24.89 26.0098 25.742L24.1918 27.812L24.2278 27.884H27.5578L29.0698 27.776L29.1778 27.866L28.9798 29.072L27.1438 29H23.1118L22.4458 29.036L22.3558 28.964V28.064L24.8578 25.346C25.5058 24.626 25.9798 24.032 26.2798 23.564C26.5798 23.084 26.7298 22.664 26.7298 22.304C26.7298 21.98 26.6098 21.716 26.3698 21.512C26.1298 21.296 25.7938 21.188 25.3618 21.188C24.9298 21.188 24.4978 21.296 24.0658 21.512C23.6458 21.728 23.2618 22.028 22.9138 22.412H22.7338L22.4998 21.314C22.9678 20.882 23.4718 20.552 24.0118 20.324C24.5518 20.084 25.0978 19.964 25.6498 19.964Z"
@@ -359,14 +365,16 @@ const Estimates4 = () => {
                           </FormLabel>
                         </div>
                         <div className="flex items-center  justify-center">
-                          
                           <Select
                             onValueChange={field.onChange}
                             defaultValue={field.value}
                           >
                             <FormControl>
                               <SelectTrigger className="mt-4 h-[52px] w-[117px] focus-visible:ring-0 focus-visible:ring-offset-0 shadow-md px-4 py-3 border-[#BFC3C5] bg-[#FFFFFF] rounded-[6px] text-left">
-                                <SelectValue placeholder="select tax" className="placeholder:text-[#9fa5a8] placeholder:text-base" />
+                                <SelectValue
+                                  placeholder="select tax"
+                                  className="placeholder:text-[#9fa5a8] placeholder:text-base"
+                                />
                               </SelectTrigger>
                             </FormControl>
                             <SelectContent className="bg-[#ffffff] py-4 pr-4 rounded-[6px]">
@@ -430,9 +438,9 @@ const Estimates4 = () => {
                         <path
                           d="M25.3335 9.33333L24.1771 25.5233C24.0774 26.9188 22.9162 28 21.5172 28H10.4831C9.08411 28 7.92293 26.9188 7.82326 25.5233L6.66683 9.33333M13.3335 14.6667V22.6667M18.6668 14.6667V22.6667M20.0002 9.33333V5.33333C20.0002 4.59695 19.4032 4 18.6668 4H13.3335C12.5971 4 12.0002 4.59695 12.0002 5.33333V9.33333M5.3335 9.33333H26.6668"
                           stroke="#9FA5A8"
-                          stroke-width="2"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
                         />
                       </svg>
                     </Button>
@@ -452,14 +460,14 @@ const Estimates4 = () => {
                           xmlns="http://www.w3.org/2000/svg"
                         >
                           <path
-                            fill-rule="evenodd"
-                            clip-rule="evenodd"
+                            fillRule="evenodd"
+                            clipRule="evenodd"
                             d="M10 5C10.5523 5 11 5.44772 11 6V9L14 9C14.5523 9 15 9.44772 15 10C15 10.5523 14.5523 11 14 11H11V14C11 14.5523 10.5523 15 10 15C9.44771 15 9 14.5523 9 14V11H6C5.44772 11 5 10.5523 5 10C5 9.44771 5.44772 9 6 9L9 9V6C9 5.44772 9.44771 5 10 5Z"
                             fill="#272B4D"
                             stroke="#272B4D"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
                           />
                         </svg>
                       </div>
@@ -618,10 +626,10 @@ const Estimates4 = () => {
         <div className="flex justify-end">
           <div className="flex gap-8">
             <Button className="py-[10px] h-[48px] w-[86px] border-solid border-[1px] border-[#BFC3C5] shadow-md font-medium text-xl text-center px-6 bg-[#FFFFFF] hover:bg-[#FFFFFF] rounded-[6px]">
-              <Link href="/Invoice/NewItem">Back</Link>
+              <Link href="/Estimates/Estimates3">Back</Link>
             </Button>
             <Button className="py-[10px] h-[48px] w-[112px] font-medium text-xl text-center px-6 bg-[#2F345D] hover:bg-[#2F345D] rounded-[6px] text-[#FFFFFF]">
-              <Link href="/Invoice/NewItem3">Proceed</Link>
+              <Link href="/Estimates/Estimates5">Proceed</Link>
             </Button>
           </div>
         </div>

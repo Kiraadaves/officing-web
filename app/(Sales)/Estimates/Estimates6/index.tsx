@@ -18,6 +18,14 @@ import {
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import Link from "next/link";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import Image from "next/image";
 
 const alegreya_sans = Alegreya_Sans({
   subsets: ["latin"],
@@ -26,32 +34,12 @@ const alegreya_sans = Alegreya_Sans({
 
 const formSchema = z.object({
   file: z.instanceof(File).optional(),
-  note: z.string().min(10, {
-    message: "Must be at least 10 characters",
-  }),
-  terms: z.string().min(10, {
-    message: "Must be at least 10 characters",
-  }),
 });
 
-const Estimates5 = () => {
-  const [selectedFile, setSelectedFile] = useState<File | null>(null);
-
+const Estimates6 = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
   });
-
-  const fileRef = form.register("file");
-
-  const onFileChange = (event: any) => {
-    const file = event.target.files[0];
-    setSelectedFile(file);
-    fileRef.onChange(event);
-  };
-
-  useEffect(() => {
-    console.log(selectedFile);
-  }, [selectedFile]);
 
   const onSubmit = (data: z.infer<typeof formSchema>) => {
     console.log(data);
@@ -103,25 +91,76 @@ const Estimates5 = () => {
           <div className="flex flex-col gap-[8px] justify-center items-center">
             <div>
               <svg
-                width="37"
-                height="36"
-                viewBox="0 0 37 36"
+                width="45"
+                height="44"
+                viewBox="0 0 45 44"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <rect
-                  x="1.5"
-                  y="1"
-                  width="34"
-                  height="34"
-                  rx="17"
-                  stroke="#D3D7D9"
-                  strokeWidth="2"
-                />
-                <path
-                  d="M12.86 15.928C14.072 15.928 15.008 16.324 15.668 17.116C16.34 17.896 16.676 19.012 16.676 20.464C16.676 21.952 16.328 23.104 15.632 23.92C14.936 24.724 13.952 25.126 12.68 25.126C11.456 25.126 10.508 24.736 9.836 23.956C9.176 23.176 8.846 22.072 8.846 20.644C8.846 19.132 9.194 17.968 9.89 17.152C10.586 16.336 11.576 15.928 12.86 15.928ZM12.734 17.242C11.822 17.242 11.132 17.518 10.664 18.07C10.208 18.622 9.98 19.444 9.98 20.536C9.98 21.64 10.214 22.474 10.682 23.038C11.15 23.59 11.84 23.866 12.752 23.866C13.664 23.866 14.354 23.596 14.822 23.056C15.302 22.504 15.542 21.694 15.542 20.626C15.542 19.51 15.302 18.67 14.822 18.106C14.354 17.53 13.658 17.242 12.734 17.242ZM20.9478 15.946C21.7638 15.946 22.4238 16.162 22.9278 16.594C23.4318 17.014 23.6838 17.56 23.6838 18.232C23.6838 18.748 23.5278 19.246 23.2158 19.726C22.9158 20.206 22.4718 20.596 21.8838 20.896V20.968C22.6038 21.136 23.1498 21.424 23.5218 21.832C23.8938 22.24 24.0798 22.75 24.0798 23.362C24.0798 24.022 23.9058 24.61 23.5578 25.126C23.2218 25.642 22.7418 26.038 22.1178 26.314C21.4938 26.602 20.7798 26.746 19.9758 26.746C19.4238 26.746 18.8358 26.692 18.2118 26.584L18.1218 25.36L18.2298 25.27C18.7938 25.51 19.4058 25.63 20.0658 25.63C20.8578 25.63 21.4998 25.438 21.9918 25.054C22.4838 24.682 22.7298 24.178 22.7298 23.542C22.7298 22.978 22.5258 22.534 22.1178 22.21C21.7218 21.886 21.1518 21.712 20.4078 21.688H19.3458L19.2558 21.58L19.2918 20.59L20.0838 20.572C20.4078 20.572 20.7378 20.482 21.0738 20.302C21.4098 20.122 21.6858 19.876 21.9018 19.564C22.1298 19.252 22.2438 18.91 22.2438 18.538C22.2438 18.106 22.0998 17.764 21.8118 17.512C21.5238 17.26 21.1458 17.134 20.6778 17.134C20.3058 17.134 19.9398 17.224 19.5798 17.404C19.2318 17.572 18.8538 17.836 18.4458 18.196H18.2838L18.0678 17.062C18.9678 16.318 19.9278 15.946 20.9478 15.946Z"
-                  fill="#81898D"
-                />
+                <g filter="url(#filter0_d_1308_6007)">
+                  <rect
+                    x="4.5"
+                    y="4"
+                    width="36"
+                    height="36"
+                    rx="18"
+                    fill="white"
+                  />
+                  <rect
+                    x="5.5"
+                    y="5"
+                    width="34"
+                    height="34"
+                    rx="17"
+                    stroke="#38869B"
+                    strokeWidth="2"
+                  />
+                  <path
+                    d="M16.86 19.928C18.072 19.928 19.008 20.324 19.668 21.116C20.34 21.896 20.676 23.012 20.676 24.464C20.676 25.952 20.328 27.104 19.632 27.92C18.936 28.724 17.952 29.126 16.68 29.126C15.456 29.126 14.508 28.736 13.836 27.956C13.176 27.176 12.846 26.072 12.846 24.644C12.846 23.132 13.194 21.968 13.89 21.152C14.586 20.336 15.576 19.928 16.86 19.928ZM16.734 21.242C15.822 21.242 15.132 21.518 14.664 22.07C14.208 22.622 13.98 23.444 13.98 24.536C13.98 25.64 14.214 26.474 14.682 27.038C15.15 27.59 15.84 27.866 16.752 27.866C17.664 27.866 18.354 27.596 18.822 27.056C19.302 26.504 19.542 25.694 19.542 24.626C19.542 23.51 19.302 22.67 18.822 22.106C18.354 21.53 17.658 21.242 16.734 21.242ZM24.9478 19.946C25.7638 19.946 26.4238 20.162 26.9278 20.594C27.4318 21.014 27.6838 21.56 27.6838 22.232C27.6838 22.748 27.5278 23.246 27.2158 23.726C26.9158 24.206 26.4718 24.596 25.8838 24.896V24.968C26.6038 25.136 27.1498 25.424 27.5218 25.832C27.8938 26.24 28.0798 26.75 28.0798 27.362C28.0798 28.022 27.9058 28.61 27.5578 29.126C27.2218 29.642 26.7418 30.038 26.1178 30.314C25.4938 30.602 24.7798 30.746 23.9758 30.746C23.4238 30.746 22.8358 30.692 22.2118 30.584L22.1218 29.36L22.2298 29.27C22.7938 29.51 23.4058 29.63 24.0658 29.63C24.8578 29.63 25.4998 29.438 25.9918 29.054C26.4838 28.682 26.7298 28.178 26.7298 27.542C26.7298 26.978 26.5258 26.534 26.1178 26.21C25.7218 25.886 25.1518 25.712 24.4078 25.688H23.3458L23.2558 25.58L23.2918 24.59L24.0838 24.572C24.4078 24.572 24.7378 24.482 25.0738 24.302C25.4098 24.122 25.6858 23.876 25.9018 23.564C26.1298 23.252 26.2438 22.91 26.2438 22.538C26.2438 22.106 26.0998 21.764 25.8118 21.512C25.5238 21.26 25.1458 21.134 24.6778 21.134C24.3058 21.134 23.9398 21.224 23.5798 21.404C23.2318 21.572 22.8538 21.836 22.4458 22.196H22.2838L22.0678 21.062C22.9678 20.318 23.9278 19.946 24.9478 19.946Z"
+                    fill="#38869B"
+                  />
+                </g>
+                <defs>
+                  <filter
+                    id="filter0_d_1308_6007"
+                    x="0.5"
+                    y="0"
+                    width="44"
+                    height="44"
+                    filterUnits="userSpaceOnUse"
+                    color-interpolation-filters="sRGB"
+                  >
+                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                    <feColorMatrix
+                      in="SourceAlpha"
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                      result="hardAlpha"
+                    />
+                    <feMorphology
+                      radius="4"
+                      operator="dilate"
+                      in="SourceAlpha"
+                      result="effect1_dropShadow_1308_6007"
+                    />
+                    <feOffset />
+                    <feColorMatrix
+                      type="matrix"
+                      values="0 0 0 0 0.882353 0 0 0 0 0.882353 0 0 0 0 0.996078 0 0 0 1 0"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in2="BackgroundImageFix"
+                      result="effect1_dropShadow_1308_6007"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in="SourceGraphic"
+                      in2="effect1_dropShadow_1308_6007"
+                      result="shape"
+                    />
+                  </filter>
+                </defs>
               </svg>
             </div>
             <h1 className="text-lg font-medium text-[#101618]">Preview</h1>
@@ -161,171 +200,80 @@ const Estimates5 = () => {
               width="40"
               height="2"
               transform="translate(0.5)"
-              fill="#D3D7D9"
+              fill="#38869B"
             />
           </svg>
         </div>
       </div>
-
-      <div className="bg-[#fafafa] py-10 px-8 rounded-[8px]">
+      <div className="bg-[#fafafa] rounded-[8px] h-[497px] p-8">
         <FormProvider {...form}>
-          <form
-            onSubmit={form.handleSubmit(onSubmit)}
-            className="w-full p-10 flex flex-col gap-[38px]"
-          >
-            <div className="flex justify-center">
-              <div className="rounded-[1rem] w-[325px] py-2 px-6   border-dashed border-[1.5px] border-[#bfc3c5] ">
-                <FormField
-                  control={form.control}
-                  name="file"
-                  render={({ field }) => {
-                    return (
-                      <FormItem>
-                        <FormControl>
-                          <FormLabel htmlFor="file-upload" className="">
-                            {selectedFile ? (
-                              <div className="text-center">
-                                <p className="text-lg font-medium">
-                                  {selectedFile.name}
-                                </p>
-                              </div>
-                            ) : (
-                              <div className="flex flex-col justify-center items-center gap-6 ">
-                                <div>
-                                  {" "}
-                                  <svg
-                                    width="56"
-                                    height="57"
-                                    viewBox="0 0 56 57"
-                                    fill="none"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                  >
-                                    <circle
-                                      cx="28"
-                                      cy="28.5"
-                                      r="28"
-                                      fill="#E6E9EA"
-                                    />
-                                    <path
-                                      d="M21.0008 25.5811C21.0008 22.0372 23.8737 19.1644 27.4175 19.1644C30.5566 19.1644 33.1715 21.4198 33.7257 24.3988C33.8034 24.8166 34.1021 25.1591 34.5054 25.2928C36.828 26.0631 38.5008 28.2533 38.5008 30.8311C38.5008 34.0527 35.8891 36.6644 32.6675 36.6644C32.0231 36.6644 31.5008 37.1867 31.5008 37.8311C31.5008 38.4754 32.0231 38.9977 32.6675 38.9977C37.1778 38.9977 40.8341 35.3414 40.8341 30.8311C40.8341 27.4565 38.7881 24.5625 35.8715 23.3172C34.8735 19.5821 31.4678 16.8311 27.4175 16.8311C22.585 16.8311 18.6675 20.7486 18.6675 25.5811C18.6675 25.698 18.6698 25.8146 18.6743 25.9305C16.5797 27.139 15.1675 29.4024 15.1675 31.9977C15.1675 35.8637 18.3015 38.9977 22.1675 38.9977C22.8118 38.9977 23.3341 38.4754 23.3341 37.8311C23.3341 37.1867 22.8118 36.6644 22.1675 36.6644C19.5902 36.6644 17.5008 34.5751 17.5008 31.9977C17.5008 30.0642 18.677 28.4026 20.3576 27.6947C20.8439 27.4898 21.1321 26.984 21.0605 26.4612C21.0212 26.174 21.0008 25.8802 21.0008 25.5811Z"
-                                      fill="#60686C"
-                                    />
-                                    <path
-                                      d="M27.2257 31.1257C27.6678 30.7328 28.3339 30.7328 28.7759 31.1257L30.5259 32.6813C31.0075 33.1094 31.0509 33.8468 30.6228 34.3284C30.2483 34.7497 29.6371 34.8356 29.1675 34.5639V40.1644C29.1675 40.8087 28.6451 41.3311 28.0008 41.3311C27.3565 41.3311 26.8341 40.8087 26.8341 40.1644V34.5639C26.3646 34.8356 25.7533 34.7497 25.3788 34.3284C24.9508 33.8468 24.9941 33.1094 25.4757 32.6813L27.2257 31.1257Z"
-                                      fill="#60686C"
-                                    />
-                                  </svg>
-                                </div>
-                                <p className="text-sm text-gray-500">
-                                  <span className="text-[#2f7081] font-bold text-base">
-                                    Click to upload{" "}
-                                  </span>
-                                  <span className="text-[#60686C] text-base font-normal">
-                                    or drag and drop
-                                  </span>
-                                  <br />
-                                  <span className="text-[#9fa5a8] text-sm font-normal">
-                                    SVG, PNG, JPG or GIF (max. 800x400px)
-                                  </span>
-                                </p>
-                                <div className="relative">
-                                  <div>
-                                    <svg
-                                      width="278"
-                                      height="2"
-                                      viewBox="0 0 278 2"
-                                      fill="none"
-                                      xmlns="http://www.w3.org/2000/svg"
-                                    >
-                                      <rect
-                                        x="0.5"
-                                        y="0.5"
-                                        width="277"
-                                        height="1"
-                                        fill="#E6E9EA"
-                                      />
-                                    </svg>
-                                  </div>
-                                  <h1 className="absolute top-[-8.5px] left-1/2 transform -translate-x-1/2 text-sm font-medium text-[#9fa5a8] w-[33px] h-[20px] py-0 px-2 bg-[#ffffff]">
-                                    OR
-                                  </h1>
-                                </div>
-
-                                <p className="bg-[#2F7081] rounded-[6px] py-[6px] px-4 text-[#ffffff] text-base font-medium">
-                                  Browse Files
-                                </p>
-                              </div>
-                            )}
-                            <Input
-                              {...fileRef}
-                              id="file-upload"
-                              type="file"
-                              className="hidden"
-                              onChange={onFileChange}
-                            />
-                          </FormLabel>
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    );
-                  }}
-                />
-              </div>
-            </div>
-            <div className="flex gap-6">
-              <div className="w-full">
-                <FormField
-                  control={form.control}
-                  name="note"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="text-[#1e262a] font-medium text-base">
-                        Note to Customer
-                      </FormLabel>
-                      <FormControl>
-                        <Textarea
-                          className="resize-none border-[1px] border-solid border-[#bfc3c5] shadow-md rounded-[6px] "
-                          {...field}
+          <form onSubmit={form.handleSubmit(onSubmit)}>
+            <FormField
+              control={form.control}
+              name="file"
+              render={({ field }) => (
+                <FormItem className="flex items-center  gap-1">
+                  <FormLabel className="text-base text-[#1e262a] mt-[6.5px]">
+                    Template:
+                  </FormLabel>
+                  <Select onValueChange={field.onChange}>
+                    <FormControl className=" border-none  p-0 mt-2 w-[90px]">
+                      <SelectTrigger>
+                        <SelectValue
+                          placeholder="Standard"
+                          className="placeholder:text-base placeholder:text-[#9fa5a8]"
                         />
-                      </FormControl>
-
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </div>
-              <div className="w-full">
-                <FormField
-                  control={form.control}
-                  name="note"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="text-[#1e262a] font-medium text-base">
-                        Terms and Conditions of Service
-                      </FormLabel>
-                      <FormControl>
-                        <Textarea
-                          className="resize-none border-[1px] border-solid border-[#bfc3c5] shadow-md rounded-[6px] "
-                          {...field}
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent className=" bg-[#fafafa] border-none shadow-none">
+                      <SelectItem value="file" className="bg-transparent">
+                        <Image
+                          src="/standard.png"
+                          alt="standard.png"
+                          width={260}
+                          height={260}
+                          priority
                         />
-                      </FormControl>
+                      </SelectItem>
+                    </SelectContent>
+                  </Select>
 
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </div>
-            </div>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
           </form>
         </FormProvider>
       </div>
       <div className="flex justify-end">
         <div className="flex gap-8">
           <Button className="py-[10px] h-[48px] w-[86px] border-solid border-[1px] border-[#BFC3C5] shadow-md font-medium text-xl text-center px-6 bg-[#FFFFFF] hover:bg-[#FFFFFF] rounded-[6px]">
-            <Link href="/Invoice/NewItem2">Back</Link>
+            <Link href="#">Edit</Link>
           </Button>
-          <Button className="py-[10px] h-[48px] w-[112px] font-medium text-xl text-center px-6 bg-[#2F345D] hover:bg-[#2F345D] rounded-[6px] text-[#FFFFFF]">
-            <Link href="/Invoice/NewItem4">Proceed</Link>
+          <Button className="py-[10px] h-[48px] w-[188px] font-medium text-xl text-center px-6 bg-[#2F345D] hover:bg-[#2F345D] rounded-[6px] text-[#FFFFFF]">
+            <Link href="#" className="flex items-center gap-2">
+              Save and Send
+              <span>
+                <svg
+                  width="12"
+                  height="8"
+                  viewBox="0 0 12 8"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fillRule="evenodd"
+                    clipRule="evenodd"
+                    d="M1.29289 1.29289C1.68342 0.902369 2.31658 0.902369 2.70711 1.29289L6 4.58579L9.29289 1.29289C9.68342 0.902369 10.3166 0.902369 10.7071 1.29289C11.0976 1.68342 11.0976 2.31658 10.7071 2.70711L6.70711 6.70711C6.31658 7.09763 5.68342 7.09763 5.29289 6.70711L1.29289 2.70711C0.902369 2.31658 0.902369 1.68342 1.29289 1.29289Z"
+                    fill="#171717"
+                    stroke="white"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </span>
+            </Link>
           </Button>
         </div>
       </div>
@@ -333,4 +281,4 @@ const Estimates5 = () => {
   );
 };
 
-export default Estimates5;
+export default Estimates6;

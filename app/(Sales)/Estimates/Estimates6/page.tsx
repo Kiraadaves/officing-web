@@ -1,12 +1,10 @@
-import React from "react";
-import NewItem3 from ".";
+import React from 'react'
+import Estimates6 from '.'
 
 const page = () => {
   return (
-    <div>
-      <NewItem3 />
-    </div>
-  );
-};
+    <div><Estimates6/></div>
+  )
+}
 
-export default page;
+export default page
