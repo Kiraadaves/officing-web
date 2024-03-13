@@ -18,6 +18,14 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 
 
@@ -205,13 +213,45 @@ const index = () => {
         ) : (
           <div className="bg-white mt-5 p-10">
             <div className="flex justify-between gap-3 items-center">
-              <select className="py-3 px-5 border " onChange={handleOptionChange} value={selectedOption}>
+              {/* <select className="py-3 px-5 border " onChange={handleOptionChange} value={selectedOption}>
                 {options.map((option) => (
                   <option key={option.value} value={option.value}>
                     {option.label}
                   </option>
                 ))}
-              </select>
+              </select> */}
+              <div className="">
+              <DropdownMenu>
+                <DropdownMenuTrigger
+                  asChild
+                  className="border-[1px] border-[#60686c] px-4 rounded-[6px]"
+                >
+                  <div className="flex items-center justify-center">
+                    <Button className="text-[#60686c] text-base">
+                      All items
+                    </Button>
+                    <div>
+                      <svg
+                        width="16"
+                        height="9"
+                        viewBox="0 0 16 9"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M0.345693 2.27318L6.85789 8.4023C7.49964 9.0063 8.50069 9.0063 9.14244 8.4023L15.6546 2.27318C15.9898 1.95775 16.0058 1.43035 15.6903 1.09521C15.3749 0.760063 14.8475 0.744081 14.5124 1.05951L8.00016 7.18864L1.48797 1.05951C1.15282 0.74408 0.625428 0.760061 0.309999 1.09521C-0.00543195 1.43035 0.01055 1.95775 0.345693 2.27318Z"
+                          fill="#81898D"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="bg-[#fafafa] w-[163px] rounded shadow-lg flex flex-col gap-3 ">
+                  <DropdownMenuItem>Product</DropdownMenuItem>
+                  <DropdownMenuItem>Service</DropdownMenuItem> 
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </div>
               <div className="relative flex justify-center items-center w-[65%]">
                 
                 <Input type='search' className="py-5 " placeholder='Search'value={search}
@@ -222,7 +262,7 @@ const index = () => {
                   className="absolute  right-1 sm:hidden md:block text-[#7a7a7a]"
                 />
               </div>
-              <button className="bg-[#1F233E] text-[#FFFFFF] py-3 px-6 text-xl font-medium rounded-r-[0.375rem]">
+              <button className="bg-[#1F233E] text-[#FFFFFF] py-3 px-4 text-lg font-medium rounded-r-[0.375rem]">
                 <Link href="/Assets/addNew">Add new item</Link>
               </button>
             </div>
@@ -305,7 +345,9 @@ const index = () => {
         <div className="mt-12 items-center flex justify-between">
           <div>
             <p>
-              Showing <span>20</span>per page
+              Showing <span className=" p-2 
+          
+          rounded-[6px] focus:bg-[#d7e7eb] bg-[#ffffff] focus:text-[#38869b] text-sm rounded-6">{prods.length}</span> per page
             </p>
           </div>
           <div>
