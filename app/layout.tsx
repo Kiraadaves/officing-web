@@ -22,13 +22,10 @@ export default function RootLayout({
           <div className="w-[25%] max-w-[272px] bg-white rounded-se-2xl">
             <Sidebar />
           </div>
-          
-          <div className="w-[83%] p-10">
-            {children}
-          </div>
+
+          <div className="bg-[#E3EFE0] w-[83%] p-10">{children}</div>
         </div>
       </body>
     </html>
   );
 }
-
