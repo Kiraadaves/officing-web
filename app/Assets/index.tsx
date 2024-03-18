@@ -25,7 +25,7 @@ const New = () => {
             </p>
           </div>
           <div className="infographic  flex justify-between items-center">
-            <div className=" flex flex-col justify-center items-center gap-6">
+            <div className=" flex flex-col justify-center items-center gap-6 mt-[-1rem]">
               <div
                 className={`${eczar.className} bg-[#D7E7EB] w-[4.5rem] h-[4.5rem] rounded-full relative`}
               >
@@ -92,7 +92,7 @@ const New = () => {
               </p>
             </div>
           </div>
-          <div className="absolute top-[240px] left-[270.95px]">
+          <div className="absolute top-[257px] left-[270.95px]">
             <svg
               width="215"
               height="18"
@@ -106,7 +106,7 @@ const New = () => {
               />
             </svg>
           </div>
-          <div className="absolute top-[240px] left-[620.42px]">
+          <div className="absolute top-[257px] left-[660.42px]">
             <svg
               width="215"
               height="18"

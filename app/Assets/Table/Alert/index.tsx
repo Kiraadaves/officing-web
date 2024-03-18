@@ -6,10 +6,9 @@ function Alert ({handleclose}) {
 
 
     return (
-        <div className="fixed inset-0 bg-white backdrop-blur-sm flex items-center justify-center px-5 w-[35rem] h-[30%] border-l-4 border-yellow-600  mx-[30rem] my-auto" >
-        <div className="">
+        <div className="fixed inset-0 bg-white/70 backdrop-blur-sm flex items-center justify-center px-5 w-[35rem] h-[40%] border-l-4 border-yellow-600  mx-[30rem] my-auto py-3" >
             <div className="flex justify-between gap-5">
-                <IoWarning  className="w-[5.5rem] h-10 bg-yellow-400 p-2 border rounded-[.7rem]"/>
+                <IoWarning  className="w-[5.5rem] h-10 bg-yellow-400 p-2 border rounded-[.7rem]" onClick={handleclose}/>
                 
                 <div className="border-r-2 pr-5">
                     <p>Before proceeding with deactivation, please note that all data associated with this item will be inactive. Do you still want to proceed</p>
@@ -23,7 +22,6 @@ function Alert ({handleclose}) {
                 <IoMdClose className="w-[5.5rem] h-10 cursor-pointer"/>
 
             </div>
-        </div>
         </div>
     )
 }
