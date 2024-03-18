@@ -364,16 +364,16 @@ const NewItem2 = () => {
                             Tax
                           </FormLabel>
                         </div>
-                        <div className="flex items-center  justify-center">
+                        <div className=" flex items-center  justify-center">
                           <Select
                             onValueChange={field.onChange}
                             defaultValue={field.value}
                           >
-                            <FormControl>
-                              <SelectTrigger className="mt-4 h-[52px] w-[117px] focus-visible:ring-0 focus-visible:ring-offset-0 shadow-md px-4 py-3 border-[#BFC3C5] bg-[#FFFFFF] rounded-[6px] text-left">
+                            <FormControl className="">
+                              <SelectTrigger className="h-[52px] w-[117px] focus-visible:ring-0 focus-visible:ring-offset-0 shadow-md px-4 py-3 border-[#BFC3C5] bg-[#FFFFFF] rounded-[6px] ">
                                 <SelectValue
                                   placeholder="select tax"
-                                  className="placeholder:text-[#9fa5a8] placeholder:text-base"
+                                  className="placeholder:text-[#9fa5a8] placeholder:text-base "
                                 />
                               </SelectTrigger>
                             </FormControl>
