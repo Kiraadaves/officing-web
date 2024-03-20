@@ -4,7 +4,7 @@ import AssestBody from "@/components/AssestBody";
 
 import { Eczar, Alegreya_Sans } from "next/font/google";
 import Link from "next/link";
-import axios from "axios";
+
 import { useEffect } from "react";
 
 const eczar = Eczar({ subsets: ["latin"] });
@@ -14,21 +14,9 @@ const alegreya_sans = Alegreya_Sans({
 });
 
 const New = () => {
-  // useEffect(() => {
-    
-  //   items()
-  // }, [])
+  
 
-  const items = async () => {
-      try {
-          const response = await axios.get(`https://officing-node-api.onrender.com/api/v1/assets`);
-          console.log(response)
-      } catch (error) {
-          console.error("Error fetching order:", error);
-          // Optionally, dispatch an action to handle the error state
-      }
-    };
-    items()
+  
 
   return (
     <AssestBody>

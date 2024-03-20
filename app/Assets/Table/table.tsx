@@ -1,5 +1,5 @@
 "use client"
-import { SetStateAction, useState } from "react";
+import { SetStateAction, useEffect, useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
@@ -18,6 +18,7 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
+import axios from "axios";
 
 
 
@@ -107,6 +108,20 @@ const index = () => {
   const [data, setData] = useState<YourItem[]>([]);
   const [selectedOption, setSelectedOption] = useState("all items");
   
+  useEffect(() => {
+    const items = async () => {
+      try {
+          const response = await axios.get(`https://officing-node-api.onrender.com/api/v1/assets`);
+          console.log(response)
+      } catch (error) {
+          console.error("Error fetching order:", error);
+          // Optionally, dispatch an action to handle the error state
+      }
+    };
+    items()
+    
+    items()
+  }, [])
 
   //@ts-ignore
   const toggleAction = (itemId) => {
