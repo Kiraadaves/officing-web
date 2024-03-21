@@ -19,6 +19,9 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination";
 import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { AssetsAction } from "@/app/Redux/slice/assestSlice";
+// import {AssetsAction} from "@/Redux/slice/assestSlice"
 
 
 
@@ -107,19 +110,22 @@ const index = () => {
   const [activeItemId, setActiveItemId] = useState(null);
   const [data, setData] = useState<YourItem[]>([]);
   const [selectedOption, setSelectedOption] = useState("all items");
+  const dispatch = useDispatch()
+  //@ts-ignore
+  const products = useSelector((state) => state.Assets.products)
+  console.log(products)
   
   useEffect(() => {
     const items = async () => {
       try {
           const response = await axios.get(`https://officing-node-api.onrender.com/api/v1/assets`);
           console.log(response)
+          dispatch(AssetsAction.setProducts(response.data.assets))
       } catch (error) {
           console.error("Error fetching order:", error);
           // Optionally, dispatch an action to handle the error state
       }
     };
-    items()
-    
     items()
   }, [])
 

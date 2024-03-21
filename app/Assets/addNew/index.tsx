@@ -7,14 +7,18 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import Products from "./product";
 import Services from "./service";
 import { Button } from '@/components/ui/button';
+import { useDispatch, useSelector } from 'react-redux';
+import { AssetsAction } from '@/app/Redux/slice/assestSlice';
 
 const Addnew = () => {
-  const [selectedItemType, setSelectedItemType] = useState('product');
+  //@ts-ignore
+  const sl_Assest = useSelector((state) => state.Assets.sl_Assest)
+  const dispatch = useDispatch()
 
   //ts-ignore
   const handleItemTypeChange = (value: string) => {
 
-    setSelectedItemType(value);
+    dispatch(AssetsAction.setSl_Assest(value));
   };
 
   return (
@@ -24,23 +28,23 @@ const Addnew = () => {
         <div className="flex gap-3">
           <h6>Item Type:</h6>
           <RadioGroup
-            defaultValue={selectedItemType}
+            defaultValue={sl_Assest}
             onValueChange={handleItemTypeChange}
             className="flex"
           >
-            <div className={`flex items-center space-x-2 ${selectedItemType === 'product' ? 'text-[#38869B]' : 'text-gray-500'}`}>
+            <div className={`flex items-center space-x-2 ${sl_Assest === 'product' ? 'text-[#38869B]' : 'text-gray-500'}`}>
               <RadioGroupItem value="product" id="product" />
               <Label htmlFor="product">Product</Label>
             </div>
-            <div className={`flex items-center space-x-2 ${selectedItemType === 'service' ? 'text-[#38869B]' : 'text-gray-500'}`}>
+            <div className={`flex items-center space-x-2 ${sl_Assest === 'service' ? 'text-[#38869B]' : 'text-gray-500'}`}>
               <RadioGroupItem value="service" id="service" />
               <Label htmlFor="service">Services</Label>
             </div>
           </RadioGroup>
         </div>
 
-        {selectedItemType === 'product' && <Products/>}
-        {selectedItemType === 'service' && <Services/>}
+        {sl_Assest === 'product' && <Products/>}
+        {sl_Assest === 'service' && <Services/>}
       </div>
 
       <div className="flex justify-end gap-5">
