@@ -9,17 +9,68 @@ import Services from "./service";
 import { Button } from '@/components/ui/button';
 import { useDispatch, useSelector } from 'react-redux';
 import { AssetsAction } from '@/app/Redux/slice/assestSlice';
+import { RootState } from "@/app/Redux/slice/interface"
+import { CreateAsset } from './createAssetLogic';
+import { toast } from 'react-toastify';
+import { useRouter } from 'next/navigation';
 
 const Addnew = () => {
-  //@ts-ignore
-  const sl_Assest = useSelector((state) => state.Assets.sl_Assest)
+
+  const sl_Assest = useSelector((state:RootState) => state.asset.sl_Assest)
+  const item_name = useSelector((state:RootState) => state.asset.item_name)
+  const price = useSelector((state:RootState) => state.asset.price)
+  const taxrate = useSelector((state:RootState) => state.asset.taxrate)
+  const sku = useSelector((state:RootState) => state.asset.sku)
+  const m_unit = useSelector((state:RootState) => state.asset.m_unit)
+  const currency = useSelector((state:RootState) => state.asset.currency)
+  const description = useSelector((state:RootState) => state.asset.description)
   const dispatch = useDispatch()
+  const router = useRouter()
 
   //ts-ignore
   const handleItemTypeChange = (value: string) => {
 
     dispatch(AssetsAction.setSl_Assest(value));
   };
+
+  const handleSave = async() => {
+    dispatch(AssetsAction.setSubmit(true))
+    dispatch(AssetsAction.setLoading(true))
+    try {
+      const res = await CreateAsset({
+        name: item_name,
+        price: Number(price),
+        taxRate: taxrate,
+        sku: sku,
+        measuringUnit: m_unit,
+        currency: currency,
+        description: description,
+        assetType: sl_Assest
+      })
+      if(res.data.success === "true") {
+        dispatch(AssetsAction.setSubmit(false))
+        dispatch(AssetsAction.setLoading(false))
+        toast.success(res.message)
+
+        setTimeout(() => {
+          router.push('/Table')
+        }, 2000)
+      } else {
+        dispatch(AssetsAction.setSubmit(false))
+        dispatch(AssetsAction.setLoading(false))
+
+        toast.error(res.message)
+
+        setTimeout(() => {
+          window.location.reload()
+        })
+      }
+      
+
+    }catch(err) {
+      console.log(err)
+    }
+  }
 
   return (
     <AssestBody>
@@ -49,7 +100,7 @@ const Addnew = () => {
 
       <div className="flex justify-end gap-5">
         <Button variant={"outline"}>Cancel</Button>
-        <Button variant={"ghost"}>Save</Button>
+        <Button variant={"ghost"} onClick={handleSave}>Save</Button>
       </div>
     </AssestBody>
   );

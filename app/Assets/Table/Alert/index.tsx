@@ -1,8 +1,54 @@
+import { useDispatch, useSelector } from "react-redux";
+import { AssetsAction } from "@/app/Redux/slice/assestSlice";
+import { RootState } from "@/app/Redux/slice/interface";
+
 import { Button } from "@/components/ui/button";
 import { IoWarning } from "react-icons/io5";
 import { IoMdClose } from "react-icons/io";
+import axios from "axios";
+import { toast } from "react-toastify";
 //@ts-ignore
 function Alert ({handleclose}) {
+    const dispatch = useDispatch()
+    const id =  useSelector((state:RootState) => state.asset.id)
+    const products = useSelector((state:RootState) => state.asset.products)
+    const API_BASE_URL = "https://officing-node-api.onrender.com/api/v1/assets"
+    const idNo = id.id
+    console.log(idNo)
+    console.log(products)
+    interface Product {
+        _id: string;
+        // Other properties...
+    }
+
+    const handleDelete =  async () => {
+        dispatch(AssetsAction.setSubmit(true))
+        dispatch(AssetsAction.setLoading(true))
+
+        try {
+            await axios.delete(`${API_BASE_URL}/${idNo}`)
+            //@ts-ignore
+            const filteredData = products.filter((item) => item._id !== id)
+            
+
+            toast.success("Product successfully deleted")
+
+            setTimeout(() =>{
+                dispatch(AssetsAction.setDeactivate(false))
+                dispatch(AssetsAction.setProducts(filteredData))
+                dispatch(AssetsAction.setLoading(false))
+                dispatch(AssetsAction.setSubmit(false))
+                window.location.reload()
+            })
+            
+
+
+        } catch (err) {
+            console.log(err)
+        }
+
+
+    }
 
 
     return (
@@ -14,7 +60,7 @@ function Alert ({handleclose}) {
                     <p>Before proceeding with deactivation, please note that all data associated with this item will be inactive. Do you still want to proceed</p>
 
                     <div className="flex mt-5 gap-3">
-                        <Button className="bg-yellow-400 rounded-[.8rem]">Yes, deactivate</Button>
+                        <Button className="bg-yellow-400 rounded-[.8rem]" onClick={handleDelete}>Yes, deactivate</Button>
                         <Button className="border rounded-[.8rem]" onClick={handleclose}>Cancel</Button>
                     </div>
                 </div>
