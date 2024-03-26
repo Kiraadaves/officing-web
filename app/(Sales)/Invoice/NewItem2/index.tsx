@@ -23,21 +23,14 @@ import {
 } from "@/components/ui/popover";
 import ItemList from "@/components/InvoiceItems/ItemList";
 import Link from "next/link";
+import { Select } from "@radix-ui/react-select";
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import {
-  Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { ChevronDownIcon } from "@radix-ui/react-icons";
 
 const alegreya_sans = Alegreya_Sans({
   subsets: ["latin"],
@@ -46,7 +39,7 @@ const alegreya_sans = Alegreya_Sans({
 
 const formSchema = z.object({
   item_name: z.string(),
-  item_description: z.string(),
+  
   quantity: z.string(),
   price: z.string(),
   tax: z.string(),
@@ -63,7 +56,7 @@ const NewItem2 = () => {
     resolver: zodResolver(formSchema),
     defaultValues: {
       item_name: "",
-      item_description: "",
+      
       quantity: "",
       price: "",
       tax: "",
@@ -142,9 +135,9 @@ const NewItem2 = () => {
                     width="44"
                     height="44"
                     filterUnits="userSpaceOnUse"
-                    color-interpolation-filters="sRGB"
+                    colorInterpolationFilters="sRGB"
                   >
-                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                    <feFlood floodOpacity="0" result="BackgroundImageFix" />
                     <feColorMatrix
                       in="SourceAlpha"
                       type="matrix"
@@ -245,7 +238,7 @@ const NewItem2 = () => {
                   render={({ field }) => {
                     return (
                       <FormItem className="border-r-2 border-[#F0f2f5] border-b-2 pb-6">
-                        <div className=" border-b-solid border-b-[1.25px] border-[#BFC3C5]  w-[241px] h-[45px] bg-[#FFFFFF] py-3 px-2">
+                        <div className=" border-b-solid border-b-[1.25px] border-[#BFC3C5]  w-[513px] h-[45px] bg-[#FFFFFF] py-3 px-2">
                           <FormLabel
                             className={`${alegreya_sans.className} text-sm font-medium text-[#3C4448]`}
                           >
@@ -258,34 +251,6 @@ const NewItem2 = () => {
                               type="text"
                               {...field}
                               className="h-[52px] focus-visible:ring-0 focus-visible:ring-offset-0 shadow-md px-4 py-3 border-[#BFC3C5] bg-[#FFFFFF] rounded-[6px] w-[233px]"
-                            />
-                          </FormControl>
-                        </div>
-
-                        <FormMessage />
-                      </FormItem>
-                    );
-                  }}
-                />
-                <FormField
-                  control={form.control}
-                  name="item_description"
-                  render={({ field }) => {
-                    return (
-                      <FormItem className="border-r-2 border-[#F0f2f5] border-b-2 pb-6">
-                        <div className=" border-b-solid border-b-[1.25px] border-[#BFC3C5]  w-[271px] h-[45px] bg-[#FFFFFF] py-3 px-2">
-                          <FormLabel
-                            className={`${alegreya_sans.className} text-sm font-medium text-[#3C4448]`}
-                          >
-                            Item Description
-                          </FormLabel>
-                        </div>
-                        <div className="flex items-center justify-center">
-                          <FormControl className="mt-4 ">
-                            <Input
-                              type="text"
-                              {...field}
-                              className="h-[52px] w-[255px] focus-visible:ring-0 focus-visible:ring-offset-0 shadow-md px-4 py-3 border-[#BFC3C5] bg-[#FFFFFF] rounded-[6px] "
                             />
                           </FormControl>
                         </div>
@@ -364,30 +329,30 @@ const NewItem2 = () => {
                             Tax
                           </FormLabel>
                         </div>
-                        <div className=" flex items-center  justify-center">
+                        <div className=" flex items-center h-[68px]  justify-center">
                           <Select
                             onValueChange={field.onChange}
                             defaultValue={field.value}
                           >
-                            <FormControl className="">
-                              <SelectTrigger className="h-[52px] w-[117px] focus-visible:ring-0 focus-visible:ring-offset-0 shadow-md px-4 py-3 border-[#BFC3C5] bg-[#FFFFFF] rounded-[6px] ">
-                                <SelectValue
-                                  placeholder="select tax"
-                                  className="placeholder:text-[#9fa5a8] placeholder:text-base "
-                                />
-                              </SelectTrigger>
-                            </FormControl>
-                            <SelectContent className="bg-[#ffffff] py-4 pr-4 rounded-[6px]">
-                              <SelectItem value="m@example.com">
-                                m@example.com
-                              </SelectItem>
-                              <SelectItem value="m@google.com">
-                                m@google.com
-                              </SelectItem>
-                              <SelectItem value="m@support.com">
-                                m@support.com
-                              </SelectItem>
-                            </SelectContent>
+                            <div className=" h-[52px] w-[117px] flex justify-center items-center mt-4 border-[1.5px] border-solid border-[#BFC3C5] rounded-[6px] shadow-md">
+                              <FormControl className="">
+                                <SelectTrigger className=" flex items-center justify-center">
+                                  <p className="">select tax</p>
+                                  <ChevronDownIcon />
+                                </SelectTrigger>
+                              </FormControl>
+                              <SelectContent className="bg-[#ffffff] py-4 pr-4 rounded-[6px]">
+                                <SelectItem value="m@example.com">
+                                  m@example.com
+                                </SelectItem>
+                                <SelectItem value="m@google.com">
+                                  m@google.com
+                                </SelectItem>
+                                <SelectItem value="m@support.com">
+                                  m@support.com
+                                </SelectItem>
+                              </SelectContent>
+                            </div>
                           </Select>
                         </div>
 

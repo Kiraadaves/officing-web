@@ -20,7 +20,6 @@ import {
   HiOutlineChartBar,
 } from "react-icons/hi";
 
-
 const Sidebar = () => {
   return (
     <div className="pl-8">
@@ -33,21 +32,21 @@ const Sidebar = () => {
       <div className="flex flex-col pr-4">
         <Link
           href="/"
-          className="flex items-center gap-3 my-6 pl-2 cursor-pointer"
+          className=" flex items-center gap-3 my-6 pl-2 cursor-pointer"
         >
-          <div className="w-6 h-6">
-            <AiOutlineHome className="w-full h-full" />
+          <div className="">
+            <AiOutlineHome className="w-[15px] h-[15px]" />
           </div>
-          <p className="text-base">Dashboard</p>
+          <p className="text-base text-[#3c4448] font-normal">Dashboard</p>
         </Link>
         <Link
           href="/Assets"
-          className="flex items-center gap-3 my-6 pl-2  cursor-pointer"
+          className=" flex items-center gap-3 my-6 pl-2  cursor-pointer"
         >
-          <div className="w-6 h-6">
-            <FaRegFolder className="w-full h-full" />
+          <div className="">
+            <FaRegFolder className="w-[15px] h-[15px]" />
           </div>
-          <p className="text-base">Assets</p>
+          <p className="text-base text-[#3c4448] font-normal">Assets</p>
         </Link>
         <Accordion
           type="single"
@@ -56,9 +55,9 @@ const Sidebar = () => {
         >
           <AccordionItem value="item-2">
             <AccordionTrigger>
-              <div className="flex items-center gap-3 pl-2">
-                <div className="w-6 h-6">
-                  <HiOutlineCreditCard className="w-full h-full" />
+              <div className=" flex items-center gap-3 pl-2">
+                <div className="">
+                  <HiOutlineCreditCard className="w-[15px] h-[15px]" />
                 </div>
                 <p>Sales</p>
               </div>
@@ -66,17 +65,17 @@ const Sidebar = () => {
             <AccordionContent>
               <ul className="">
                 <Link href="/Estimates">
-                  <li className="text-base text-gray-400 py-3 pl-11 cursor-pointer hover:text-gray-700 hover:bg-blue-100 transition-all rounded">
+                  <li className="text-base text-gray-400 py-3 pl-11 cursor-pointer hover:text-gray-700 hover:bg-[#d7e7eb] transition-all rounded">
                     Estimates
                   </li>
                 </Link>
                 <Link href="/Invoice">
-                  <li className="text-base text-gray-400 py-3 pl-11 cursor-pointer hover:text-gray-700 hover:bg-blue-100 transition-all rounded">
+                  <li className="text-base text-gray-400 py-3 pl-11 cursor-pointer hover:text-gray-700 hover:bg-[#d7e7eb] transition-all rounded">
                     Invoice
                   </li>
                 </Link>
                 <Link href="/Customers">
-                  <li className="text-base text-gray-400 py-3 pl-11 cursor-pointer hover:text-gray-700 hover:bg-blue-100 transition-all rounded">
+                  <li className="text-base text-gray-400 py-3 pl-11 cursor-pointer hover:text-gray-700 hover:bg-[#d7e7eb] transition-all rounded">
                     Customers
                   </li>
                 </Link>
@@ -86,8 +85,8 @@ const Sidebar = () => {
           <AccordionItem value="item-1">
             <AccordionTrigger>
               <div className="flex items-center gap-3 pl-2">
-                <div className="w-6 h-6">
-                  <FiLock className="w-full h-full" />
+                <div className="">
+                  <FiLock className="w-[15px] h-[15px]" />
                 </div>
                 <p>Purchases</p>
               </div>
@@ -95,17 +94,17 @@ const Sidebar = () => {
             <AccordionContent>
               <ul className="">
                 <Link href="Bills">
-                  <li className="text-base text-gray-400 py-3 pl-11 cursor-pointer hover:text-gray-700 hover:bg-blue-100 transition-all rounded">
+                  <li className="text-base text-gray-400 py-3 pl-11 cursor-pointer hover:text-gray-700 hover:bg-[#d7e7eb] transition-all rounded">
                     Bills
                   </li>
                 </Link>
                 <Link href="Merchants">
-                  <li className="text-base text-gray-400 py-3 pl-11 cursor-pointer hover:text-gray-700 hover:bg-blue-100 transition-all rounded">
+                  <li className="text-base text-gray-400 py-3 pl-11 cursor-pointer hover:text-gray-700 hover:bg-[#d7e7eb] transition-all rounded">
                     Merchants
                   </li>
                 </Link>
                 <Link href="Expenses">
-                  <li className="text-base text-gray-400 py-3 pl-11 cursor-pointer hover:text-gray-700 hover:bg-blue-100 transition-all rounded">
+                  <li className="text-base text-gray-400 py-3 pl-11 cursor-pointer hover:text-gray-700 hover:bg-[#d7e7eb] transition-all rounded">
                     Expenses
                   </li>
                 </Link>
@@ -117,8 +116,8 @@ const Sidebar = () => {
           href="/Accounting"
           className="flex items-center gap-3 my-6 pl-2 cursor-pointer"
         >
-          <div className="w-6 h-6">
-            <HiOutlineDocumentReport className="w-full h-full" />
+          <div className="">
+            <HiOutlineDocumentReport className="w-[15px] h-[15px]" />
           </div>
           <p className="text-base">Accounting</p>
         </Link>
@@ -126,8 +125,8 @@ const Sidebar = () => {
           href="/Payroll"
           className="flex items-center gap-3 my-6 pl-2  cursor-pointer"
         >
-          <div className="w-6 h-6">
-            <HiOutlineCash className="w-full h-full" />
+          <div className="">
+            <HiOutlineCash className="w-[15px] h-[15px]" />
           </div>
           <p className="text-base">Payroll</p>
         </Link>
@@ -135,8 +134,8 @@ const Sidebar = () => {
           href="/Banks"
           className="flex items-center gap-3 my-6 pl-2 cursor-pointer"
         >
-          <div className="w-6 h-6">
-            <AiFillBank className="w-full h-full" />
+          <div className="">
+            <AiFillBank className="w-[15px] h-[15px]" />
           </div>
           <p className="text-base">Banks</p>
         </Link>
@@ -144,8 +143,8 @@ const Sidebar = () => {
           href="/Reports"
           className="flex items-center gap-3 my-6 pl-2  cursor-pointer"
         >
-          <div className="w-6 h-6">
-            <HiOutlineChartBar className="w-full h-full" />
+          <div className="">
+            <HiOutlineChartBar className="w-[15px] h-[15px]" />
           </div>
           <p className="text-base">Reports</p>
         </Link>
@@ -154,8 +153,8 @@ const Sidebar = () => {
           href="/Terms"
           className="flex items-center gap-3 my-6 pl-2 cursor-pointer"
         >
-          <div className="w-6 h-6">
-            <HiOutlineDocument className="w-full h-full" />
+          <div className="">
+            <HiOutlineDocument className="w-[15px] h-[15px]" />
           </div>
           <p className="text-base">Terms</p>
         </Link>
@@ -163,8 +162,8 @@ const Sidebar = () => {
           href="/Settings"
           className="flex items-center gap-3 my-6 pl-2  cursor-pointer"
         >
-          <div className="w-6 h-6">
-            <FiSettings className="w-full h-full" />
+          <div className="">
+            <FiSettings className="w-[15px] h-[15px]" />
           </div>
           <p className="text-base">Settings</p>
         </Link>
@@ -186,7 +185,7 @@ const Sidebar = () => {
             <p className="font-light">nick@officing.com</p>
           </div>
           <div className="w-fit">
-            <FiLogOut className="w-6 h-6" />
+            <FiLogOut className="" />
           </div>
         </div>
       </footer>

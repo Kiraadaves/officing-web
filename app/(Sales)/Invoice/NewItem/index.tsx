@@ -22,28 +22,6 @@ const alegreya_sans = Alegreya_Sans({
   weight: ["400", "700"],
 });
 
-const Contact = () => (
-  <div>
-    <ContactBadge />
-  </div>
-);
-
-const Billing = () => (
-  <div>
-    <BillingBadge />
-  </div>
-);
-const Shipping = () => (
-  <div>
-    <ShippingBadge />
-  </div>
-);
-const Remark = () => (
-  <div>
-    <RemarkBadge />
-  </div>
-);
-
 const NewItem = () => {
   const [activeTab, setActiveTab] = useState("contact");
 
@@ -286,10 +264,16 @@ const NewItem = () => {
             </div>
           </div>
           <div className="mt-4">
-            {activeTab === "contact" && <Contact />}
-            {activeTab === "billing" && <Billing />}
-            {activeTab === "shipping" && <Shipping />}
-            {activeTab === "remark" && <Remark />}
+            {activeTab === "contact" && (
+              <ContactBadge handleTabClick={handleTabClick} />
+            )}
+            {activeTab === "billing" && (
+              <BillingBadge handleTabClick={handleTabClick} />
+            )}
+            {activeTab === "shipping" && (
+              <ShippingBadge handleTabClick={handleTabClick} />
+            )}
+            {activeTab === "remark" && <RemarkBadge />}
           </div>
         </div>
       </div>
