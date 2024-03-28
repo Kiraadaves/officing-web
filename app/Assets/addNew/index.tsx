@@ -1,5 +1,6 @@
 "use client"
 import React, { useState } from 'react';
+import axios from "axios";
 import AssestBody from "@/components/AssestBody";
 import Header from "@/components/Header";
 import { Label } from "@/components/ui/label";
@@ -10,7 +11,6 @@ import { Button } from '@/components/ui/button';
 import { useDispatch, useSelector } from 'react-redux';
 import { AssetsAction } from '@/app/Redux/slice/assestSlice';
 import { RootState } from "@/app/Redux/slice/interface"
-import { CreateAsset } from './createAssetLogic';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/navigation';
 
@@ -27,17 +27,21 @@ const Addnew = () => {
   const dispatch = useDispatch()
   const router = useRouter()
 
+
+  const API_BASE_URL = "https://officing-node-api.onrender.com/api/v1/assets"
+
   //ts-ignore
   const handleItemTypeChange = (value: string) => {
 
     dispatch(AssetsAction.setSl_Assest(value));
   };
 
-  const handleSave = async() => {
+  const handleSave = async () => {
     dispatch(AssetsAction.setSubmit(true))
     dispatch(AssetsAction.setLoading(true))
+
     try {
-      const res = await CreateAsset({
+      const res = await axios.post(`${API_BASE_URL}`, {
         name: item_name,
         price: Number(price),
         taxRate: taxrate,
@@ -47,14 +51,15 @@ const Addnew = () => {
         description: description,
         assetType: sl_Assest
       })
-      if(res.data.success === "true") {
+      if(res.data.success === true) {
         dispatch(AssetsAction.setSubmit(false))
         dispatch(AssetsAction.setLoading(false))
-        toast.success(res.message)
-
+        
+        toast.success("Assets Sucessfully created")
         setTimeout(() => {
-          router.push('/Table')
-        }, 2000)
+          
+          router.push('/Assets/Table')
+        })
       } else {
         dispatch(AssetsAction.setSubmit(false))
         dispatch(AssetsAction.setLoading(false))
@@ -65,7 +70,6 @@ const Addnew = () => {
           window.location.reload()
         })
       }
-      
 
     }catch(err) {
       console.log(err)

@@ -153,6 +153,16 @@ const index = () => {
         item.assetType.toLowerCase().includes(lowerCaseSearch)
     );
   };
+
+  const handleChange = (e) => {
+    console.log("hello")
+    const {name, checked} = e.target
+    if (name === "allselect") {
+      const  checkedValue = products.map( (product) => {return {...product, ischecked:checked}})
+      console.log(checkedValue)
+      dispatch(AssetsAction.setProducts( checkedValue))
+    }
+  }
   
 
 
@@ -207,10 +217,9 @@ const index = () => {
                     <thead className="bg-gray-100 dark:bg-gray-700">
                         <tr>
                             <th scope="col" className="p-4">
-                                <Checkbox 
-                                onSelectionModeChange={(data)=> {
-                                  console.log(data)
-                                } }/>
+                              
+                              <input type="checkbox" name="allselect" checked={!products.some((products) => products?.isChecked!== true)} onChange={handleChange} />
+                                {/* <Checkbox name="allselect" onChange={handleChange} checked={!products.some((user) => user?.isChecked !== true)}/> */}
                             </th>
                             <th scope="col" className="py-3  text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
                               Name
@@ -238,16 +247,14 @@ const index = () => {
                       {filteredDataByOptionAndSearch().map((items) => 
                       <tr className="hover:bg-gray-100 dark:hover:bg-gray-700"key={items._id}>
                         <td className="p-4 w-4">
-                          <Checkbox />
+                        <input type="checkbox" name={items.name}  checked={items?.isChecked || false} onChange={handleChange}/>
+                          {/* <Checkbox name={items.name} checked={items?.isChecked || false} onChange={handleChange}/> */}
                         </td>
                         <td className="py-4 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">{items.name}</td>
                         <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">{items.sku}</td>
                         <td className="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">{items.assetType}</td>
                         <td className="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">{items.description.slice(0, 50)}</td>
-                        <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">{Number(items.price).toLocaleString("en-NG", {
-                          style:"currency",
-                          currency: "NGN"
-                        })}</td>
+                        <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">₦ {Number(items.price).toLocaleString() }</td>
                         <td className="py-4 px-6 text-sm font-medium text-right whitespace-nowrap cursor-pointer">
                           <div className="flex items-center">
                             

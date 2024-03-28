@@ -4,9 +4,26 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import {Textarea} from "@/components/ui/textarea"
 import { useDispatch, useSelector } from "react-redux"
+import CurrencyList from 'currency-list'
+import {
+    Select,
+    SelectContent,
+    SelectGroup,
+    SelectItem,
+    SelectLabel,
+    SelectTrigger,
+    SelectValue,
+  } from "@/components/ui/select"
+
+
 
 const Product = () => {
     const dispatch = useDispatch()
+    const CurrencyValue = CurrencyList.getAll('en_US')
+    
+    const value = Object.entries(CurrencyValue);
+
+
 
     const item_name = useSelector((state:RootState) => state.asset.item_name)
     const price = useSelector((state:RootState) => state.asset.price)
@@ -15,6 +32,10 @@ const Product = () => {
     const m_unit = useSelector((state:RootState) => state.asset.m_unit)
     const currency = useSelector((state:RootState) => state.asset.currency)
     const description = useSelector((state:RootState) => state.asset.description)
+
+    const handleOptionChange = (e: { target: { value: SetStateAction<string>; }; }) => {
+        dispatch(AssetsAction.setCurrency(e.target.value));
+      };
     
     
    
@@ -67,14 +88,17 @@ const Product = () => {
                     onChange={(e) => dispatch(AssetsAction.setM_unit(e.target.value))}
                 />
             </div>
-            <div className="w-[49.49%]">
+            <div className="w-[49.49%] flex flex-col gap-2">
                 <Label>currency</Label>
-            <Input 
-                value={currency}
-                className="focus-visible:ring-0 focus-visible:ring-offset-0 rounded-lg"
-                onChange={(e) => dispatch(AssetsAction.setCurrency(e.target.value))}
-            />
+                <select className="py-2 px-5 border-2 " onChange={handleOptionChange} value={currency} >
+                {value.map((cur) => ( 
+                <option key={cur[1].code} value={cur[1].code}>
+                    {cur[1].name}
+                </option>
+                ))}
+                </select>
             </div>
+            
         </div>
 
         <div className="">
