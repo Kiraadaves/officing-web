@@ -47,7 +47,7 @@ const Estimates6 = () => {
 
   return (
     <InvoiceBody>
-      <Header pageTitle="New Invoice" />
+      <Header pageTitle="New Estimate" />
       <div className={`${alegreya_sans.className}  relative`}>
         <div className="flex justify-between items-center">
           <div className="flex flex-col gap-[8px] justify-center items-center">
@@ -251,7 +251,7 @@ const Estimates6 = () => {
             <Link href="#">Edit</Link>
           </Button>
           <Button className="py-[10px] h-[48px] w-[188px] font-medium text-xl text-center px-6 bg-[#2F345D] hover:bg-[#2F345D] rounded-[6px] text-[#FFFFFF]">
-            <Link href="#" className="flex items-center gap-2">
+            <Link href="/Estimates/Estimates7" className="flex items-center gap-2">
               Save and Send
               <span>
                 <svg

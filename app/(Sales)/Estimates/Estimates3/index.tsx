@@ -30,7 +30,7 @@ import {
 import CustomersList from "@/components/InvoiceItems/CustomersList";
 import BillingBadge from "@/components/InvoiceItems/BillingBadge";
 import ShippingBadge from "@/components/InvoiceItems/ShippingBadge";
-import RemarkBadge from "@/components/InvoiceItems/RemarkBadge";
+import RemarkBadge2 from "@/components/InvoiceItems/RemarkBadge2";
 
 const eczar = Eczar({ subsets: ["latin"] });
 const alegreya_sans = Alegreya_Sans({
@@ -56,7 +56,7 @@ const Shipping = () => (
 );
 const Remark = () => (
   <div>
-    <RemarkBadge />
+    <RemarkBadge2 />
   </div>
 );
 
