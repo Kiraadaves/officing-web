@@ -11,6 +11,7 @@ import { BsThreeDotsVertical } from "react-icons/bs";
 import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from "@/components/ui/pagination";
 import { Badge } from "@/components/ui/badge";
 import { CiSearch } from "react-icons/ci";
+import Link from "next/link";
 
 const Estimates2 = () => {
   return (
@@ -50,7 +51,10 @@ const Estimates2 = () => {
       </div>
 
       <div>
-      <Button variant="outline" className=' bg-slate-900 text-white rounded'>New Estimate</Button>
+      <Button variant="outline" className=' bg-slate-900 text-white rounded'>
+      <Link href="/Estimates/Estimates3">New Estimate</Link>
+      </Button>
+      
       </div>
       </div>
       <table className="min-w-full border border-gray-200 text-xs">

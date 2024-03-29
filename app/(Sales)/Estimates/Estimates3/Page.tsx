@@ -3,7 +3,7 @@ import Estimates3 from '.';
 import Sidebar from '@/components/Sidebar';
 
 const page = () => {
-  <><Sidebar /><Header pageTitle="Invoice" /></>
+  <><Sidebar /><Header pageTitle="Estimates" /></>
   return <Estimates3 />
 }
 

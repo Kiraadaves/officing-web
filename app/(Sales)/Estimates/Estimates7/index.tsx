@@ -121,7 +121,7 @@ const Estimates7 = () => {
 
   return (
     <InvoiceBody>
-      <Header pageTitle="New Invoice" />
+      <Header pageTitle="New Estimate" />
 
       <div
         className={`${alegreya_sans.className} h-[863px] bg-[#fafafa] rounded-[8px]  p-8 relative`}

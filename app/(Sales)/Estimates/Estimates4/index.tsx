@@ -24,14 +24,6 @@ import {
 import ItemList from "@/components/InvoiceItems/ItemList";
 import Link from "next/link";
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import {
   Select,
   SelectContent,
   SelectItem,
@@ -81,7 +73,7 @@ const Estimates4 = () => {
 
   return (
     <InvoiceBody>
-      <Header pageTitle="New Invoice" />
+      <Header pageTitle="New Estimates" />
       <div className={`${alegreya_sans.className}  relative`}>
         <div className="flex justify-between items-center">
           <div className="flex flex-col gap-[8px] justify-center items-center">
@@ -548,32 +540,6 @@ const Estimates4 = () => {
                             className={`${alegreya_sans.className} text-base font-medium text-[#1E262A]`}
                           >
                             Discount
-                          </FormLabel>
-
-                          <div className="flex items-center justify-center">
-                            <FormControl className="">
-                              <Input
-                                type="text"
-                                {...field}
-                                className="h-[52px] w-[117px] focus-visible:ring-0 focus-visible:ring-offset-0 shadow-md px-4 py-3 border-[#BFC3C5] bg-[#FFFFFF] rounded-[6px] "
-                              />
-                            </FormControl>
-                          </div>
-                          <FormMessage />
-                        </FormItem>
-                      );
-                    }}
-                  />
-                  <FormField
-                    control={form.control}
-                    name="shipping"
-                    render={({ field }) => {
-                      return (
-                        <FormItem className="">
-                          <FormLabel
-                            className={`${alegreya_sans.className} text-base font-medium text-[#1E262A]`}
-                          >
-                            Shipping
                           </FormLabel>
 
                           <div className="flex items-center justify-center">

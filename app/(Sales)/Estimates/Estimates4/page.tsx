@@ -1,10 +1,10 @@
-import React from 'react'
-import Estimates4 from '.'
+import Header from '@/components/Header';
+import Sidebar from '@/components/Sidebar';
+import Estimates4 from '.';
 
 const page = () => {
-  return (
-    <div><Estimates4/></div>
-  )
+  <><Sidebar /><Header pageTitle="Estimates" /></>
+  return <Estimates4 />
 }
 
-export default page
+export default page;
