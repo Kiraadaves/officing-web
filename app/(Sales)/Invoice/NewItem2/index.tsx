@@ -669,6 +669,16 @@ const NewItem2 = () => {
                   }}
                 />
               </div>
+              <div className="flex justify-end mt-2">
+                <div className="flex gap-8">
+                  <Button className="py-[10px] h-[48px] w-[112px] border-solid border-[1px] border-[#BFC3C5] shadow-md font-medium text-xl text-center px-6 bg-[#FFFFFF] hover:bg-[#FFFFFF] rounded-[6px]">
+                    <Link href="/Invoice/NewItem">Back</Link>
+                  </Button>
+                  <Button className="py-[10px] h-[48px] w-[112px] font-medium text-xl text-center px-6 bg-[#2F345D] hover:bg-[#2F345D] rounded-[6px] text-[#FFFFFF]">
+                    <Link href="/Invoice/NewItem3">Next</Link>
+                  </Button>
+                </div>
+              </div>
             </form>
           </FormProvider>
         </div>
