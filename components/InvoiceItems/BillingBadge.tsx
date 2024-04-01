@@ -84,13 +84,18 @@ const BillingBadge: React.FC<BillingBadgeProps> = ({ handleTabClick }) => {
             render={({ field }) => {
               return (
                 <FormItem>
-                  <FormLabel className={`text-[#1E262A] font-medium text-base`}>
+                  <FormLabel
+                    htmlFor="contactname"
+                    className={`text-[#1E262A] font-medium text-base`}
+                  >
                     Contact Person's Name
                   </FormLabel>
                   <FormControl>
                     <Input
+                      id="contactname"
                       type="text"
                       {...field}
+                      value={field.value ?? ""}
                       className="focus-visible:ring-0 focus-visible:ring-offset-0 shadow-md px-4 py-3 border-[#BFC3C5] bg-[#FFFFFF] rounded-[6px]"
                     />
                   </FormControl>
@@ -105,13 +110,18 @@ const BillingBadge: React.FC<BillingBadgeProps> = ({ handleTabClick }) => {
             render={({ field }) => {
               return (
                 <FormItem>
-                  <FormLabel className={`text-[#1E262A] font-medium text-base`}>
+                  <FormLabel
+                    htmlFor="phone"
+                    className={`text-[#1E262A] font-medium text-base`}
+                  >
                     Phone
                   </FormLabel>
                   <FormControl>
                     <Input
+                      id="phone"
                       type="text"
                       {...field}
+                      value={field.value ?? ""}
                       className="focus-visible:ring-0 focus-visible:ring-offset-0 shadow-md px-4 py-3 border-[#BFC3C5] bg-[#FFFFFF] rounded-[6px]"
                     />
                   </FormControl>
@@ -126,13 +136,18 @@ const BillingBadge: React.FC<BillingBadgeProps> = ({ handleTabClick }) => {
             render={({ field }) => {
               return (
                 <FormItem>
-                  <FormLabel className={`text-[#1E262A] font-medium text-base`}>
+                  <FormLabel
+                    htmlFor="address1"
+                    className={`text-[#1E262A] font-medium text-base`}
+                  >
                     Address 1
                   </FormLabel>
                   <FormControl>
                     <Input
+                      id="address1"
                       type="text"
                       {...field}
+                      value={field.value ?? ""}
                       className="focus-visible:ring-0 focus-visible:ring-offset-0 shadow-md px-4 py-3 border-[#BFC3C5] bg-[#FFFFFF] rounded-[6px]"
                     />
                   </FormControl>
@@ -147,13 +162,18 @@ const BillingBadge: React.FC<BillingBadgeProps> = ({ handleTabClick }) => {
             render={({ field }) => {
               return (
                 <FormItem>
-                  <FormLabel className={`text-[#1E262A] font-medium text-base`}>
+                  <FormLabel
+                    htmlFor="address2"
+                    className={`text-[#1E262A] font-medium text-base`}
+                  >
                     Address 2
                   </FormLabel>
                   <FormControl>
                     <Input
+                      id="address2"
                       type="address2"
                       {...field}
+                      value={field.value ?? ""}
                       className="focus-visible:ring-0 focus-visible:ring-offset-0 shadow-md px-4 py-3 border-[#BFC3C5] bg-[#FFFFFF] rounded-[6px]"
                     />
                   </FormControl>
@@ -168,13 +188,15 @@ const BillingBadge: React.FC<BillingBadgeProps> = ({ handleTabClick }) => {
             render={({ field }) => {
               return (
                 <FormItem>
-                  <FormLabel className={`text-[#1E262A] font-medium text-base`}>
+                  <FormLabel htmlFor="city" className={`text-[#1E262A] font-medium text-base`}>
                     City
                   </FormLabel>
                   <FormControl>
                     <Input
+                      id="city"
                       type="phone"
                       {...field}
+                      value={field.value ?? ""}
                       className="focus-visible:ring-0 focus-visible:ring-offset-0 shadow-md px-4 py-3 border-[#BFC3C5] bg-[#FFFFFF] rounded-[6px]"
                     />
                   </FormControl>
@@ -189,13 +211,15 @@ const BillingBadge: React.FC<BillingBadgeProps> = ({ handleTabClick }) => {
             render={({ field }) => {
               return (
                 <FormItem>
-                  <FormLabel className={`text-[#1E262A] font-medium text-base`}>
+                  <FormLabel htmlFor="state" className={`text-[#1E262A] font-medium text-base`}>
                     State
                   </FormLabel>
                   <FormControl>
                     <Input
+                      id="state"
                       type="text"
                       {...field}
+                      value={field.value ?? ""}
                       className="focus-visible:ring-0 focus-visible:ring-offset-0 shadow-md px-4 py-3 border-[#BFC3C5] bg-[#FFFFFF] rounded-[6px]"
                     />
                   </FormControl>
@@ -210,13 +234,15 @@ const BillingBadge: React.FC<BillingBadgeProps> = ({ handleTabClick }) => {
             render={({ field }) => {
               return (
                 <FormItem>
-                  <FormLabel className={`text-[#1E262A] font-medium text-base`}>
+                  <FormLabel htmlFor="postalCode" className={`text-[#1E262A] font-medium text-base`}>
                     Postal/Zip Code
                   </FormLabel>
                   <FormControl>
                     <Input
+                      id="postalCode"
                       type="text"
                       {...field}
+                      value={field.value ?? ""}
                       className="focus-visible:ring-0 focus-visible:ring-offset-0 shadow-md px-4 py-3 border-[#BFC3C5] bg-[#FFFFFF] rounded-[6px]"
                     />
                   </FormControl>
@@ -232,20 +258,21 @@ const BillingBadge: React.FC<BillingBadgeProps> = ({ handleTabClick }) => {
             render={({ field }) => {
               return (
                 <FormItem className="">
-                  <FormLabel className={`text-[#1E262A] font-medium text-base`}>
+                  <FormLabel htmlFor="country" className={`text-[#1E262A] font-medium text-base`}>
                     Country
                   </FormLabel>
 
-                  <div className="">
+                  <div className="border-[1px] border-solid border-[#BFC3C5] rounded-[6px] shadow-md">
                     <Select
                       onValueChange={field.onChange}
                       defaultValue={field.value}
                     >
-                      <FormControl>
-                        <SelectTrigger className="  w-full focus-visible:ring-0 focus-visible:ring-offset-0 shadow-md px-4 py-3 border-[#BFC3C5] bg-[#FFFFFF] rounded-[6px] text-left">
+                      <FormControl className="">
+                        <SelectTrigger className="  w-full focus-visible:ring-0 focus-visible:ring-offset-0 shadow-md px-4 py-3 border-[#BFC3C5] bg-[#FFFFFF] rounded-[6px]">
                           <SelectValue
+                            id="country"
                             placeholder=""
-                            className="placeholder:text-[#9fa5a8] placeholder:text-base"
+                            className="placeholder:text-[#9fa5a8] placeholder:text-base "
                           />
                         </SelectTrigger>
                       </FormControl>

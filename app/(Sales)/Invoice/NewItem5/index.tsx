@@ -304,6 +304,7 @@ const NewItem5 = () => {
                                         <Input
                                           placeholder="Marvin McKinney"
                                           {...field}
+                                          value={field.value ?? ""}
                                           className="w-full rounded-[6px] border-[1px] border-solid border-[#bfc3c5] placeholder:text-[#1e262a] placeholder:text-sm"
                                         />
                                       </FormControl>
@@ -326,6 +327,7 @@ const NewItem5 = () => {
                                           <Input
                                             placeholder="001"
                                             {...field}
+                                            value={field.value ?? ""}
                                             className="placeholder:text-[#1e262a] placeholder:text-sm outline-none border-none "
                                           />
                                           <svg
@@ -370,6 +372,7 @@ const NewItem5 = () => {
                                         <Input
                                           placeholder=""
                                           {...field}
+                                          value={field.value ?? ""}
                                           className="w-full rounded-[6px] border-[1px] border-solid border-[#bfc3c5] placeholder:text-[#1e262a] placeholder:text-sm"
                                         />
                                       </FormControl>
@@ -446,6 +449,7 @@ const NewItem5 = () => {
                                         <Textarea
                                           className="resize-none border-[1px] border-solid border-[#bfc3c5] shadow-md rounded-[6px] "
                                           {...field}
+                                          value={field.value ?? ""}
                                         />
                                       </FormControl>
 

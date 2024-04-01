@@ -286,6 +286,7 @@ const NewItem3 = () => {
                         <Textarea
                           className="resize-none border-[1px] border-solid border-[#bfc3c5] shadow-md rounded-[6px] "
                           {...field}
+                          value={field.value ?? ""}
                         />
                       </FormControl>
 
@@ -307,6 +308,7 @@ const NewItem3 = () => {
                         <Textarea
                           className="resize-none border-[1px] border-solid border-[#bfc3c5] shadow-md rounded-[6px] "
                           {...field}
+                          value={field.value ?? ""}
                         />
                       </FormControl>
 

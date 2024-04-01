@@ -56,8 +56,7 @@ const RemarkBadge = () => {
         },
       });
       console.log(customerDataToSend);
-      console.log(response,
-      'sent');
+      console.log(response, "sent");
     } catch (error) {
       throw error;
     }
@@ -76,14 +75,16 @@ const RemarkBadge = () => {
               name="remark"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-[#1e262a] font-medium text-base">
+                  <FormLabel htmlFor="remark" className="text-[#1e262a] font-medium text-base">
                     Remark{" "}
                     <span className="text-sm">(for internal use only)</span>
                   </FormLabel>
                   <FormControl>
                     <Textarea
+                      id="remark"
                       className="resize-none border-[1px] border-solid border-[#bfc3c5] shadow-md rounded-[6px] h-[178px]"
                       {...field}
+                      value={field.value ?? ""}
                     />
                   </FormControl>
 

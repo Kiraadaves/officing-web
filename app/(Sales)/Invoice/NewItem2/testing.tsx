@@ -1,9 +1,9 @@
 "use client";
 import Header from "@/components/Header";
 import InvoiceBody from "@/components/InvoiceBody";
-import React, { useState } from "react";
+import React from "react";
 import { Alegreya_Sans } from "next/font/google";
-
+import { Table } from "@/components/ui/table";
 import { z } from "zod";
 import { FormProvider, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -27,15 +27,10 @@ import { Select } from "@radix-ui/react-select";
 import {
   SelectContent,
   SelectItem,
-  SelectSeparator,
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
 import { ChevronDownIcon } from "@radix-ui/react-icons";
-
-interface Item {
-  id: number;
-}
 
 const alegreya_sans = Alegreya_Sans({
   subsets: ["latin"],
@@ -73,223 +68,8 @@ const NewItem2 = () => {
       total: "",
     },
   });
-  const [items, setItems] = useState<Item[]>([]);
-  const [idCounter, setIdCounter] = useState(0);
-
-  const handleAddItem = () => {
-    const newId = idCounter + 1;
-    setItems([...items, { id: newId }]);
-    setIdCounter(newId);
-    console.log("add");
-  };
-
-  const handleDeleteItem = (id: number) => {
-    setItems(items.filter((item) => item.id !== id));
-    console.log("delete");
-  };
-
   const handleSubmit = (values: z.infer<typeof formSchema>) => {
     console.log(values);
-  };
-
-  const AddItem = ({
-    id,
-    onDelete,
-  }: {
-    id: number;
-    onDelete: (id: number) => void;
-  }) => {
-    return (
-      <div className="flex">
-        <div className="w-[513px]  border-b-solid border-b-[1.25px] border-r-[1.25px] border-r-solid border-r-[#f0f2f5] border-b-[#f0f2f5] bg-[#fafafa] pt-2 pb-7  px-2">
-          <FormField
-            control={form.control}
-            name="item_name"
-            render={({ field }) => {
-              return (
-                <FormItem className="bg-[#ffffff]">
-                  <Select
-                    onValueChange={field.onChange}
-                    defaultValue={field.value}
-                  >
-                    <div className=" h-[52px] w-full flex justify-center items-center border-[1.5px] border-solid border-[#BFC3C5] rounded-[6px] shadow-md">
-                      <FormControl className="">
-                        <SelectTrigger className="bg-[#ffffff] flex items-center justify-center">
-                          <SelectValue
-                            placeholder="Select item"
-                            className="placeholder:text-[#9fa5a8] placeholder:text-base "
-                          />
-                        </SelectTrigger>
-                      </FormControl>
-                      <SelectContent className="bg-[#ffffff] py-4  rounded-[6px] mt-4">
-                        <SelectItem value="5" className="text-center">
-                          5
-                        </SelectItem>
-                        <SelectSeparator className="border-solid border-[#F0F2F5] border-[1.25px]" />
-                        <SelectItem value="10" className="text-center">
-                          10
-                        </SelectItem>
-                        <SelectSeparator className="border-solid border-[#F0F2F5] border-[1.25px]" />
-                        <SelectItem value="15" className="text-center">
-                          15
-                        </SelectItem>
-                        <SelectSeparator className="border-solid border-[#F0F2F5] border-[1.25px]" />
-                        <SelectItem value="20" className="text-center">
-                          20
-                        </SelectItem>
-                        <SelectSeparator className="border-solid border-[#F0F2F5] border-[1.25px]" />
-                        <SelectItem value="25" className="text-center">
-                          25
-                        </SelectItem>
-                      </SelectContent>
-                    </div>
-                  </Select>
-
-                  <FormMessage />
-                </FormItem>
-              );
-            }}
-          />
-        </div>
-        <div className="w-[134px]  border-b-solid border-b-[1.25px] border-r-[1.25px] border-r-solid border-r-[#f0f2f5] border-b-[#f0f2f5] bg-[#fafafa] pt-2 pb-7  px-2">
-          <FormField
-            control={form.control}
-            name="quantity"
-            render={({ field }) => {
-              return (
-                <FormItem className="">
-                  <FormControl className="">
-                    <Input
-                      type="text"
-                      {...field}
-                      value={field.value ?? ""}
-                      className="h-[52px] w-full focus-visible:ring-0 focus-visible:ring-offset-0 shadow-md px-4 py-3 border-[#BFC3C5] bg-[#FFFFFF] rounded-[6px] "
-                    />
-                  </FormControl>
-
-                  <FormMessage />
-                </FormItem>
-              );
-            }}
-          />
-        </div>
-        <div className="w-[134px]  border-b-solid border-b-[1.25px] border-r-[1.25px] border-r-solid border-r-[#f0f2f5] border-b-[#f0f2f5] bg-[#fafafa] pt-2 pb-3  px-2">
-          <FormField
-            control={form.control}
-            name="price"
-            render={({ field }) => {
-              return (
-                <FormItem className="">
-                  <FormControl className="">
-                    <Input
-                      type="text"
-                      {...field}
-                      value={field.value ?? ""}
-                      className="h-[52px] w-full focus-visible:ring-0 focus-visible:ring-offset-0 shadow-md px-4 py-3 border-[#BFC3C5] bg-[#FFFFFF] rounded-[6px] "
-                    />
-                  </FormControl>
-
-                  <FormMessage />
-                </FormItem>
-              );
-            }}
-          />
-        </div>
-        <div className="w-[134px]  border-b-solid border-b-[1.25px] border-r-[1.25px] border-r-solid border-r-[#f0f2f5] border-b-[#f0f2f5] bg-[#fafafa] pt-2 pb-3  px-2">
-          <FormField
-            control={form.control}
-            name="tax"
-            render={({ field }) => {
-              return (
-                <FormItem className="bg-[#ffffff]">
-                  <Select
-                    onValueChange={field.onChange}
-                    defaultValue={field.value}
-                  >
-                    <div className=" h-[52px] w-full flex justify-center items-center border-[1.5px] border-solid border-[#BFC3C5] rounded-[6px] shadow-md">
-                      <FormControl className="">
-                        <SelectTrigger className=" flex items-center justify-center">
-                          <SelectValue
-                            placeholder="select tax"
-                            className="placeholder:text-[#9fa5a8] placeholder:text-base "
-                          />
-                        </SelectTrigger>
-                      </FormControl>
-                      <SelectContent className="bg-[#ffffff] py-4  rounded-[6px] mt-4">
-                        <SelectItem value="5" className="text-center">
-                          5
-                        </SelectItem>
-                        <SelectSeparator className="border-solid border-[#F0F2F5] border-[1.25px]" />
-                        <SelectItem value="10" className="text-center">
-                          10
-                        </SelectItem>
-                        <SelectSeparator className="border-solid border-[#F0F2F5] border-[1.25px]" />
-                        <SelectItem value="15" className="text-center">
-                          15
-                        </SelectItem>
-                        <SelectSeparator className="border-solid border-[#F0F2F5] border-[1.25px]" />
-                        <SelectItem value="20" className="text-center">
-                          20
-                        </SelectItem>
-                        <SelectSeparator className="border-solid border-[#F0F2F5] border-[1.25px]" />
-                        <SelectItem value="25" className="text-center">
-                          25
-                        </SelectItem>
-                      </SelectContent>
-                    </div>
-                  </Select>
-
-                  <FormMessage />
-                </FormItem>
-              );
-            }}
-          />
-        </div>
-        <div className="w-[134px]  border-b-solid border-b-[1.25px] border-r-[1.25px] border-r-solid border-r-[#f0f2f5] border-b-[#f0f2f5] bg-[#fafafa] pt-2 pb-3  px-2">
-          <FormField
-            control={form.control}
-            name="amount"
-            render={({ field }) => {
-              return (
-                <FormItem className="">
-                  <FormControl className="">
-                    <Input
-                      type="text"
-                      {...field}
-                      value={field.value ?? ""}
-                      className="h-[52px] w-full focus-visible:ring-0 focus-visible:ring-offset-0 shadow-md px-4 py-3 border-[#BFC3C5] bg-[#FFFFFF] rounded-[6px] "
-                    />
-                  </FormControl>
-
-                  <FormMessage />
-                </FormItem>
-              );
-            }}
-          />
-        </div>
-        <div className="w-[134px] border-b-solid border-b-[1.25px]  border-b-[#f0f2f5]  bg-[#Fafafa] pt-1 pb-4 px-2">
-          <div className="flex justify-center ">
-            <Button onClick={() => onDelete(id)} className=" mt-2">
-              <svg
-                width="32"
-                height="32"
-                viewBox="0 0 32 32"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M25.3335 9.33333L24.1771 25.5233C24.0774 26.9188 22.9162 28 21.5172 28H10.4831C9.08411 28 7.92293 26.9188 7.82326 25.5233L6.66683 9.33333M13.3335 14.6667V22.6667M18.6668 14.6667V22.6667M20.0002 9.33333V5.33333C20.0002 4.59695 19.4032 4 18.6668 4H13.3335C12.5971 4 12.0002 4.59695 12.0002 5.33333V9.33333M5.3335 9.33333H26.6668"
-                  stroke="#9FA5A8"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </Button>
-          </div>
-        </div>
-      </div>
-    );
   };
 
   return (
@@ -444,65 +224,205 @@ const NewItem2 = () => {
           </svg>
         </div>
       </div>
-
       <div className="flex flex-col gap-6">
         <div className="bg-[#FAFAFA] rounded-[8px] p-8">
+          
           <div className="flex">
-            <div className="w-[513px]  border-b-solid border-b-[1.25px] border-r-[1.25px] border-r-solid border-r-[#f0f2f5] border-b-[#BFC3C5] bg-[#FFFFFF] py-3 px-2">
+            <div className=" border-b-solid border-r-solid border-r-[1.25px] border-b-[1.25px] border-[#BFC3C5]  w-[513px] h-[45px] bg-[#FFFFFF] py-3 px-2">
               <p
                 className={`${alegreya_sans.className} text-sm font-medium text-[#3C4448]`}
               >
                 Item Name
               </p>
             </div>
-            <div className="w-[134px] border-b-solid border-b-[1.25px] border-r-[1.25px] border-r-solid border-r-[#f0f2f5] border-b-[#BFC3C5] bg-[#FFFFFF] py-3 px-2">
+            <div className=" border-b-solid border-b-[1.25px] border-[#BFC3C5] w-[134px] h-[45px] bg-[#FFFFFF] py-3 px-2">
               <p
                 className={`${alegreya_sans.className} text-sm font-medium text-[#3C4448]`}
               >
                 Quantity
               </p>
             </div>
-            <div className="w-[134px] border-b-solid border-b-[1.25px] border-r-[1.25px] border-r-solid border-r-[#f0f2f5] border-b-[#BFC3C5] bg-[#FFFFFF] py-3 px-2">
+            <div className=" border-b-solid border-b-[1.25px] border-[#BFC3C5] w-[134px] h-[45px] bg-[#FFFFFF] py-3 px-2">
               <p
                 className={`${alegreya_sans.className} text-sm font-medium text-[#3C4448]`}
               >
                 Price
               </p>
             </div>
-            <div className="w-[134px] border-b-solid border-b-[1.25px] border-r-[1.25px] border-r-solid border-r-[#f0f2f5] border-b-[#BFC3C5] bg-[#FFFFFF] py-3 px-2">
+            <div className=" border-b-solid border-b-[1.25px] border-[#BFC3C5] w-[134px] h-[45px] bg-[#FFFFFF] py-3 px-2">
               <p
                 className={`${alegreya_sans.className} text-sm font-medium text-[#3C4448]`}
               >
                 Tax
               </p>
             </div>
-            <div className="w-[134px] border-b-solid border-b-[1.25px] border-r-[1.25px] border-r-solid border-r-[#f0f2f5] border-b-[#BFC3C5] bg-[#FFFFFF] py-3 px-2">
+            <div className=" border-b-solid border-b-[1.25px] border-[#BFC3C5] w-[134px] h-[45px] bg-[#FFFFFF] py-3 px-2">
               <p
                 className={`${alegreya_sans.className} text-sm font-medium text-[#3C4448]`}
               >
                 Amount
               </p>
             </div>
-            <div className="w-[134px] border-b-solid border-b-[1.25px]  border-b-[#f0f2f5]  bg-[#Fafafa] py-3 px-2">
-              <div></div>
-            </div>
+            <div className=" border-b-solid border-b-[1.25px] border-[#BFC3C5] w-134 h-[45px] bg-transparent py-3 px-2"></div>
           </div>
           <FormProvider {...form}>
             <form
               onSubmit={form.handleSubmit(handleSubmit)}
-              className={`${alegreya_sans.className} flex flex-col gap-4 `}
+              className={`${alegreya_sans.className} flex flex-col gap-6`}
             >
-              <div className="py-5">
-                {items.map((item) => (
-                  <AddItem
-                    key={item.id}
-                    id={item.id}
-                    onDelete={handleDeleteItem}
-                  />
-                ))}
+              <div className="flex">
+                <FormField
+                  control={form.control}
+                  name="item_name"
+                  render={({ field }) => {
+                    return (
+                      <FormItem className="border-r-2 border-[#F0f2f5] border-b-2 pb-6">
+                        <div className="w-[513px]">
+                          <FormControl className="mt-6">
+                            <Input
+                              type="text"
+                              {...field}
+                              value={field.value ?? ""}
+                              className="h-[52px] w-full focus-visible:ring-0 focus-visible:ring-offset-0 shadow-md px-4 py-3 border-[#BFC3C5] bg-[#FFFFFF] rounded-[6px] "
+                            />
+                          </FormControl>
+                        </div>
+
+                        <FormMessage />
+                      </FormItem>
+                    );
+                  }}
+                />
+                <FormField
+                  control={form.control}
+                  name="quantity"
+                  render={({ field }) => {
+                    return (
+                      <FormItem className="border-r-2 border-[#F0f2f5] border-b-2 pb-6">
+                        <div className="flex items-center justify-center">
+                          <FormControl className="mt-4 ">
+                            <Input
+                              type="text"
+                              {...field}
+                              value={field.value ?? ""}
+                              className="h-[52px] w-[117px] focus-visible:ring-0 focus-visible:ring-offset-0 shadow-md px-4 py-3 border-[#BFC3C5] bg-[#FFFFFF] rounded-[6px] "
+                            />
+                          </FormControl>
+                        </div>
+
+                        <FormMessage />
+                      </FormItem>
+                    );
+                  }}
+                />
+                <FormField
+                  control={form.control}
+                  name="price"
+                  render={({ field }) => {
+                    return (
+                      <FormItem className="border-r-2 border-[#F0f2f5] border-b-2 pb-6">
+                        <div className="flex items-center justify-center w-[134px]">
+                          <FormControl className="mt-4 ">
+                            <Input
+                              type="text"
+                              {...field}
+                              value={field.value ?? ""}
+                              className="h-[52px] w-[117px] focus-visible:ring-0 focus-visible:ring-offset-0 shadow-md px-4 py-3 border-[#BFC3C5] bg-[#FFFFFF] rounded-[6px] "
+                            />
+                          </FormControl>
+                        </div>
+
+                        <FormMessage />
+                      </FormItem>
+                    );
+                  }}
+                />
+                <FormField
+                  control={form.control}
+                  name="tax"
+                  render={({ field }) => {
+                    return (
+                      <FormItem className="border-r-2 border-[#F0f2f5] border-b-2 pb-6">
+                        <div className=" flex items-center h-[68px]  justify-center w-[134px]">
+                          <Select
+                            onValueChange={field.onChange}
+                            defaultValue={field.value}
+                          >
+                            <div className=" h-[52px] w-[117px] flex justify-center items-center mt-4 border-[1.5px] border-solid border-[#BFC3C5] rounded-[6px] shadow-md">
+                              <FormControl className="">
+                                <SelectTrigger className=" flex items-center justify-center">
+                                  <SelectValue
+                                    placeholder="select tax"
+                                    className="placeholder:text-[#9fa5a8] placeholder:text-base "
+                                  />
+                                </SelectTrigger>
+                              </FormControl>
+                              <SelectContent className="bg-[#ffffff] py-4 pr-4 rounded-[6px]">
+                                <SelectItem value="m@example.com">
+                                  m@example.com
+                                </SelectItem>
+                                <SelectItem value="m@google.com">
+                                  m@google.com
+                                </SelectItem>
+                                <SelectItem value="m@support.com">
+                                  m@support.com
+                                </SelectItem>
+                              </SelectContent>
+                            </div>
+                          </Select>
+                        </div>
+
+                        <FormMessage />
+                      </FormItem>
+                    );
+                  }}
+                />
+                <FormField
+                  control={form.control}
+                  name="amount"
+                  render={({ field }) => {
+                    return (
+                      <FormItem className="border-r-2 border-[#F0f2f5] border-b-2 pb-6">
+                        <div className="flex items-center justify-center w-[134px]">
+                          <FormControl className="mt-4 ">
+                            <Input
+                              type="text"
+                              {...field}
+                              value={field.value ?? ""}
+                              className="h-[52px] w-[117px] focus-visible:ring-0 focus-visible:ring-offset-0 shadow-md px-4 py-3 border-[#BFC3C5] bg-[#FFFFFF] rounded-[6px] "
+                            />
+                          </FormControl>
+                        </div>
+
+                        <FormMessage />
+                      </FormItem>
+                    );
+                  }}
+                />
+                <div className="border-[#F0f2f5] border-b-2 pb-6 ">
+                  <div className="flex">
+                    <Button className=" mt-7">
+                      <svg
+                        width="32"
+                        height="32"
+                        viewBox="0 0 32 32"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M25.3335 9.33333L24.1771 25.5233C24.0774 26.9188 22.9162 28 21.5172 28H10.4831C9.08411 28 7.92293 26.9188 7.82326 25.5233L6.66683 9.33333M13.3335 14.6667V22.6667M18.6668 14.6667V22.6667M20.0002 9.33333V5.33333C20.0002 4.59695 19.4032 4 18.6668 4H13.3335C12.5971 4 12.0002 4.59695 12.0002 5.33333V9.33333M5.3335 9.33333H26.6668"
+                          stroke="#9FA5A8"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </Button>
+                  </div>
+                </div>
               </div>
               <div className="relative">
-                <Button onClick={handleAddItem} className="flex gap-2">
+                <Button className="flex gap-2">
                   <div>
                     <svg
                       width="20"
@@ -527,6 +447,10 @@ const NewItem2 = () => {
                     Add another item
                   </h1>
                 </Button>
+                <ItemList />
+              </div>
+              <div>
+                <hr className="border-solid border-[1px] w-[1120px] border-[#F0F2F5]" />
               </div>
               <div className="flex justify-end">
                 <div className="flex gap-4">
@@ -671,6 +595,16 @@ const NewItem2 = () => {
               </div>
             </form>
           </FormProvider>
+        </div>
+        <div className="flex justify-end">
+          <div className="flex gap-8">
+            <Button className="py-[10px] h-[48px] w-[86px] border-solid border-[1px] border-[#BFC3C5] shadow-md font-medium text-xl text-center px-6 bg-[#FFFFFF] hover:bg-[#FFFFFF] rounded-[6px]">
+              <Link href="/Invoice/NewItem">Back</Link>
+            </Button>
+            <Button className="py-[10px] h-[48px] w-[112px] font-medium text-xl text-center px-6 bg-[#2F345D] hover:bg-[#2F345D] rounded-[6px] text-[#FFFFFF]">
+              <Link href="/Invoice/NewItem3">Proceed</Link>
+            </Button>
+          </div>
         </div>
       </div>
     </InvoiceBody>

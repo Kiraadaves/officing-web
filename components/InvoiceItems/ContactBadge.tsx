@@ -18,7 +18,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 import { Button } from "../ui/button";
 import { cn } from "@/lib/utils";
 import { format } from "date-fns";
-import { CalendarIcon } from "@radix-ui/react-icons";
+import { CalendarIcon, ChevronDownIcon } from "@radix-ui/react-icons";
 import { Calendar } from "../ui/calendar";
 import Link from "next/link";
 import {
@@ -46,7 +46,7 @@ const FormSchema = z.object({
   email: z.string().email(),
   phoneNumber: z.string().min(4),
   currency: z.string(),
-  description: z.string(),
+  website: z.string(),
 });
 
 interface ContactBadgeProps {
@@ -72,7 +72,7 @@ const ContactBadge: React.FC<ContactBadgeProps> = ({ handleTabClick }) => {
     <FormProvider {...form}>
       <form
         onSubmit={form.handleSubmit(handleSubmit)}
-        className={`${alegreya_sans.className} flex flex-col gap-6`}
+        className={`${alegreya_sans.className} flex flex-col gap-4`}
       >
         <div>
           <FormField
@@ -87,21 +87,27 @@ const ContactBadge: React.FC<ContactBadgeProps> = ({ handleTabClick }) => {
                   <RadioGroup
                     onValueChange={field.onChange}
                     defaultValue={field.value}
-                    className=""
+                    className="text-[#38869B]"
                   >
                     <FormItem className="flex gap-3  items-end">
-                      <FormControl className="w-6 h-6 border-[1.5px] border-solid border-[#BFC3C5]">
-                        <RadioGroupItem value="company" />
+                      <FormControl className="w-6 h-6 border-[1.5px] focus:border-2 border-solid focus:border-[#38869B] border-[#BFC3C5]">
+                        <RadioGroupItem id="company" value="company" />
                       </FormControl>
-                      <FormLabel className="font-normal text-base text-[#60686C]">
+                      <FormLabel
+                        htmlFor="company"
+                        className="font-normal text-base text-[#60686C]"
+                      >
                         Company
                       </FormLabel>
                     </FormItem>
                     <FormItem className="flex gap-3 items-end">
-                      <FormControl className="w-6 h-6 border-[1.5px] border-solid border-[#BFC3C5]">
-                        <RadioGroupItem value="individual" />
+                      <FormControl className="w-6 h-6 border-[1.5px] focus:border-2 border-solid focus:border-[#38869B] border-[#BFC3C5]">
+                        <RadioGroupItem id="individual" value="individual" />
                       </FormControl>
-                      <FormLabel className="font-normal text-base text-[#60686C]">
+                      <FormLabel
+                        htmlFor="individual"
+                        className="font-normal text-base text-[#60686C]"
+                      >
                         Individual
                       </FormLabel>
                     </FormItem>
@@ -111,20 +117,25 @@ const ContactBadge: React.FC<ContactBadgeProps> = ({ handleTabClick }) => {
             )}
           />
         </div>
-        <div className="grid grid-cols-2 gap-6">
+        <div className="grid grid-cols-2 gap-4">
           <FormField
             control={form.control}
             name="companyName"
             render={({ field }) => {
               return (
                 <FormItem>
-                  <FormLabel className={`text-[#1E262A] font-medium text-base`}>
+                  <FormLabel
+                    htmlFor="companyname"
+                    className={`text-[#1E262A] font-medium text-base`}
+                  >
                     Company Name
                   </FormLabel>
                   <FormControl>
                     <Input
+                      id="companyname"
                       type="text"
                       {...field}
+                      value={field.value ?? ""}
                       className="focus-visible:ring-0 focus-visible:ring-offset-0 shadow-md px-4 py-3 border-[#BFC3C5] bg-[#FFFFFF] rounded-[6px]"
                     />
                   </FormControl>
@@ -139,13 +150,18 @@ const ContactBadge: React.FC<ContactBadgeProps> = ({ handleTabClick }) => {
             render={({ field }) => {
               return (
                 <FormItem>
-                  <FormLabel className={`text-[#1E262A] font-medium text-base`}>
+                  <FormLabel
+                    htmlFor="firstname"
+                    className={`text-[#1E262A] font-medium text-base`}
+                  >
                     First Name
                   </FormLabel>
                   <FormControl>
                     <Input
+                      id="firstname"
                       type="text"
                       {...field}
+                      value={field.value ?? ""}
                       className="focus-visible:ring-0 focus-visible:ring-offset-0 shadow-md px-4 py-3 border-[#BFC3C5] bg-[#FFFFFF] rounded-[6px]"
                     />
                   </FormControl>
@@ -160,13 +176,18 @@ const ContactBadge: React.FC<ContactBadgeProps> = ({ handleTabClick }) => {
             render={({ field }) => {
               return (
                 <FormItem>
-                  <FormLabel className={`text-[#1E262A] font-medium text-base`}>
+                  <FormLabel
+                    htmlFor="lname"
+                    className={`text-[#1E262A] font-medium text-base`}
+                  >
                     Last Name
                   </FormLabel>
                   <FormControl>
                     <Input
+                      id="lname"
                       type="text"
                       {...field}
+                      value={field.value ?? ""}
                       className="focus-visible:ring-0 focus-visible:ring-offset-0 shadow-md px-4 py-3 border-[#BFC3C5] bg-[#FFFFFF] rounded-[6px]"
                     />
                   </FormControl>
@@ -181,13 +202,18 @@ const ContactBadge: React.FC<ContactBadgeProps> = ({ handleTabClick }) => {
             render={({ field }) => {
               return (
                 <FormItem>
-                  <FormLabel className={`text-[#1E262A] font-medium text-base`}>
+                  <FormLabel
+                    htmlFor="email"
+                    className={`text-[#1E262A] font-medium text-base`}
+                  >
                     Email
                   </FormLabel>
                   <FormControl>
                     <Input
+                      id="email"
                       type="email"
                       {...field}
+                      value={field.value ?? ""}
                       className="focus-visible:ring-0 focus-visible:ring-offset-0 shadow-md px-4 py-3 border-[#BFC3C5] bg-[#FFFFFF] rounded-[6px]"
                     />
                   </FormControl>
@@ -202,13 +228,44 @@ const ContactBadge: React.FC<ContactBadgeProps> = ({ handleTabClick }) => {
             render={({ field }) => {
               return (
                 <FormItem>
-                  <FormLabel className={`text-[#1E262A] font-medium text-base`}>
+                  <FormLabel
+                    htmlFor="phone"
+                    className={`text-[#1E262A] font-medium text-base`}
+                  >
                     Phone Number
                   </FormLabel>
                   <FormControl>
                     <Input
+                      id="phone"
                       type="phone"
                       {...field}
+                      value={field.value ?? ""}
+                      className="focus-visible:ring-0 focus-visible:ring-offset-0 shadow-md px-4 py-3 border-[#BFC3C5] bg-[#FFFFFF] rounded-[6px]"
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              );
+            }}
+          />
+          <FormField
+            control={form.control}
+            name="website"
+            render={({ field }) => {
+              return (
+                <FormItem>
+                  <FormLabel
+                    htmlFor="website"
+                    className={`text-[#1E262A] font-medium text-base`}
+                  >
+                    Website
+                  </FormLabel>
+                  <FormControl>
+                    <Input
+                      id="website"
+                      type="text"
+                      {...field}
+                      value={field.value ?? ""}
                       className="focus-visible:ring-0 focus-visible:ring-offset-0 shadow-md px-4 py-3 border-[#BFC3C5] bg-[#FFFFFF] rounded-[6px]"
                     />
                   </FormControl>
@@ -227,24 +284,27 @@ const ContactBadge: React.FC<ContactBadgeProps> = ({ handleTabClick }) => {
                 return (
                   <FormItem className="">
                     <FormLabel
-                      className={`text-[#1E262A] font-medium text-base`}
+                      htmlFor="currency"
+                      className={`text-[#1E262A] font-medium text-base `}
                     >
                       Currency
                     </FormLabel>
 
-                    <div className="">
+                    <div className="bg-[#ffffff] border-[1px] border-solid border-[#BFC3C5] rounded-[6px] shadow-md">
                       <Select
                         onValueChange={field.onChange}
                         defaultValue={field.value}
                       >
-                        <FormControl>
-                          <SelectTrigger className="mt-4  w-full focus-visible:ring-0 focus-visible:ring-offset-0 shadow-md px-4 py-3 border-[#BFC3C5] bg-[#FFFFFF] rounded-[6px] text-left">
+                        <FormControl className="">
+                          <SelectTrigger className="  w-full focus-visible:ring-0 focus-visible:ring-offset-0 shadow-md px-4 py-3 border-[#BFC3C5] bg-[#FFFFFF] rounded-[6px]">
                             <SelectValue
+                              id="currency"
                               placeholder=""
-                              className="placeholder:text-[#9fa5a8] placeholder:text-base"
+                              className="placeholder:text-[#9fa5a8] placeholder:text-base "
                             />
                           </SelectTrigger>
                         </FormControl>
+
                         <SelectContent className="bg-[#ffffff] py-4 pr-4 rounded-[6px]">
                           <SelectItem value="NGN">NGN</SelectItem>
                           <SelectItem value="USD">USD</SelectItem>
@@ -259,29 +319,7 @@ const ContactBadge: React.FC<ContactBadgeProps> = ({ handleTabClick }) => {
             />
           </div>
         </div>
-        <div className="">
-          <div className="w-full">
-            <FormField
-              control={form.control}
-              name="description"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="text-[#1e262a] font-medium text-base">
-                    Description
-                  </FormLabel>
-                  <FormControl>
-                    <Textarea
-                      className="resize-none border-[1px] border-solid border-[#bfc3c5] shadow-md rounded-[6px] "
-                      {...field}
-                    />
-                  </FormControl>
 
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          </div>
-        </div>
         <div className="flex justify-end">
           <div className="flex gap-8">
             <Button className="py-[10px] h-[48px] w-[101px] border-solid border-[1px] border-[#BFC3C5] shadow-md font-medium text-base text-center px-6 bg-[#FFFFFF] hover:bg-[#FFFFFF] rounded-[6px]">
@@ -289,7 +327,7 @@ const ContactBadge: React.FC<ContactBadgeProps> = ({ handleTabClick }) => {
             </Button>
             <Button
               type="submit"
-              className="py-[10px] h-[48px] w-[177px] font-medium text-base text-center px-6 bg-[#2F345D] hover:bg-[#2F345D] rounded-[6px] text-[#FFFFFF]"
+              className="py-[10px] h-[48px] w-[101px] font-medium text-base text-center px-6 bg-[#2F345D] hover:bg-[#2F345D] rounded-[6px] text-[#FFFFFF]"
             >
               Next
             </Button>

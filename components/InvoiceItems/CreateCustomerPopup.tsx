@@ -7,50 +7,28 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import ContactBadge from "@/components/InvoiceItems/ContactBadge";
 import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectSeparator,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { z } from "zod";
-import { FormProvider, useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import {
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 import CustomersList from "@/components/InvoiceItems/CustomersList";
+import BillingBadge from "@/components/InvoiceItems/BillingBadge";
+import ShippingBadge from "@/components/InvoiceItems/ShippingBadge";
+import RemarkBadge from "@/components/InvoiceItems/RemarkBadge";
 
+const eczar = Eczar({ subsets: ["latin"] });
 const alegreya_sans = Alegreya_Sans({
   subsets: ["latin"],
   weight: ["400", "700"],
 });
 
-const FormSchema = z.object({
-  customerName: z.string(),
-  companyName: z.string(),
-  email: z.string().email(),
-  phoneNumber: z.string().min(4),
-  website: z.string(),
-  currency: z.string(),
-});
+const CreateCustomerPopup = () => {
+  const [activeTab, setActiveTab] = useState("contact");
 
-const NewItem = () => {
-  const form = useForm<z.infer<typeof FormSchema>>({
-    resolver: zodResolver(FormSchema),
-    defaultValues: {},
-  });
-
-  const handleSubmit = (values: z.infer<typeof FormSchema>) => {
-    console.log(values);
+  const handleTabClick = (tab: React.SetStateAction<string>) => {
+    setActiveTab(tab);
   };
+
   return (
     <InvoiceBody>
       <Header pageTitle="New Estimate" />
@@ -212,212 +190,95 @@ const NewItem = () => {
         </div>
       </div>
       <div
-        className={`${alegreya_sans.className} bg-[#FAFAFA] rounded-[0.5rem] p-8 flex flex-col gap-6`}
+        className={`${alegreya_sans.className} bg-[#FAFAFA] rounded-[0.5rem] py-8 flex flex-col gap-6`}
       >
-        <FormProvider {...form}>
-          <form
-            onSubmit={form.handleSubmit(handleSubmit)}
-            className={`${alegreya_sans.className} flex flex-col gap-6`}
-          >
-            <div>
-              <div className="w-full">
-                <FormField
-                  control={form.control}
-                  name="currency"
-                  render={({ field }) => {
-                    return (
-                      <FormItem className="">
-                        <FormLabel
-                          className={`text-[#1E262A] font-medium text-base `}
-                        >
-                          Customer Name
-                        </FormLabel>
-
-                        <div className="bg-[#ffffff] border-[1px] border-solid border-[#BFC3C5] rounded-[6px] shadow-md">
-                          <Select
-                            onValueChange={field.onChange}
-                            defaultValue={field.value}
-                          >
-                            <FormControl className="">
-                              <SelectTrigger className="  w-full focus-visible:ring-0 focus-visible:ring-offset-0 shadow-md px-4 py-3 border-[#BFC3C5] bg-[#FFFFFF] rounded-[6px]">
-                                <SelectValue
-                                  placeholder="Select Customer"
-                                  className="placeholder:text-[#9fa5a8] placeholder:text-base "
-                                />
-                              </SelectTrigger>
-                            </FormControl>
-
-                            <CustomersList />
-                          </Select>
-                        </div>
-
-                        <FormMessage />
-                      </FormItem>
-                    );
-                  }}
-                />
-              </div>
+        <Popover>
+          <PopoverTrigger asChild>
+            <div className={` flex justify-center`}>
+              <button className="bg-[#1F233E] text-[#FFFFFF] py-[10px] px-6 text-xl font-medium rounded-[0.375rem]">
+                Select from customers list
+              </button>
             </div>
+          </PopoverTrigger>
+          <PopoverContent className="w-[32.7rem] bg-[#FAFAFA] rounded-[8px] p-3">
+            <CustomersList />
+          </PopoverContent>
+        </Popover>
 
-            <div className="grid grid-cols-2 gap-6">
-              <FormField
-                control={form.control}
-                name="companyName"
-                render={({ field }) => {
-                  return (
-                    <FormItem>
-                      <FormLabel
-                        className={`text-[#1E262A] font-medium text-base`}
-                      >
-                        Company Name
-                      </FormLabel>
-                      <FormControl>
-                        <Input
-                          type="text"
-                          {...field}
-                          value={field.value ?? ""}
-                          className="focus-visible:ring-0 focus-visible:ring-offset-0 shadow-md px-4 py-3 border-[#BFC3C5] bg-[#FFFFFF] rounded-[6px]"
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  );
-                }}
-              />
-              <FormField
-                control={form.control}
-                name="email"
-                render={({ field }) => {
-                  return (
-                    <FormItem>
-                      <FormLabel
-                        className={`text-[#1E262A] font-medium text-base`}
-                      >
-                        Email
-                      </FormLabel>
-                      <FormControl>
-                        <Input
-                          type="email"
-                          {...field}
-                          value={field.value ?? ""}
-                          className="focus-visible:ring-0 focus-visible:ring-offset-0 shadow-md px-4 py-3 border-[#BFC3C5] bg-[#FFFFFF] rounded-[6px]"
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  );
-                }}
-              />
-              <FormField
-                control={form.control}
-                name="phoneNumber"
-                render={({ field }) => {
-                  return (
-                    <FormItem>
-                      <FormLabel
-                        className={`text-[#1E262A] font-medium text-base`}
-                      >
-                        Phone Number
-                      </FormLabel>
-                      <FormControl>
-                        <Input
-                          type="text"
-                          {...field}
-                          value={field.value ?? ""}
-                          className="focus-visible:ring-0 focus-visible:ring-offset-0 shadow-md px-4 py-3 border-[#BFC3C5] bg-[#FFFFFF] rounded-[6px]"
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  );
-                }}
-              />
-              <FormField
-                control={form.control}
-                name="website"
-                render={({ field }) => {
-                  return (
-                    <FormItem>
-                      <FormLabel
-                        className={`text-[#1E262A] font-medium text-base`}
-                      >
-                        Website
-                      </FormLabel>
-                      <FormControl>
-                        <Input
-                          type="text"
-                          {...field}
-                          value={field.value ?? ""}
-                          className="focus-visible:ring-0 focus-visible:ring-offset-0 shadow-md px-4 py-3 border-[#BFC3C5] bg-[#FFFFFF] rounded-[6px]"
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  );
-                }}
-              />
+        <div
+          className={`${alegreya_sans.className} flex items-center gap-2 px-3`}
+        >
+          <hr className="w-[35rem] border-solid border-[1px] border-[#E6E9EA]" />
+          <h1 className="font-medium text-lg text-[#000000]">OR</h1>
+          <hr className="w-[35rem] border-solid border-[1px] border-[#E6E9EA]" />
+        </div>
+        <div className="rounded-[0.375rem] bg-[#FAFAFA] py-6 px-8 flex flex-col gap-6">
+          <div className={`flex justify-center`}>
+            <div
+              className={` ${alegreya_sans.className} bg-[#9FA5A8] rounded-[14px] p-2 flex gap-2`}
+            >
+              <Button
+                variant="link"
+                className={`${
+                  activeTab === "contact"
+                    ? "bg-[#38869B] rounded-xl px-3 py-1"
+                    : ""
+                } text-[#FFFFFF] hover:no-underline text-lg`}
+                onClick={() => handleTabClick("contact")}
+              >
+                Contact
+              </Button>
+              <Button
+                variant="link"
+                className={`${
+                  activeTab === "billing"
+                    ? "bg-[#38869B] rounded-xl px-3 py-1"
+                    : ""
+                } text-[#FFFFFF] hover:no-underline text-lg`}
+                onClick={() => handleTabClick("billing")}
+              >
+                Billing
+              </Button>
+              <Button
+                variant="link"
+                className={`${
+                  activeTab === "shipping"
+                    ? "bg-[#38869B] rounded-xl px-3 py-1"
+                    : ""
+                } text-[#FFFFFF] hover:no-underline text-lg`}
+                onClick={() => handleTabClick("shipping")}
+              >
+                Shipping
+              </Button>
+              <Button
+                variant="link"
+                className={`${
+                  activeTab === "remark"
+                    ? "bg-[#38869B] rounded-xl px-3 py-1"
+                    : ""
+                } text-[#FFFFFF] hover:no-underline text-lg`}
+                onClick={() => handleTabClick("remark")}
+              >
+                Remark
+              </Button>
             </div>
-            <div>
-              <div className="w-full">
-                <FormField
-                  control={form.control}
-                  name="currency"
-                  render={({ field }) => {
-                    return (
-                      <FormItem className="">
-                        <FormLabel
-                          className={`text-[#1E262A] font-medium text-base `}
-                        >
-                          Currency
-                        </FormLabel>
-
-                        <div className="bg-[#ffffff] border-[1px] border-solid border-[#BFC3C5] rounded-[6px] shadow-md">
-                          <Select
-                            onValueChange={field.onChange}
-                            defaultValue={field.value}
-                          >
-                            <FormControl className="">
-                              <SelectTrigger className="  w-full focus-visible:ring-0 focus-visible:ring-offset-0 shadow-md px-4 py-3 border-[#BFC3C5] bg-[#FFFFFF] rounded-[6px]">
-                                <SelectValue
-                                  placeholder=""
-                                  className="placeholder:text-[#9fa5a8] placeholder:text-base "
-                                />
-                              </SelectTrigger>
-                            </FormControl>
-
-                            <SelectContent className="bg-[#ffffff] py-4 pr-4 rounded-[6px]">
-                              <SelectItem value="NGN">NGN</SelectItem>
-                              <SelectItem value="USD">USD</SelectItem>
-                            </SelectContent>
-                          </Select>
-                        </div>
-
-                        <FormMessage />
-                      </FormItem>
-                    );
-                  }}
-                />
-              </div>
-            </div>
-
-            <div className="flex justify-end">
-              <div className="flex gap-8">
-                <Button className="py-[10px] h-[48px] w-[101px] border-solid border-[1px] border-[#BFC3C5] shadow-md font-medium text-base text-center px-6 bg-[#FFFFFF] hover:bg-[#FFFFFF] rounded-[6px]">
-                  <Link href="/Invoice">Cancel</Link>
-                </Button>
-                <Button
-                  type="submit"
-                  className="py-[10px] h-[48px] w-[101px] font-medium text-base text-center px-6 bg-[#2F345D] hover:bg-[#2F345D] rounded-[6px] text-[#FFFFFF]"
-                >
-                  Next
-                </Button>
-              </div>
-            </div>
-          </form>
-        </FormProvider>
+          </div>
+          <div className="mt-4">
+            {activeTab === "contact" && (
+              <ContactBadge handleTabClick={handleTabClick} />
+            )}
+            {activeTab === "billing" && (
+              <BillingBadge handleTabClick={handleTabClick} />
+            )}
+            {activeTab === "shipping" && (
+              <ShippingBadge handleTabClick={handleTabClick} />
+            )}
+            {activeTab === "remark" && <RemarkBadge />}
+          </div>
+        </div>
       </div>
     </InvoiceBody>
   );
 };
 
-export default NewItem;
+export default CreateCustomerPopup;

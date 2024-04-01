@@ -101,11 +101,11 @@ const ShippingBadge: React.FC<ShippingBadgeProps> = ({ handleTabClick }) => {
   };
 
   return (
-    <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-4">
       <div className="flex flex-row items-center gap-3 ">
         <Checkbox
           id="billingdata"
-          className=" w-6 h-6 rounded-[4px] border-[1.5px] border-solid border-[#bfc3c5]"
+          className=" w-6 h-6 rounded-[4px] border-[1.5px] focus:border-2 border-solid  focus:border-[#38869B] border-[#bfc3c5]"
           onCheckedChange={handleCheckboxChange}
           checked={useBillingData}
         />
@@ -120,7 +120,7 @@ const ShippingBadge: React.FC<ShippingBadgeProps> = ({ handleTabClick }) => {
           onSubmit={form.handleSubmit(handleSubmit)}
           className={`${alegreya_sans.className} flex flex-col gap-6`}
         >
-          <div className="grid grid-cols-2 gap-6">
+          <div className="grid grid-cols-2 gap-4">
             <FormField
               control={form.control}
               name="contactName"
@@ -128,12 +128,14 @@ const ShippingBadge: React.FC<ShippingBadgeProps> = ({ handleTabClick }) => {
                 return (
                   <FormItem>
                     <FormLabel
+                      htmlFor="contact"
                       className={`text-[#1E262A] font-medium text-base`}
                     >
                       Contact Person's Name
                     </FormLabel>
                     <FormControl>
                       <Input
+                        id="contact"
                         type="text"
                         {...field}
                         value={field.value ?? ""}
@@ -152,12 +154,14 @@ const ShippingBadge: React.FC<ShippingBadgeProps> = ({ handleTabClick }) => {
                 return (
                   <FormItem>
                     <FormLabel
+                      htmlFor="phone"
                       className={`text-[#1E262A] font-medium text-base`}
                     >
                       phoneNumber
                     </FormLabel>
                     <FormControl>
                       <Input
+                        id="phone"
                         type="text"
                         {...field}
                         value={field.value ?? ""}
@@ -176,12 +180,14 @@ const ShippingBadge: React.FC<ShippingBadgeProps> = ({ handleTabClick }) => {
                 return (
                   <FormItem>
                     <FormLabel
+                      htmlFor="address1"
                       className={`text-[#1E262A] font-medium text-base`}
                     >
                       Address 1
                     </FormLabel>
                     <FormControl>
                       <Input
+                        id="address1"
                         type="text"
                         {...field}
                         value={field.value ?? ""}
@@ -200,12 +206,14 @@ const ShippingBadge: React.FC<ShippingBadgeProps> = ({ handleTabClick }) => {
                 return (
                   <FormItem>
                     <FormLabel
+                      htmlFor="address2"
                       className={`text-[#1E262A] font-medium text-base`}
                     >
                       Address 2
                     </FormLabel>
                     <FormControl>
                       <Input
+                        id="address2"
                         type="address2"
                         {...field}
                         value={field.value ?? ""}
@@ -224,12 +232,14 @@ const ShippingBadge: React.FC<ShippingBadgeProps> = ({ handleTabClick }) => {
                 return (
                   <FormItem>
                     <FormLabel
+                      htmlFor="city"
                       className={`text-[#1E262A] font-medium text-base`}
                     >
                       City
                     </FormLabel>
                     <FormControl>
                       <Input
+                        id="city"
                         type="phone"
                         {...field}
                         value={field.value ?? ""}
@@ -248,12 +258,14 @@ const ShippingBadge: React.FC<ShippingBadgeProps> = ({ handleTabClick }) => {
                 return (
                   <FormItem>
                     <FormLabel
+                      htmlFor="state"
                       className={`text-[#1E262A] font-medium text-base`}
                     >
                       State
                     </FormLabel>
                     <FormControl>
                       <Input
+                        id="state"
                         type="text"
                         {...field}
                         value={field.value ?? ""}
@@ -272,12 +284,14 @@ const ShippingBadge: React.FC<ShippingBadgeProps> = ({ handleTabClick }) => {
                 return (
                   <FormItem>
                     <FormLabel
+                      htmlFor="postalCode"
                       className={`text-[#1E262A] font-medium text-base`}
                     >
                       Postal/Zip Code
                     </FormLabel>
                     <FormControl>
                       <Input
+                        id="postalCode"
                         type="text"
                         {...field}
                         value={field.value ?? ""}
@@ -297,12 +311,13 @@ const ShippingBadge: React.FC<ShippingBadgeProps> = ({ handleTabClick }) => {
                 return (
                   <FormItem className="">
                     <FormLabel
+                      htmlFor="country"
                       className={`text-[#1E262A] font-medium text-base`}
                     >
                       Country
                     </FormLabel>
 
-                    <div className="">
+                    <div className="bg-[#ffffff] border-[1px] border-solid border-[#BFC3C5] rounded-[6px] shadow-md">
                       <Select
                         onValueChange={field.onChange}
                         defaultValue={field.value}
@@ -310,6 +325,7 @@ const ShippingBadge: React.FC<ShippingBadgeProps> = ({ handleTabClick }) => {
                         <FormControl>
                           <SelectTrigger className="  w-full focus-visible:ring-0 focus-visible:ring-offset-0 shadow-md px-4 py-3 border-[#BFC3C5] bg-[#FFFFFF] rounded-[6px] text-left">
                             <SelectValue
+                              id="country"
                               placeholder=""
                               className="placeholder:text-[#9fa5a8] placeholder:text-base"
                             />
@@ -335,11 +351,15 @@ const ShippingBadge: React.FC<ShippingBadgeProps> = ({ handleTabClick }) => {
                 name="deliveryInstruction"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-[#1e262a] font-medium text-base">
+                    <FormLabel
+                      htmlFor="deliveryInstruction"
+                      className="text-[#1e262a] font-medium text-base"
+                    >
                       Delivery Instruction
                     </FormLabel>
                     <FormControl>
                       <Textarea
+                        id="deliveryInstruction"
                         className="resize-none border-[1px] border-solid border-[#bfc3c5] shadow-md rounded-[6px] "
                         {...field}
                         value={field.value ?? ""}
