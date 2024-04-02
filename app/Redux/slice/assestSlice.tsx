@@ -1,7 +1,7 @@
 import {createSlice} from "@reduxjs/toolkit";
 
 const AssetsSlice = createSlice({
-    name: "Assets",
+    name: "asset",
     initialState: {
         products: [],
         sl_Assest: "product",
@@ -12,6 +12,10 @@ const AssetsSlice = createSlice({
         m_unit: "",
         currency: "",
         description: "",
+        loading: false,
+        submit:false,
+        id: "",
+        deactivate: false,
 
     }, 
     reducers: {
@@ -41,6 +45,18 @@ const AssetsSlice = createSlice({
         },
         setDescription: (state, action) => {
             state.description = action.payload
+        },
+        setLoading: (state, action) => {
+            state.loading = action.payload
+        },
+        setSubmit: (state, action) => {
+            state.submit = action.payload
+        },
+        setId: (state, action) => {
+            state.id = action.payload
+        },
+        setDeactivate: (state, action) => {
+            state.deactivate = action.payload
         }
     }
 })

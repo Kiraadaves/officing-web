@@ -3,7 +3,7 @@ import AssetsSlice from "./slice/assestSlice";
 
 const store = configureStore({
   reducer: {
-    Assets: AssetsSlice.reducer
+    asset: AssetsSlice.reducer
   },
 });
 
