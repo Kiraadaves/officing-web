@@ -276,8 +276,8 @@ const index = () => {
                     <tbody className=" relative">
                       
                       {filteredDataByOptionAndSearch().map((items) => 
-                      <tr className="hover:bg-gray-100 dark:hover:bg-gray-700"key={items.id}>
-                        <td className="p-4 w-4">
+                      <tr className="hover:bg-gray-100 dark:hover:bg-gray-700 relative"key={items.id}>
+                        <td className="p-4 w-4 pr-7">
                           <Checkbox />
                         </td>
                         <td className="py-4 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">{items.name}</td>
@@ -286,7 +286,7 @@ const index = () => {
                         <td className="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">{items.description}</td>
                         <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">₦ {items.price.toLocaleString()}</td>
                         <td className="py-4 px-6 text-sm font-medium text-right whitespace-nowrap cursor-pointer">
-                          <div className="flex items-center">
+                          
                             
                             <HiDotsVertical size={24} onClick={() => toggleAction(items.id)}  />
                             {activeItemId === items.id  && (
@@ -302,7 +302,7 @@ const index = () => {
                                 </div>
                               </div>
                             )}
-                          </div>
+                          
                         </td>
                       </tr>
                       )}
