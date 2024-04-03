@@ -43,17 +43,18 @@ const Estimates = () => {
       </CardContent>
       </Card>
 
-      <Card className="w-[350px] justify-center text-center">
-      <CardHeader>
-        <CardTitle>2</CardTitle>
-        <CardDescription className='text-lg font-bold'>Select or Add New Customer</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <p>In the estimate process, start by selecting an existing customer or adding a new one for their first transaction.
-          Accurate customer details are crucial fro proper billing.
-        </p>
-      </CardContent>
-      </Card>
+    //   <div className='flex gap-5'>
+    //   <Card className="w-[350px] justify-center text-center">
+    //   <CardHeader>
+    //     <CardTitle>1</CardTitle>
+    //     <CardDescription className='text-lg font-bold'>Select or Add New Customer</CardDescription>
+    //   </CardHeader>
+    //   <CardContent>
+    //     <p>In the estimate process, start by selecting an existing customer or adding a new one for their first transaction.
+    //       Accurate customer details are crucial fro proper billing.
+    //     </p>
+    //   </CardContent>
+    //   </Card>
 
       <Card className="w-[350px] justify-center text-center">
       <CardHeader>
@@ -66,6 +67,7 @@ const Estimates = () => {
         </p>
       </CardContent>
       </Card>
+      </div>
       </div>
       </div>
   );  

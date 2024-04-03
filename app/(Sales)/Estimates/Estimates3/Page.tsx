@@ -1,6 +1,6 @@
-import Header from "@/components/Header";
-import Estimates from ".";
-import { Sidebar } from "lucide-react";
+import Header from '@/components/Header';
+import Estimates3 from '.';
+import Sidebar from '@/components/Sidebar';
 
 const page = () => {
   <><Sidebar /><Header pageTitle="Estimates" /></>
