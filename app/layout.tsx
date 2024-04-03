@@ -2,6 +2,10 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Sidebar from "@/components/Sidebar";
+import { ToastContainer, toast } from "react-toastify";
+
+import "react-toastify/dist/ReactToastify.css";
+import Providers from "./Redux/Provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,17 +22,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className="flex bg-[#E6F3F5]">
-          <div className="w-[25%] max-w-[272px] bg-white rounded-se-2xl">
-            <Sidebar />
+        <Providers>
+          <div className="flex bg-[#E6F3F5]">
+            <div className="w-[25%] max-w-[272px] bg-white rounded-se-2xl">
+              <Sidebar />
+            </div>
+            <div className="bg-[#E3EFE0] w-[83%] p-10">{children}</div>
+            <ToastContainer />
           </div>
-          
-          <div className="w-[83%] p-10">
-            {children}
-          </div>
-        </div>
+        </Providers>
       </body>
     </html>
   );
 }
-
