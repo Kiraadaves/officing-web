@@ -1,28 +1,95 @@
+"use client";
 import Header from "@/components/Header";
 import CustomerBody from "@/components/CustomerBody";
+import React, { useState } from "react";
+import { Eczar, Alegreya_Sans } from "next/font/google";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import Contact from "./CustomersComponent/contact"
+import Billing from "./CustomersComponent/billing"
+import Shipping from "./CustomersComponent/shipping"
+import Remark from "./CustomersComponent/remark"
 
-const options = [
-    {id: 1, value: "contact", name: "contact" },
-    {id: 2, value: "billing", name: "billing" },
-    {id: 3, value: "shipping", name: "shipping" },
-    {id: 4, value: "remark", name: "remark" }
+const eczar = Eczar({ subsets: ["latin"] });
+const alegreya_sans = Alegreya_Sans({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+});
 
-]
+
 
 const NewCustomer = () => {
-    return (
-        <CustomerBody>
-            <Header pageTitle="New Items" />
-            <div className="bg-[#FAFAFA] rounded-[2rem]">
-                <div className="flex gap-5 mt-4 px-3 py-2 bg-[#9FA5A8] text-[#EFEFF0] rounded-[3rem] mx-auto w-[40%] cursor-pointer capitalize">
-                    {options.map((items) => 
-                        <div key={items.id} className="active:bg-[#38869B] px-5 py-1 rounded-[3rem]">{items.name}</div>
-                    )}
-                </div>
-                
+  const [activeTab, setActiveTab] = useState("contact");
+
+  //@ts-ignore
+  const handleTabClick = (tab: React.SetStateAction<string>) => {
+    setActiveTab(tab);
+  };
+
+  return (
+    <CustomerBody>
+      <Header pageTitle="New Customer" />   
+      <div className={`${alegreya_sans.className} bg-[#FAFAFA] rounded-[0.5rem] py-8 flex flex-col gap-6`}>
+        
+        <div className="rounded-[0.375rem] bg-[#FAFAFA] py-6 px-8 flex flex-col gap-6">
+          <div className={`flex justify-center`}>
+            <div className={` ${alegreya_sans.className} bg-[#9FA5A8] rounded-[14px] p-2 flex gap-2`}>
+              <Button
+                variant="link"
+                className={`${
+                  activeTab === "contact"
+                    ? "bg-[#38869B] rounded-xl px-3 py-1"
+                    : ""
+                } text-[#FFFFFF] hover:no-underline text-lg`}
+                onClick={() => handleTabClick("contact")}
+              >
+                Contact
+              </Button>
+              <Button
+                variant="link"
+                className={`${
+                  activeTab === "billing"
+                    ? "bg-[#38869B] rounded-xl px-3 py-1"
+                    : ""
+                } text-[#FFFFFF] hover:no-underline text-lg`}
+                onClick={() => handleTabClick("billing")}
+              >
+                Billing
+              </Button>
+              <Button
+                variant="link"
+                className={`${
+                  activeTab === "shipping"
+                    ? "bg-[#38869B] rounded-xl px-3 py-1"
+                    : ""
+                } text-[#FFFFFF] hover:no-underline text-lg`}
+                onClick={() => handleTabClick("shipping")}
+              >
+                Shipping
+              </Button>
+              <Button
+                variant="link"
+                className={`${
+                  activeTab === "remark"
+                    ? "bg-[#38869B] rounded-xl px-3 py-1"
+                    : ""
+                } text-[#FFFFFF] hover:no-underline text-lg`}
+                onClick={() => handleTabClick("remark")}
+              >
+                Remark
+              </Button>
             </div>
-        </CustomerBody>
-    )
-}
+          </div>
+          <div className="mt-4">
+            {activeTab === "contact" && <Contact />}
+            {activeTab === "billing" && <Billing />}
+            {activeTab === "shipping" && <Shipping />}
+            {activeTab === "remark" && <Remark />}
+          </div>
+        </div>
+      </div>
+    </CustomerBody>
+  );
+};
 
 export default NewCustomer;
