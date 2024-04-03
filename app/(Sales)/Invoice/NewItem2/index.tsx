@@ -114,7 +114,10 @@ const NewItem2 = () => {
                   >
                     <div className=" h-[52px] w-full flex justify-center items-center border-[1.5px] border-solid border-[#BFC3C5] rounded-[6px] shadow-md">
                       <FormControl className="">
-                        <SelectTrigger className="bg-[#ffffff] flex items-center justify-center">
+                        <SelectTrigger
+                          name="selectitem"
+                          className="bg-[#ffffff] flex items-center justify-center"
+                        >
                           <SelectValue
                             placeholder="Select item"
                             className="placeholder:text-[#9fa5a8] placeholder:text-base "

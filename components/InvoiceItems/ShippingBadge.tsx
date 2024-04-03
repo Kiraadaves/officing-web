@@ -157,10 +157,11 @@ const ShippingBadge: React.FC<ShippingBadgeProps> = ({ handleTabClick }) => {
                       htmlFor="phone"
                       className={`text-[#1E262A] font-medium text-base`}
                     >
-                      phoneNumber
+                      Phone Number
                     </FormLabel>
                     <FormControl>
                       <Input
+                        autoComplete="tel"
                         id="phone"
                         type="text"
                         {...field}
@@ -323,9 +324,11 @@ const ShippingBadge: React.FC<ShippingBadgeProps> = ({ handleTabClick }) => {
                         defaultValue={field.value}
                       >
                         <FormControl>
-                          <SelectTrigger className="  w-full focus-visible:ring-0 focus-visible:ring-offset-0 shadow-md px-4 py-3 border-[#BFC3C5] bg-[#FFFFFF] rounded-[6px] text-left">
+                          <SelectTrigger
+                            id="country"
+                            className="  w-full focus-visible:ring-0 focus-visible:ring-offset-0 shadow-md px-4 py-3 border-[#BFC3C5] bg-[#FFFFFF] rounded-[6px] text-left"
+                          >
                             <SelectValue
-                              id="country"
                               placeholder=""
                               className="placeholder:text-[#9fa5a8] placeholder:text-base"
                             />
@@ -345,7 +348,7 @@ const ShippingBadge: React.FC<ShippingBadgeProps> = ({ handleTabClick }) => {
             />
           </div>
           <div className="">
-            <div className="w-full">
+            <div className="w-full ">
               <FormField
                 control={form.control}
                 name="deliveryInstruction"
@@ -360,7 +363,7 @@ const ShippingBadge: React.FC<ShippingBadgeProps> = ({ handleTabClick }) => {
                     <FormControl>
                       <Textarea
                         id="deliveryInstruction"
-                        className="resize-none border-[1px] border-solid border-[#bfc3c5] shadow-md rounded-[6px] "
+                        className="resize-none border-[1px] border-solid border-[#bfc3c5] shadow-md rounded-[6px] bg-[#ffffff] "
                         {...field}
                         value={field.value ?? ""}
                       />

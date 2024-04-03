@@ -118,6 +118,7 @@ const BillingBadge: React.FC<BillingBadgeProps> = ({ handleTabClick }) => {
                   </FormLabel>
                   <FormControl>
                     <Input
+                      autoComplete="tel"
                       id="phone"
                       type="text"
                       {...field}
@@ -188,7 +189,10 @@ const BillingBadge: React.FC<BillingBadgeProps> = ({ handleTabClick }) => {
             render={({ field }) => {
               return (
                 <FormItem>
-                  <FormLabel htmlFor="city" className={`text-[#1E262A] font-medium text-base`}>
+                  <FormLabel
+                    htmlFor="city"
+                    className={`text-[#1E262A] font-medium text-base`}
+                  >
                     City
                   </FormLabel>
                   <FormControl>
@@ -211,7 +215,10 @@ const BillingBadge: React.FC<BillingBadgeProps> = ({ handleTabClick }) => {
             render={({ field }) => {
               return (
                 <FormItem>
-                  <FormLabel htmlFor="state" className={`text-[#1E262A] font-medium text-base`}>
+                  <FormLabel
+                    htmlFor="state"
+                    className={`text-[#1E262A] font-medium text-base`}
+                  >
                     State
                   </FormLabel>
                   <FormControl>
@@ -234,7 +241,10 @@ const BillingBadge: React.FC<BillingBadgeProps> = ({ handleTabClick }) => {
             render={({ field }) => {
               return (
                 <FormItem>
-                  <FormLabel htmlFor="postalCode" className={`text-[#1E262A] font-medium text-base`}>
+                  <FormLabel
+                    htmlFor="postalCode"
+                    className={`text-[#1E262A] font-medium text-base`}
+                  >
                     Postal/Zip Code
                   </FormLabel>
                   <FormControl>
@@ -258,19 +268,24 @@ const BillingBadge: React.FC<BillingBadgeProps> = ({ handleTabClick }) => {
             render={({ field }) => {
               return (
                 <FormItem className="">
-                  <FormLabel htmlFor="country" className={`text-[#1E262A] font-medium text-base`}>
+                  <FormLabel
+                    htmlFor="country"
+                    className={`text-[#1E262A] font-medium text-base`}
+                  >
                     Country
                   </FormLabel>
 
-                  <div className="border-[1px] border-solid border-[#BFC3C5] rounded-[6px] shadow-md">
+                  <div className="bg-[#ffffff] border-[1px] border-solid border-[#BFC3C5] rounded-[6px] shadow-md">
                     <Select
                       onValueChange={field.onChange}
                       defaultValue={field.value}
                     >
                       <FormControl className="">
-                        <SelectTrigger className="  w-full focus-visible:ring-0 focus-visible:ring-offset-0 shadow-md px-4 py-3 border-[#BFC3C5] bg-[#FFFFFF] rounded-[6px]">
+                        <SelectTrigger
+                          id="country"
+                          className="  w-full focus-visible:ring-0 focus-visible:ring-offset-0 shadow-md px-4 py-3 border-[#BFC3C5] bg-[#FFFFFF] rounded-[6px]"
+                        >
                           <SelectValue
-                            id="country"
                             placeholder=""
                             className="placeholder:text-[#9fa5a8] placeholder:text-base "
                           />

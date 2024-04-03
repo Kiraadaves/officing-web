@@ -80,10 +80,10 @@ const ContactBadge: React.FC<ContactBadgeProps> = ({ handleTabClick }) => {
             name="customerType"
             render={({ field }) => (
               <FormItem className=" flex gap-2 items-end">
-                <FormLabel className="text-[#1E262A] font-medium text-lg">
+                <p className="text-[#1E262A]  font-medium text-lg">
                   Company Type:{" "}
-                </FormLabel>
-                <FormControl className=" flex gap-6">
+                </p>
+                <FormControl className=" flex gap-6 pb-[2px] ">
                   <RadioGroup
                     onValueChange={field.onChange}
                     defaultValue={field.value}
@@ -210,6 +210,7 @@ const ContactBadge: React.FC<ContactBadgeProps> = ({ handleTabClick }) => {
                   </FormLabel>
                   <FormControl>
                     <Input
+                      autoComplete="email"
                       id="email"
                       type="email"
                       {...field}
@@ -236,6 +237,7 @@ const ContactBadge: React.FC<ContactBadgeProps> = ({ handleTabClick }) => {
                   </FormLabel>
                   <FormControl>
                     <Input
+                      autoComplete="phone"
                       id="phone"
                       type="phone"
                       {...field}
@@ -296,9 +298,11 @@ const ContactBadge: React.FC<ContactBadgeProps> = ({ handleTabClick }) => {
                         defaultValue={field.value}
                       >
                         <FormControl className="">
-                          <SelectTrigger className="  w-full focus-visible:ring-0 focus-visible:ring-offset-0 shadow-md px-4 py-3 border-[#BFC3C5] bg-[#FFFFFF] rounded-[6px]">
+                          <SelectTrigger
+                            id="currency"
+                            className="  w-full focus-visible:ring-0 focus-visible:ring-offset-0 shadow-md px-4 py-3 border-[#BFC3C5] bg-[#FFFFFF] rounded-[6px]"
+                          >
                             <SelectValue
-                              id="currency"
                               placeholder=""
                               className="placeholder:text-[#9fa5a8] placeholder:text-base "
                             />

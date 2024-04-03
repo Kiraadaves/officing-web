@@ -223,11 +223,12 @@ const NewItem = () => {
               <div className="w-full">
                 <FormField
                   control={form.control}
-                  name="currency"
+                  name="customerName"
                   render={({ field }) => {
                     return (
                       <FormItem className="">
                         <FormLabel
+                          htmlFor="customerName"
                           className={`text-[#1E262A] font-medium text-base `}
                         >
                           Customer Name
@@ -239,7 +240,10 @@ const NewItem = () => {
                             defaultValue={field.value}
                           >
                             <FormControl className="">
-                              <SelectTrigger className="  w-full focus-visible:ring-0 focus-visible:ring-offset-0 shadow-md px-4 py-3 border-[#BFC3C5] bg-[#FFFFFF] rounded-[6px]">
+                              <SelectTrigger
+                                id="customerName"
+                                className="  w-full focus-visible:ring-0 focus-visible:ring-offset-0 shadow-md px-4 py-3 border-[#BFC3C5] bg-[#FFFFFF] rounded-[6px]"
+                              >
                                 <SelectValue
                                   placeholder="Select Customer"
                                   className="placeholder:text-[#9fa5a8] placeholder:text-base "
@@ -267,12 +271,14 @@ const NewItem = () => {
                   return (
                     <FormItem>
                       <FormLabel
+                        htmlFor="companyname"
                         className={`text-[#1E262A] font-medium text-base`}
                       >
                         Company Name
                       </FormLabel>
                       <FormControl>
                         <Input
+                          id="companyname"
                           type="text"
                           {...field}
                           value={field.value ?? ""}
@@ -291,13 +297,16 @@ const NewItem = () => {
                   return (
                     <FormItem>
                       <FormLabel
+                        htmlFor="email"
                         className={`text-[#1E262A] font-medium text-base`}
                       >
                         Email
                       </FormLabel>
                       <FormControl>
                         <Input
+                          id="email"
                           type="email"
+                          autoComplete="email"
                           {...field}
                           value={field.value ?? ""}
                           className="focus-visible:ring-0 focus-visible:ring-offset-0 shadow-md px-4 py-3 border-[#BFC3C5] bg-[#FFFFFF] rounded-[6px]"
@@ -315,13 +324,16 @@ const NewItem = () => {
                   return (
                     <FormItem>
                       <FormLabel
+                        htmlFor="phone"
                         className={`text-[#1E262A] font-medium text-base`}
                       >
                         Phone Number
                       </FormLabel>
                       <FormControl>
                         <Input
+                          id="phone"
                           type="text"
+                          autoComplete="tel"
                           {...field}
                           value={field.value ?? ""}
                           className="focus-visible:ring-0 focus-visible:ring-offset-0 shadow-md px-4 py-3 border-[#BFC3C5] bg-[#FFFFFF] rounded-[6px]"
@@ -339,12 +351,14 @@ const NewItem = () => {
                   return (
                     <FormItem>
                       <FormLabel
+                        htmlFor="website"
                         className={`text-[#1E262A] font-medium text-base`}
                       >
                         Website
                       </FormLabel>
                       <FormControl>
                         <Input
+                          id="website"
                           type="text"
                           {...field}
                           value={field.value ?? ""}
@@ -366,6 +380,7 @@ const NewItem = () => {
                     return (
                       <FormItem className="">
                         <FormLabel
+                          htmlFor="currency"
                           className={`text-[#1E262A] font-medium text-base `}
                         >
                           Currency
@@ -377,7 +392,10 @@ const NewItem = () => {
                             defaultValue={field.value}
                           >
                             <FormControl className="">
-                              <SelectTrigger className="  w-full focus-visible:ring-0 focus-visible:ring-offset-0 shadow-md px-4 py-3 border-[#BFC3C5] bg-[#FFFFFF] rounded-[6px]">
+                              <SelectTrigger
+                                id="currency"
+                                className="  w-full focus-visible:ring-0 focus-visible:ring-offset-0 shadow-md px-4 py-3 border-[#BFC3C5] bg-[#FFFFFF] rounded-[6px]"
+                              >
                                 <SelectValue
                                   placeholder=""
                                   className="placeholder:text-[#9fa5a8] placeholder:text-base "
