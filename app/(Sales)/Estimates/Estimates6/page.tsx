@@ -1,10 +1,9 @@
 import React from 'react'
-// import Filled from '.'
+import Estimates6 from '.'
 
 const page = () => {
   return (
-    <div>here</div>
-    // <div><Filled/></div>
+    <div><Estimates6/></div>
   )
 }
 
