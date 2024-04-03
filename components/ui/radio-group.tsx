@@ -28,23 +28,47 @@ const RadioGroupItem = React.forwardRef<
     <RadioGroupPrimitive.Item
       ref={ref}
       className={cn(
+<<<<<<< HEAD
 
         "aspect-square h-6 w-6 rounded-full border border-primary text-primary ring-offset-background focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
 
+=======
+<<<<<<< HEAD
+        "aspect-square h-4 w-4 rounded-full border border-primary text-primary ring-offset-background focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
+=======
+        "aspect-square h-6 w-6 rounded-full border border-primary text-primary ring-offset-background focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
+>>>>>>> 7e73bc9 (update on assets pages)
+>>>>>>> dev
         className
       )}
       {...props}
     >
       <RadioGroupPrimitive.Indicator className="flex items-center justify-center">
+<<<<<<< HEAD
 
         <Circle className="h-3 w-3 fill-current text-current" />
 
+=======
+<<<<<<< HEAD
+        <Circle className="h-2.5 w-2.5 fill-current text-current" />
+=======
+        <Circle className="h-3 w-3 fill-current text-current" />
+>>>>>>> 7e73bc9 (update on assets pages)
+>>>>>>> dev
       </RadioGroupPrimitive.Indicator>
     </RadioGroupPrimitive.Item>
   )
 })
 RadioGroupItem.displayName = RadioGroupPrimitive.Item.displayName
 
+<<<<<<< HEAD
 
 export { RadioGroup, RadioGroupItem }
 
+=======
+<<<<<<< HEAD
+export { RadioGroup, RadioGroupItem }
+=======
+export { RadioGroup, RadioGroupItem }
+>>>>>>> 7e73bc9 (update on assets pages)
+>>>>>>> dev

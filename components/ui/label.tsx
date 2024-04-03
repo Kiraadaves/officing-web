@@ -23,5 +23,12 @@ const Label = React.forwardRef<
 ))
 Label.displayName = LabelPrimitive.Root.displayName
 
+<<<<<<< HEAD
 export { Label }
+<<<<<<< HEAD
 
+=======
+=======
+export { Label }
+>>>>>>> 7e73bc9 (update on assets pages)
+>>>>>>> dev
