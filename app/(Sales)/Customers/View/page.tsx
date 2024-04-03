@@ -1,8 +1,8 @@
-import React from 'react'
+import View from "."
 
 const page = () => {
   return (
-    <div>page</div>
+    <View />
   )
 }
 
