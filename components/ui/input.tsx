@@ -22,8 +22,4 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 )
 Input.displayName = "Input"
 
-<<<<<<< HEAD
 export { Input }
-=======
-export { Input }
->>>>>>> 7e73bc9 (update on assets pages)
