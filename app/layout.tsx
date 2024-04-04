@@ -24,7 +24,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <Providers>
           <div className="flex bg-[#E6F3F5]">
-            <div className="w-[25%] max-w-[272px] bg-white rounded-se-2xl">
+            <div className=" max-w-[272px] bg-white rounded-se-2xl">
               <Sidebar />
             </div>
             <div className="bg-[#E3EFE0] w-[83%] p-10">{children}</div>
