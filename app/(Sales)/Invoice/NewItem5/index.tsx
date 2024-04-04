@@ -304,6 +304,7 @@ const NewItem5 = () => {
                                         <Input
                                           placeholder="Marvin McKinney"
                                           {...field}
+                                          value={field.value ?? ""}
                                           className="w-full rounded-[6px] border-[1px] border-solid border-[#bfc3c5] placeholder:text-[#1e262a] placeholder:text-sm"
                                         />
                                       </FormControl>
@@ -326,6 +327,7 @@ const NewItem5 = () => {
                                           <Input
                                             placeholder="001"
                                             {...field}
+                                            value={field.value ?? ""}
                                             className="placeholder:text-[#1e262a] placeholder:text-sm outline-none border-none "
                                           />
                                           <svg
@@ -338,16 +340,16 @@ const NewItem5 = () => {
                                             <path
                                               d="M7.60386 2.59776C7.95919 1.13408 10.0408 1.13408 10.3961 2.59776C10.6257 3.54327 11.709 3.99198 12.5398 3.48571C13.8261 2.70199 15.298 4.17392 14.5143 5.46015C14.008 6.29105 14.4567 7.37431 15.4022 7.60386C16.8659 7.95919 16.8659 10.0408 15.4022 10.3961C14.4567 10.6257 14.008 11.709 14.5143 12.5398C15.298 13.8261 13.8261 15.298 12.5398 14.5143C11.709 14.008 10.6257 14.4567 10.3961 15.4022C10.0408 16.8659 7.95919 16.8659 7.60386 15.4022C7.37431 14.4567 6.29105 14.008 5.46016 14.5143C4.17392 15.298 2.70199 13.8261 3.48571 12.5398C3.99198 11.709 3.54327 10.6257 2.59776 10.3961C1.13408 10.0408 1.13408 7.95919 2.59776 7.60386C3.54327 7.37431 3.99198 6.29105 3.48571 5.46015C2.70199 4.17392 4.17392 2.70199 5.46015 3.48571C6.29105 3.99198 7.37431 3.54327 7.60386 2.59776Z"
                                               stroke="#81898D"
-                                              stroke-width="2"
-                                              stroke-linecap="round"
-                                              stroke-linejoin="round"
+                                              strokeWidth="2"
+                                              strokeLinecap="round"
+                                              strokeLinejoin="round"
                                             />
                                             <path
                                               d="M11.5 9C11.5 10.3807 10.3807 11.5 9 11.5C7.61929 11.5 6.5 10.3807 6.5 9C6.5 7.61929 7.61929 6.5 9 6.5C10.3807 6.5 11.5 7.61929 11.5 9Z"
                                               stroke="#81898D"
-                                              stroke-width="2"
-                                              stroke-linecap="round"
-                                              stroke-linejoin="round"
+                                              strokeWidth="2"
+                                              strokeLinecap="round"
+                                              strokeLinejoin="round"
                                             />
                                           </svg>
                                         </div>
@@ -370,6 +372,7 @@ const NewItem5 = () => {
                                         <Input
                                           placeholder=""
                                           {...field}
+                                          value={field.value ?? ""}
                                           className="w-full rounded-[6px] border-[1px] border-solid border-[#bfc3c5] placeholder:text-[#1e262a] placeholder:text-sm"
                                         />
                                       </FormControl>
@@ -401,7 +404,9 @@ const NewItem5 = () => {
                                               {field.value ? (
                                                 format(field.value, "PPP")
                                               ) : (
-                                                <span className="text-[#1e262a] text-sm">DD/MM/YY</span>
+                                                <span className="text-[#1e262a] text-sm">
+                                                  DD/MM/YY
+                                                </span>
                                               )}
                                               <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
                                             </Button>
@@ -444,6 +449,7 @@ const NewItem5 = () => {
                                         <Textarea
                                           className="resize-none border-[1px] border-solid border-[#bfc3c5] shadow-md rounded-[6px] "
                                           {...field}
+                                          value={field.value ?? ""}
                                         />
                                       </FormControl>
 
@@ -516,20 +522,20 @@ const NewItem5 = () => {
             </div>
           </div>
         </div>
-        <div className="flex justify-center items-center">
+        <div className="flex justify-center items-center ">
           <FormProvider {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)}>
               <FormField
                 control={form.control}
                 name="file"
                 render={({ field }) => (
-                  <FormItem className="flex items-center  gap-1 mt-2">
-                    <FormLabel className="text-base text-[#101618] mt-[6.5px] font-bold">
+                  <FormItem className="flex items-center   gap-1 mt-2">
+                    <FormLabel className="text-base  text-[#101618] mt-[6.5px] font-bold">
                       Template:
                     </FormLabel>
                     <Select onValueChange={field.onChange}>
-                      <FormControl className=" border-none  p-0 mt-2 w-[90px]">
-                        <SelectTrigger>
+                      <FormControl className=" border-none    p-0 mt-2 w-[90px]">
+                        <SelectTrigger className="">
                           <SelectValue
                             placeholder="Standard"
                             className="placeholder:text-base placeholder:font-medium placeholder:text-[#101618]"
