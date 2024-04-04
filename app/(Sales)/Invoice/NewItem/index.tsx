@@ -53,7 +53,7 @@ const NewItem = () => {
   };
   return (
     <InvoiceBody>
-      <Header pageTitle="New Estimate" />
+      <Header pageTitle="New Invoice" />
       <div className={`${alegreya_sans.className}  relative`}>
         <div className="flex justify-between items-center">
           <div className="flex flex-col gap-[8px] justify-center items-center">
