@@ -53,32 +53,26 @@ const Bills2 = () => {
 
     return (
       <><Header pageTitle="Bills" />
-      <div className="bg-white rounded mt-5">
-        <div className=" flex justify-start gap-4 p-4">
-          <div>
-            <span className=' bg-white text-grey rounded'>
-              <h2>Outstanding Payable</h2>
+      <div className="bg-white rounded mt-5 m">
+        <div className=" flex justify-center gap-7 p-4">
+          <div className="border p-4 rounded gap-6">
+            <span>
+              <h2 className="mb-3">Outstanding Payable</h2>
             </span>
+
+            <div className=" text-3xl mb-3">$1,800</div>
+          <Badge className=" bg-emerald-200">Unpaid</Badge>
           </div>
 
-          <div>$1,800</div>
-          <Badge>Unpaid</Badge>
-
-          <div>
-            <span className=' bg-white text-grey rounded'>
+          <div className="border p-4 rounded">
               <h2>Due this month</h2>
-            </span>
+            <div className="text-3xl mt-3">$500</div>
           </div>
 
-          <div>$500</div>
-
-          <div>
-            <span className=' bg-white text-grey rounded'>
+          <div className="border p-4 rounded text">
               <h2>Overdue</h2>
-            </span>
+            <div className="text-3xl mt-3">$800</div>
           </div>
-
-          <div>$800</div>
         </div>
 
         <div className="flex justify-start gap-7 p-4">

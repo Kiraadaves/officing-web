@@ -58,7 +58,7 @@ const Estimates2 = () => {
     return (
       <><Header pageTitle="Estimates" />
       <div className="bg-white rounded mt-5">
-        <div className="flex justify-start gap-7 p-4">
+        <div className="flex justify-start gap-4 p-4">
           <div>
             <select
               value={selectedOption}
