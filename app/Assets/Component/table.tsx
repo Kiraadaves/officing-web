@@ -1,5 +1,5 @@
 "use client"
-import { SetStateAction, useState } from "react";
+import { SetStateAction, useEffect, useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
@@ -7,8 +7,10 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { IoSearchSharp } from "react-icons/io5";
 import { HiDotsVertical } from "react-icons/hi";
+import { FaRegTrashAlt } from "react-icons/fa";
+import { HiOutlineClipboardCopy } from "react-icons/hi";
 import { Checkbox } from "@/components/ui/checkbox";
-import Alert from "./Alert";
+import Alert from "./alert";
 import {
   Pagination,
   PaginationContent,
@@ -18,6 +20,11 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
+import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { AssetsAction } from "@/app/Redux/slice/assestSlice";
+import { RootState } from "@/app/Redux/slice/interface";
+// import {AssetsAction} from "@/Redux/slice/assestSlice"
 
 
 
@@ -28,64 +35,7 @@ const options = [
 
 ]
 
-const prods =  [
-  {
-      "id":1,
-      "name": "Beans",
-      "sku": 96749837,
-      "type": "food",
-      "description": "test ttest test",
-      "price": 1223
-  },
-  {
-    "id":2,
-      "name": "Fruit",
-      "sku": 96749837,
-      "type": "product",
-      "description": "test ttest test",
-      "price": 1223
-  },
-  {
-    "id":3,
-      "name": "Fruit",
-      "sku": 96749837,
-      "type": "product",
-      "description": "test ttest test",
-      "price": 1223
-  },
-  {
-    "id":4,
-      "name": "Fruit",
-      "sku": 96749837,
-      "type": "product",
-      "description": "test ttest test",
-      "price": 1223
-  },
-  {
-    "id":5,
-      "name": "Fruit",
-      "sku": 96749837,
-      "type": "product",
-      "description": "test ttest test",
-      "price": 1223
-  },
-  {
-    "id":6,
-      "name": "Fruit",
-      "sku": 96749837,
-      "type": "product",
-      "description": "test ttest test",
-      "price": 1223
-  },
-  {
-    "id":7,
-      "name": "Bus",
-      "sku": 96749837,
-      "type": "service",
-      "description": "test ttest test",
-      "price": 1223
-  }
-]
+
 
 interface YourItem {
   id: number;
@@ -98,73 +48,43 @@ interface YourItem {
 }
 
 
-const index = () => {
+const Table = () => {
   const [loading, setLoading] = useState(false)
-  const [toggle, setToggle] = useState(false)
-  const [deactivate, setDeactivate] = useState(false)
   const [search, setSearch] = useState("")
-  const [activeItemId, setActiveItemId] = useState(null);
-  const [data, setData] = useState<YourItem[]>([]);
   const [selectedOption, setSelectedOption] = useState("all items");
+  const dispatch = useDispatch()
+  const id =  useSelector((state:RootState) => state.asset.id)
   
+  
+  const products = useSelector((state:RootState) => state.asset.products)
+  const deactivate = useSelector((state:RootState) => state.asset.deactivate)
+  
+  useEffect(() => {
+    const items = async () => {
+      try {
+          const response = await axios.get(`https://officing-node-api.onrender.com/api/v1/assets`);
+          console.log(response)
+          dispatch(AssetsAction.setProducts(response.data.assets))
+      } catch (error) {
+          console.error("Error fetching order:", error);
+          // Optionally, dispatch an action to handle the error state
+      }
+    };
+    items()
+  }, [])
 
   //@ts-ignore
   const toggleAction = (itemId) => {
-    setActiveItemId((prev) => (prev === itemId ? null : itemId));
+    dispatch(AssetsAction.setId(itemId))
   };
 
-  const handleDeactivate =()=> {
-    setDeactivate(!deactivate)
-    setActiveItemId(null);
+  //@ts-ignore
+  const handleDeactivate =(itemId)=> {
+    dispatch(AssetsAction.setId(itemId))
+    dispatch(AssetsAction.setDeactivate(true))
+   
   }
 
-  const generateUniqueId = () => {
-    // You can implement a function to generate a unique ID
-    // This is just a simple example, you may want to use a library like uuid
-    return Math.floor(Math.random() * 1000000);
-  };
-
-  // const handleDuplicate = (itemId: number) => {
-  //   console.log(itemId)
-  //   // Find the item with the given itemId
-  //   const selectedItem = data.find((item) => item.id === itemId);
-    
-
-  //   // Create a duplicate (you may need to adjust this based on your data structure)
-  //   const duplicatedItem = { ...selectedItem, id: generateUniqueId() };
-  //   console.log(duplicatedItem)
-
-  //   // Update the data state with the duplicated item
-  //   setData((prevData) => [...prevData, duplicatedItem]);
-  //   console.log(data)
-
-  //   // Close the dropdown
-  //   setActiveItemId(null);
-  // };
-
-  const handleDuplicate = (itemId: number) => {
-    // Find the item with the given itemId
-    const selectedItem = prods.find((item) => item.id === itemId);
-
-    if (selectedItem) {
-      // Create a duplicate (you may need to adjust this based on your data structure)
-      const duplicatedItem: YourItem = {
-        id: generateUniqueId(),
-        name: selectedItem.name,
-        sku: selectedItem.sku,
-        type: selectedItem.type,
-        description: selectedItem.description,
-        price: selectedItem.price,
-      };
-
-      // Update the data state with the duplicated item
-      setData((prevData) => [...prevData, duplicatedItem]);
-      console.log(data)
-
-      // Close the dropdown
-      setActiveItemId(null);
-    }
-  };
 
   const handleOptionChange = (e: { target: { value: SetStateAction<string>; }; }) => {
     setSelectedOption(e.target.value);
@@ -174,20 +94,30 @@ const index = () => {
     const lowerCaseSearch = search.toLowerCase();
   
     const filteredByOption = selectedOption.toLowerCase() === "all items"
-      ? prods
-      : prods.filter((item) => item.type.toLowerCase().includes(selectedOption.toLowerCase()));
+      ? products
+      : products.filter((item) => item.assetType.toLowerCase().includes(selectedOption.toLowerCase()));
   
     return filteredByOption.filter(
       (item) =>
         item.name.toLowerCase().includes(lowerCaseSearch) ||
-        item.type.toLowerCase().includes(lowerCaseSearch)
+        item.assetType.toLowerCase().includes(lowerCaseSearch)
     );
   };
+
+  const handleChange = (e) => {
+    console.log("hello")
+    const {name, checked} = e.target
+    if (name === "allselect") {
+      const  checkedValue = products.map( (product) => {return {...product, ischecked:checked}})
+      console.log(checkedValue)
+      dispatch(AssetsAction.setProducts( checkedValue))
+    }
+  }
   
 
 
   return (
-      <div className='table-responsive px-5 pt-5'>
+      <div className='table-responsive px-2 pt-5'>
       {loading ? (
         <div className='d-flex justify-content-center align-content-center mt-5'>
           <div className='spinner-grow spinner-grow-sm text-primary' role='status'>
@@ -197,7 +127,7 @@ const index = () => {
         </div>
       ) : (
         <div className="bg-white mt-5 p-10">
-          <div className="flex justify-between gap-3 items-center">
+          <div className="flex gap-5 items-center">
             <select className="py-3 px-5 border " onChange={handleOptionChange} value={selectedOption}>
               {options.map((option) => (
                 <option key={option.value} value={option.value}>
@@ -206,7 +136,7 @@ const index = () => {
               ))}
             </select>
             
-            <div className="relative flex justify-center items-center w-[65%]">
+            <div className="relative flex justify-center items-center w-[20%]">
               
               <Input type='search' className="py-5 " placeholder='Search'value={search}
                 onChange={(e) => setSearch(e.target.value)}/>
@@ -216,7 +146,15 @@ const index = () => {
                 className="absolute  right-1 sm:hidden md:block text-[#7a7a7a]"
               />
             </div>
-            <button className="bg-[#1F233E] text-[#FFFFFF] py-3 px-4 text-lg font-medium rounded-r-[0.375rem]">
+            <div className="flex items-center gap-2 border px-4 py-2">
+              <HiOutlineClipboardCopy />
+              Duplicate
+            </div>
+            <div className="flex items-center gap-2 border px-4 py-2">
+              <FaRegTrashAlt />
+              Deactivate</div>
+            <div className="border px-4 py-2">Import Assets</div>
+            <button className="bg-[#1F233E] text-[#FFFFFF] py-2 px-3 text-lg font-medium rounded-r-[0.375rem]">
               <Link href="/Assets/addNew">Add new item</Link>
             </button>
           </div>
@@ -229,7 +167,9 @@ const index = () => {
                     <thead className="bg-gray-100 dark:bg-gray-700">
                         <tr>
                             <th scope="col" className="p-4">
-                                <Checkbox />
+                              
+                              <input type="checkbox" name="allselect" checked={!products.some((products) => products?.isChecked!== true)} onChange={handleChange} />
+                                {/* <Checkbox name="allselect" onChange={handleChange} checked={!products.some((user) => user?.isChecked !== true)}/> */}
                             </th>
                             <th scope="col" className="py-3  text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
                               Name
@@ -255,33 +195,34 @@ const index = () => {
                     <tbody className=" relative">
                       
                       {filteredDataByOptionAndSearch().map((items) => 
-                      <tr className="hover:bg-gray-100 dark:hover:bg-gray-700"key={items.id}>
+                      <tr className="hover:bg-gray-100 dark:hover:bg-gray-700"key={items._id}>
                         <td className="p-4 w-4">
-                          <Checkbox />
+                        <input type="checkbox" name={items.name}  checked={items?.isChecked || false} onChange={handleChange}/>
+                          {/* <Checkbox name={items.name} checked={items?.isChecked || false} onChange={handleChange}/> */}
                         </td>
                         <td className="py-4 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">{items.name}</td>
                         <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">{items.sku}</td>
-                        <td className="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">{items.type}</td>
-                        <td className="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">{items.description}</td>
-                        <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">₦ {items.price.toLocaleString()}</td>
+                        <td className="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">{items.assetType}</td>
+                        <td className="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">{items.description.slice(0, 50)}</td>
+                        <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">₦ {Number(items.price).toLocaleString() }</td>
                         <td className="py-4 px-6 text-sm font-medium text-right whitespace-nowrap cursor-pointer">
-                          <div className="flex items-center">
+                          
                             
-                            <HiDotsVertical size={24} onClick={() => toggleAction(items.id)}  />
-                            {activeItemId === items.id  && (
-                              <div className="grid gap-4 right-0 mt-4 bg-white border rounded shadow-md absolute p-5 ">
-                                <div className="border-b cursor-pointer text-center py-2" onClick={handleDeactivate}>
+                            <HiDotsVertical size={24} onClick={() => toggleAction(items._id)}  />
+                            {id === items._id  && (
+                              <div className="grid gap-4 right-0 mt-4 bg-white border rounded shadow-md absolute p-5">
+                                <div className="border-b cursor-pointer text-center py-2" >
                                   Edit
                                 </div>
-                                <div className="border-b cursor-pointer text-center py-2" onClick={() => handleDuplicate(items.id)}>
+                                <div className="border-b cursor-pointer text-center py-2">
                                   Duplicate
                                 </div>
-                                <div className="border-b cursor-pointer text-center py-2 text-red-500" onClick={handleDeactivate}>
+                                <div className="border-b cursor-pointer text-center py-2 text-red-500" onClick={() => handleDeactivate({id:items._id})}>
                                   Deactivate
                                 </div>
                               </div>
                             )}
-                          </div>
+                          
                         </td>
                       </tr>
                       )}
@@ -301,7 +242,7 @@ const index = () => {
           <p>
             Showing <span className=" p-2 
         
-        rounded-[6px] focus:bg-[#d7e7eb] bg-[#ffffff] focus:text-[#38869b] text-sm rounded-6">{prods.length}</span> per page
+        rounded-[6px] focus:bg-[#d7e7eb] bg-[#ffffff] focus:text-[#38869b] text-sm rounded-6">{products.length}</span> per page
           </p>
         </div>
         <div>
@@ -342,4 +283,4 @@ const index = () => {
     </div>
   )
 }
-export default index
+export default Table
