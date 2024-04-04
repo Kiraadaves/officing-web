@@ -34,7 +34,7 @@ const formSchema = z.object({
   }),
 });
 
-const Estimates5 = () => {
+const Bills5 = () => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -59,7 +59,7 @@ const Estimates5 = () => {
 
   return (
     <InvoiceBody>
-      <Header pageTitle="New Estimate" />
+      <Header pageTitle="New Bill" />
       <div className={`${alegreya_sans.className}  relative`}>
         <div className="flex justify-between items-center">
           <div className="flex flex-col gap-[8px] justify-center items-center">
@@ -78,7 +78,7 @@ const Estimates5 = () => {
                 />
               </svg>
             </div>
-            <h1 className="text-lg font-medium text-[#101618]">Add Customer</h1>
+            <h1 className="text-lg font-medium text-[#101618]">Add Merchant</h1>
           </div>
           <div className="flex flex-col gap-[8px] justify-center items-center">
             <div>
@@ -174,7 +174,6 @@ const Estimates5 = () => {
             className="w-full p-10 flex flex-col gap-[38px]"
           >
             <div className="flex justify-center">
-
               <div className="rounded-[1rem] w-[325px] py-2 px-6   border-dashed border-[1.5px] border-[#bfc3c5] ">
                 <FormField
                   control={form.control}
@@ -326,7 +325,7 @@ const Estimates5 = () => {
             <Link href="/Estimates/Estimates4">Back</Link>
           </Button>
           <Button className="py-[10px] h-[48px] w-[112px] font-medium text-xl text-center px-6 bg-[#2F345D] hover:bg-[#2F345D] rounded-[6px] text-[#FFFFFF]">
-            <Link href="/Estimates/Estimates6">Proceed</Link>
+            <Link href="/Bills/Bills6">Proceed</Link>
           </Button>
         </div>
       </div>
@@ -334,4 +333,4 @@ const Estimates5 = () => {
   );
 };
 
-export default Estimates5;
+export default Bills5;
