@@ -1,7 +1,5 @@
 "use client"
-import Header from "@/components/Header";
 import AssestBody from "@/components/AssestBody";
-
 import { Eczar, Alegreya_Sans } from "next/font/google";
 import Link from "next/link";
 
@@ -17,7 +15,7 @@ const Landing = () => {
   return (
     <AssestBody>
       {" "}
-        <Header pageTitle="Assets" />
+        
         <div className="bg-[#FAFAFA] rounded-lg py-16 px-8 flex flex-col gap-14 relative mt-5">
           <div className="flex flex-col gap-4">
             <h1 className="text-[2rem] font-extrabold text-[#090A13] text-center">
