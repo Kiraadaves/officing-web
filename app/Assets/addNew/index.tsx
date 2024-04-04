@@ -58,13 +58,13 @@ const Addnew = () => {
         toast.success("Assets Sucessfully created")
         setTimeout(() => {
           
-          router.push('/Assets/Table')
+          router.push('/Assets')
         })
       } else {
         dispatch(AssetsAction.setSubmit(false))
         dispatch(AssetsAction.setLoading(false))
 
-        toast.error(res.message)
+        toast.error("Error Occured! Try again")
 
         setTimeout(() => {
           window.location.reload()
@@ -87,27 +87,28 @@ const Addnew = () => {
             onValueChange={handleItemTypeChange}
             className="flex"
           >
-            <div className={`flex items-center space-x-2 ${sl_Assest === 'product' ? 'text-[#38869B]' : 'text-gray-500'}`}>
+            <div className={`flex items-center space-x-2 ${sl_Assest === "product" ? 'text-[#38869B]' : 'text-gray-500'}`}>
               <RadioGroupItem value="product" id="product" />
               <Label htmlFor="product">Product</Label>
             </div>
-            <div className={`flex items-center space-x-2 ${sl_Assest === 'service' ? 'text-[#38869B]' : 'text-gray-500'}`}>
+            <div className={`flex items-center space-x-2 ${sl_Assest === "service" ? 'text-[#38869B]' : 'text-gray-500'}`}>
               <RadioGroupItem value="service" id="service" />
               <Label htmlFor="service">Services</Label>
             </div>
           </RadioGroup>
         </div>
 
-        {sl_Assest === 'product' && <Products/>}
-        {sl_Assest === 'service' && <Services/>}
+        {sl_Assest === "product" && <Products/>}
+        {sl_Assest === "service" && <Services/>}
       </div>
 
       <div className="flex justify-end gap-5">
-        <Button variant={"outline"}>Cancel</Button>
-        <Button variant={"ghost"} onClick={handleSave}>Save</Button>
+        <Button className="py-[10px] border-solid border-[1px] border-[#BFC3C5] shadow-md font-medium text-base text-center px-6 bg-[#FFFFFF] hover:bg-[#FFFFFF] rounded-[6px]">Cancel</Button>
+        <Button className="py-[10px] font-medium text-base text-center px-6 bg-[#2F345D] hover:bg-[#2F345D] rounded-[6px] text-[#FFFFFF]" onClick={handleSave}>Save</Button>
       </div>
     </AssestBody>
   );
 };
+
 
 export default Addnew;

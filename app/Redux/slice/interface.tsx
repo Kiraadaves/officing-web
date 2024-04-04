@@ -1,7 +1,7 @@
 export interface RootState {
     asset: {
         products: string[],
-        sl_Assest: "",
+        sl_Assest: string,
         item_name: "",
         price: "",
         taxrate:"",

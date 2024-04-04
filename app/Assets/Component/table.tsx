@@ -10,7 +10,7 @@ import { HiDotsVertical } from "react-icons/hi";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { HiOutlineClipboardCopy } from "react-icons/hi";
 import { Checkbox } from "@/components/ui/checkbox";
-import Alert from "./Alert";
+import Alert from "./alert";
 import {
   Pagination,
   PaginationContent,
@@ -48,18 +48,15 @@ interface YourItem {
 }
 
 
-const index = () => {
+const Table = () => {
   const [loading, setLoading] = useState(false)
-  const [toggle, setToggle] = useState(false)
   const [search, setSearch] = useState("")
-  const [data, setData] = useState<YourItem[]>([]);
   const [selectedOption, setSelectedOption] = useState("all items");
   const dispatch = useDispatch()
   const id =  useSelector((state:RootState) => state.asset.id)
   
   
   const products = useSelector((state:RootState) => state.asset.products)
-  console.log(products)
   const deactivate = useSelector((state:RootState) => state.asset.deactivate)
   
   useEffect(() => {
@@ -88,53 +85,6 @@ const index = () => {
    
   }
 
-  // const generateUniqueId = () => {
-  //   // You can implement a function to generate a unique ID
-  //   // This is just a simple example, you may want to use a library like uuid
-  //   return Math.floor(Math.random() * 1000000);
-  // };
-
-  // const handleDuplicate = (itemId: number) => {
-  //   console.log(itemId)
-  //   // Find the item with the given itemId
-  //   const selectedItem = data.find((item) => item.id === itemId);
-    
-
-  //   // Create a duplicate (you may need to adjust this based on your data structure)
-  //   const duplicatedItem = { ...selectedItem, id: generateUniqueId() };
-  //   console.log(duplicatedItem)
-
-  //   // Update the data state with the duplicated item
-  //   setData((prevData) => [...prevData, duplicatedItem]);
-  //   console.log(data)
-
-  //   // Close the dropdown
-  //   setActiveItemId(null);
-  // };
-
-  // const handleDuplicate = (itemId: number) => {
-  //   // Find the item with the given itemId
-  //   const selectedItem = prods.find((item) => item.id === itemId);
-
-  //   if (selectedItem) {
-  //     // Create a duplicate (you may need to adjust this based on your data structure)
-  //     const duplicatedItem: YourItem = {
-  //       id: generateUniqueId(),
-  //       name: selectedItem.name,
-  //       sku: selectedItem.sku,
-  //       type: selectedItem.type,
-  //       description: selectedItem.description,
-  //       price: selectedItem.price,
-  //     };
-
-  //     // Update the data state with the duplicated item
-  //     setData((prevData) => [...prevData, duplicatedItem]);
-  //     console.log(data)
-
-  //     // Close the dropdown
-  //     setActiveItemId(null);
-  //   }
-  // };
 
   const handleOptionChange = (e: { target: { value: SetStateAction<string>; }; }) => {
     setSelectedOption(e.target.value);
@@ -333,4 +283,4 @@ const index = () => {
     </div>
   )
 }
-export default index
+export default Table
