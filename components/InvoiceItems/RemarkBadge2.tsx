@@ -10,19 +10,30 @@ import {
   FormLabel,
   FormMessage,
 } from "../ui/form";
-import { Alegreya_Sans } from "next/font/google";
+import { Input } from "../ui/input";
+import { Eczar, Alegreya_Sans } from "next/font/google";
+import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
 import { Textarea } from "../ui/textarea";
+import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 import { Button } from "../ui/button";
+import { cn } from "@/lib/utils";
+import { format } from "date-fns";
+import { CalendarIcon } from "@radix-ui/react-icons";
+import { Calendar } from "../ui/calendar";
 import Link from "next/link";
-import { useDispatch, useSelector } from "react-redux";
-import axios from "axios";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "../ui/select";
+import { Checkbox } from "../ui/checkbox";
 
 const alegreya_sans = Alegreya_Sans({
   subsets: ["latin"],
   weight: ["400", "700"],
 });
-
-const API_BASE = "https://officing-node-api.onrender.com/api/v1/customers";
 
 const FormSchema = z.object({
   remark: z.string(),
@@ -36,31 +47,7 @@ const RemarkBadge = () => {
     },
   });
 
-  const dispatch = useDispatch();
-  const { contact, billing, shipping } = useSelector(
-    (state: any) => state.createCustomer
-  );
-
-  const handleSubmit = async (values: z.infer<typeof FormSchema>) => {
-    try {
-      const customerDataToSend = {
-        contact,
-        billing,
-        shipping,
-        remark: values.remark,
-      };
-      console.log(customerDataToSend);
-      const response = await axios.post(API_BASE, customerDataToSend, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      console.log(customerDataToSend);
-      console.log(response, "sent");
-    } catch (error) {
-      throw error;
-    }
-  };
+  const handleSubmit = (values: z.infer<typeof FormSchema>) => {};
 
   return (
     <FormProvider {...form}>
@@ -75,19 +62,13 @@ const RemarkBadge = () => {
               name="remark"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel
-                    htmlFor="remark"
-                    className="text-[#1e262a] font-medium text-base"
-                  >
-                    Remark{" "}
-                    <span className="text-sm">(for internal use only)</span>
+                  <FormLabel className="text-[#1e262a] font-medium text-base">
+                    Remark <span className="text-sm">(for internal use only)</span>
                   </FormLabel>
                   <FormControl>
                     <Textarea
-                      id="remark"
-                      className="bg-[#ffffff] resize-none border-[1px] border-solid border-[#bfc3c5] shadow-md rounded-[6px] h-[178px]"
+                      className="resize-none border-[1px] border-solid border-[#bfc3c5] shadow-md rounded-[6px] h-[178px]"
                       {...field}
-                      value={field.value ?? ""}
                     />
                   </FormControl>
 
@@ -103,11 +84,8 @@ const RemarkBadge = () => {
             <Button className="py-[10px] h-[48px] w-[101px] border-solid border-[1px] border-[#BFC3C5] shadow-md font-medium text-base text-center px-6 bg-[#FFFFFF] hover:bg-[#FFFFFF] rounded-[6px]">
               <Link href="/Invoice">Cancel</Link>
             </Button>
-            <Button
-              type="submit"
-              className="py-[10px] h-[48px] w-[101px] font-medium text-base text-center px-6 bg-[#2F345D] hover:bg-[#2F345D] rounded-[6px] text-[#FFFFFF]"
-            >
-              Next
+            <Button className="py-[10px] h-[48px] w-[101px] font-medium text-base text-center px-6 bg-[#2F345D] hover:bg-[#2F345D] rounded-[6px] text-[#FFFFFF]">
+              <Link href="/Estimates/Estimates4">Next</Link>
             </Button>
           </div>
         </div>

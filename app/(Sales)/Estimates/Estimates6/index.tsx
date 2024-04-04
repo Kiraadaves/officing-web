@@ -36,7 +36,7 @@ const formSchema = z.object({
   file: z.instanceof(File).optional(),
 });
 
-const NewItem4 = () => {
+const Estimates6 = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
   });
@@ -47,7 +47,7 @@ const NewItem4 = () => {
 
   return (
     <InvoiceBody>
-      <Header pageTitle="New Invoice" />
+      <Header pageTitle="New Estimate" />
       <div className={`${alegreya_sans.className}  relative`}>
         <div className="flex justify-between items-center">
           <div className="flex flex-col gap-[8px] justify-center items-center">
@@ -128,9 +128,9 @@ const NewItem4 = () => {
                     width="44"
                     height="44"
                     filterUnits="userSpaceOnUse"
-                    colorInterpolationFilters="sRGB"
+                    color-interpolation-filters="sRGB"
                   >
-                    <feFlood floodOpacity="0" result="BackgroundImageFix" />
+                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
                     <feColorMatrix
                       in="SourceAlpha"
                       type="matrix"
@@ -248,10 +248,10 @@ const NewItem4 = () => {
       <div className="flex justify-end">
         <div className="flex gap-8">
           <Button className="py-[10px] h-[48px] w-[86px] border-solid border-[1px] border-[#BFC3C5] shadow-md font-medium text-xl text-center px-6 bg-[#FFFFFF] hover:bg-[#FFFFFF] rounded-[6px]">
-            <Link href="/Invoice/NewItem2">Edit</Link>
+            <Link href="#">Edit</Link>
           </Button>
           <Button className="py-[10px] h-[48px] w-[188px] font-medium text-xl text-center px-6 bg-[#2F345D] hover:bg-[#2F345D] rounded-[6px] text-[#FFFFFF]">
-            <Link href="/Invoice/NewItem5" className="flex items-center gap-2">
+            <Link href="/Estimates/Estimates7" className="flex items-center gap-2">
               Save and Send
               <span>
                 <svg
@@ -281,4 +281,4 @@ const NewItem4 = () => {
   );
 };
 
-export default NewItem4;
+export default Estimates6;

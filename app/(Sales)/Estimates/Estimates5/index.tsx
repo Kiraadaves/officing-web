@@ -34,7 +34,7 @@ const formSchema = z.object({
   }),
 });
 
-const NewItem3 = () => {
+const Estimates5 = () => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -59,7 +59,7 @@ const NewItem3 = () => {
 
   return (
     <InvoiceBody>
-      <Header pageTitle="New Invoice" />
+      <Header pageTitle="New Estimate" />
       <div className={`${alegreya_sans.className}  relative`}>
         <div className="flex justify-between items-center">
           <div className="flex flex-col gap-[8px] justify-center items-center">
@@ -286,7 +286,6 @@ const NewItem3 = () => {
                         <Textarea
                           className="resize-none border-[1px] border-solid border-[#bfc3c5] shadow-md rounded-[6px] "
                           {...field}
-                          value={field.value ?? ""}
                         />
                       </FormControl>
 
@@ -308,7 +307,6 @@ const NewItem3 = () => {
                         <Textarea
                           className="resize-none border-[1px] border-solid border-[#bfc3c5] shadow-md rounded-[6px] "
                           {...field}
-                          value={field.value ?? ""}
                         />
                       </FormControl>
 
@@ -324,10 +322,10 @@ const NewItem3 = () => {
       <div className="flex justify-end">
         <div className="flex gap-8">
           <Button className="py-[10px] h-[48px] w-[86px] border-solid border-[1px] border-[#BFC3C5] shadow-md font-medium text-xl text-center px-6 bg-[#FFFFFF] hover:bg-[#FFFFFF] rounded-[6px]">
-            <Link href="/Invoice/NewItem2">Back</Link>
+            <Link href="/Estimates/Estimates4">Back</Link>
           </Button>
           <Button className="py-[10px] h-[48px] w-[112px] font-medium text-xl text-center px-6 bg-[#2F345D] hover:bg-[#2F345D] rounded-[6px] text-[#FFFFFF]">
-            <Link href="/Invoice/NewItem4">Proceed</Link>
+            <Link href="/Estimates/Estimates6">Proceed</Link>
           </Button>
         </div>
       </div>
@@ -335,4 +333,4 @@ const NewItem3 = () => {
   );
 };
 
-export default NewItem3;
+export default Estimates5;
