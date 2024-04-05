@@ -122,7 +122,7 @@ const Estimates = () => {
         </div>
         <div className={`${alegreya_sans.className} flex justify-center`}>
           <button className="bg-[#1F233E] text-[#FFFFFF] py-[10px] px-6 text-xl font-medium rounded-[0.375rem]">
-            <Link href="/Estimates/Estimates2">Add new invoice</Link>
+            <Link href="/Estimates/estimates2">Add new estimate</Link>
           </button>
         </div>
       </div>
