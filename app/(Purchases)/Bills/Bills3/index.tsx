@@ -24,18 +24,24 @@ const alegreya_sans = Alegreya_Sans({
 
 const Contact = () => (
   <div>
-    <ContactBadge />
+    <ContactBadge handleTabClick={function (tab: React.SetStateAction<string>): void {
+      throw new Error("Function not implemented.");
+    } } />
   </div>
 );
 
 const Billing = () => (
   <div>
-    <BillingBadge />
+    <BillingBadge handleTabClick={function (tab: React.SetStateAction<string>): void {
+      throw new Error("Function not implemented.");
+    } } />
   </div>
 );
 const Shipping = () => (
   <div>
-    <ShippingBadge />
+    <ShippingBadge handleTabClick={function (tab: React.SetStateAction<string>): void {
+      throw new Error("Function not implemented.");
+    } } />
   </div>
 );
 const Remark = () => (

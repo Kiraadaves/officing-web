@@ -20,7 +20,7 @@ import Link from "next/link";
 import EstimateAction from "@/components/InvoiceItems/EstimateAction";
 import Header from "@/components/Header";
 
-const Estimates2 = () => {
+const estimates2 = () => {
   const [selectedOption, setSelectedOption] = React.useState('');
   const [showDropdown, setShowDropdown] = React.useState(false);
 
@@ -113,7 +113,7 @@ const Estimates2 = () => {
 
           <div>
             <Button variant="outline" className=' bg-slate-500 text-white rounded'>
-              <Link href="/Estimates/Estimates3">New Estimate</Link>
+              <Link href="/Estimates/estimates3">New Estimate</Link>
             </Button>
           </div>
         </div>
@@ -284,4 +284,4 @@ const Estimates2 = () => {
       </div></>
   )
 }
-export default Estimates2
+export default estimates2

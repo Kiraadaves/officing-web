@@ -24,18 +24,24 @@ const alegreya_sans = Alegreya_Sans({
 
 const Contact = () => (
   <div>
-    <ContactBadge />
+    <ContactBadge handleTabClick={function (tab: React.SetStateAction<string>): void {
+      throw new Error("Function not implemented.");
+    } } />
   </div>
 );
 
 const Billing = () => (
   <div>
-    <BillingBadge />
+    <BillingBadge handleTabClick={function (tab: React.SetStateAction<string>): void {
+      throw new Error("Function not implemented.");
+    } } />
   </div>
 );
 const Shipping = () => (
   <div>
-    <ShippingBadge />
+    <ShippingBadge handleTabClick={function (tab: React.SetStateAction<string>): void {
+      throw new Error("Function not implemented.");
+    } } />
   </div>
 );
 const Remark = () => (
@@ -131,7 +137,7 @@ const Estimates3 = () => {
                 </defs>
               </svg>
             </div>
-            <h1 className="text-lg font-medium text-[#101618]">Add Customer</h1>
+            <h1 className="text-lg font-medium text-[#101618]">Add Merchant</h1>
           </div>
           <div className="flex flex-col gap-[8px] justify-center items-center">
             <div>
@@ -218,7 +224,7 @@ const Estimates3 = () => {
           <PopoverTrigger asChild>
             <div className={` flex justify-center`}>
               <button className="bg-[#1F233E] text-[#FFFFFF] py-[10px] px-6 text-xl font-medium rounded-[0.375rem]">
-                Select from customers list
+                Select from merchants list
               </button>
             </div>
           </PopoverTrigger>
