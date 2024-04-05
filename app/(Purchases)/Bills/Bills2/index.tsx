@@ -8,7 +8,7 @@ import { FaDownload } from "react-icons/fa6";
 import { Button } from "@/components/ui/button"
 import { DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { FaCalendar } from "react-icons/fa";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator } from "@radix-ui/react-dropdown-menu"
+import { DropdownMenu } from "@radix-ui/react-dropdown-menu"
 import {ChevronDownIcon } from "@radix-ui/react-icons"
 import * as React from "react"
 import { Checkbox } from "@/components/ui/checkbox";
@@ -20,13 +20,8 @@ import Link from "next/link";
 import EstimateAction from "@/components/InvoiceItems/EstimateAction";
 import Header from "@/components/Header";
 
-const estimates2 = () => {
+const Bills2 = () => {
   const [selectedOption, setSelectedOption] = React.useState('');
-  const [showDropdown, setShowDropdown] = React.useState(false);
-
-  const toggleDropdown = () => {
-    setShowDropdown(!showDropdown);
-  };
 
   const handleOptionChange = (e: { target: { value: React.SetStateAction<string>; }; }) => {
     setSelectedOption(e.target.value);
@@ -44,21 +39,43 @@ const estimates2 = () => {
     setDateRange([ranges.selection]);
   };
 
+  const [estimateActionOpen, setEstimateActionOpen] = React.useState(false);
 
   const [rows, setRows] = React.useState([
-    { Checkbox: "terms", date: "06/11/23", estimateNumber: "EST-002", customerName: "Marvin McKinney", amount: "$600", status: "Sent", actions: <BsThreeDotsVertical /> },
-    { Checkbox: "terms", date: "06/11/23", estimateNumber: "EST-002", customerName: "Marvin McKinney", amount: "$600", status: "Draft", actions: <BsThreeDotsVertical /> },
-    { Checkbox: "terms", date: "06/11/23", estimateNumber: "EST-002", customerName: "Marvin McKinney", amount: "$600", status: "Sent", actions: <BsThreeDotsVertical /> },
-    { Checkbox: "terms", date: "06/11/23", estimateNumber: "EST-002", customerName: "Marvin McKinney", amount: "$600", status: "Draft", actions: <BsThreeDotsVertical /> },
-    { Checkbox: "terms", date: "06/11/23", estimateNumber: "EST-002", customerName: "Marvin McKinney", amount: "$600", status: "Sent", actions: <BsThreeDotsVertical /> },
-    { Checkbox: "terms", date: "06/11/23", estimateNumber: "EST-002", customerName: "Marvin McKinney", amount: "$600", status: "Draft", actions: <BsThreeDotsVertical /> },
-    { Checkbox: "terms", date: "06/11/23", estimateNumber: "EST-002", customerName: "Marvin McKinney", amount: "$600", status: "Sent", actions: <BsThreeDotsVertical /> }
+    { Checkbox: "terms", date: "06/11/23", estimateNumber: "Bill-0002", customerName: "Marvin McKinney", dueDate: "08/12/23", amount: "$600", status: "Unpaid", actions: <BsThreeDotsVertical /> },
+    { Checkbox: "terms", date: "06/11/23", estimateNumber: "Bill-0003", customerName: "Marvin McKinney", dueDate: "08/12/23", amount: "$600", status: "Paid", actions: <BsThreeDotsVertical /> },
+    { Checkbox: "terms", date: "06/11/23", estimateNumber: "Bill-0004", customerName: "Marvin McKinney", dueDate: "08/12/23", amount: "$600", status: "Unpaid", actions: <BsThreeDotsVertical /> },
+    { Checkbox: "terms", date: "06/11/23", estimateNumber: "Bill-0005", customerName: "Marvin McKinney", dueDate: "08/12/23", amount: "$600", status: "Paid", actions: <BsThreeDotsVertical /> },
+    { Checkbox: "terms", date: "06/11/23", estimateNumber: "Bill-0006", customerName: "Marvin McKinney", dueDate: "09/12/23", amount: "$600", status: "Overdue", actions: <BsThreeDotsVertical /> },
+    { Checkbox: "terms", date: "06/11/23", estimateNumber: "Bill-0007", customerName: "Marvin McKinney", dueDate: "09/12/23", amount: "$600", status: "Overdue", actions: <BsThreeDotsVertical /> },
+    { Checkbox: "terms", date: "06/11/23", estimateNumber: "Bill-0008", customerName: "Marvin McKinney", dueDate: "09/12/23", amount: "$600", status: "Unpaid", actions: <BsThreeDotsVertical /> }
   ]);
 
     return (
-      <><Header pageTitle="Estimates" />
-      <div className="bg-white rounded mt-5">
-        <div className="flex justify-start gap-4 p-4">
+      <><Header pageTitle="Bills" />
+      <div className="bg-white rounded mt-5 m">
+        <div className=" flex justify-center gap-7 p-4">
+          <div className="border p-4 rounded gap-6">
+            <span>
+              <h2 className="mb-3">Outstanding Payable</h2>
+            </span>
+
+            <div className=" text-3xl mb-3">$1,800</div>
+          <Badge className=" bg-emerald-200">Unpaid</Badge>
+          </div>
+
+          <div className="border p-4 rounded">
+              <h2>Due this month</h2>
+            <div className="text-3xl mt-3">$500</div>
+          </div>
+
+          <div className="border p-4 rounded text">
+              <h2>Overdue</h2>
+            <div className="text-3xl mt-3">$800</div>
+          </div>
+        </div>
+
+        <div className="flex justify-start gap-7 p-4">
           <div>
             <select
               value={selectedOption}
@@ -67,8 +84,11 @@ const estimates2 = () => {
               aria-label="All statuses"
             >
               <option value="">All Statuses</option>
-              <option value="sendEmail">Sent</option>
+              <option value="sendEmail">Active</option>
               <option value="suspendCustomer">Draft</option>
+              <option value="suspendCustomer">Paid</option>
+              <option value="suspendCustomer">Unpaid</option>
+              <option value="suspendCustomer">Overdue</option>
             </select>
             <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
               <svg
@@ -107,13 +127,13 @@ const estimates2 = () => {
 
           <div>
             <Button variant="outline" className=' bg-white text-grey rounded'>
-              <Link href="#">Import Estimates</Link>
+              <Link href="#">Import Bills</Link>
             </Button>
           </div>
 
           <div>
             <Button variant="outline" className=' bg-slate-500 text-white rounded'>
-              <Link href="/Estimates/estimates3">New Estimate</Link>
+              <Link href="/Bills/Bills3">New Bill</Link>
             </Button>
           </div>
         </div>
@@ -169,8 +189,9 @@ const estimates2 = () => {
                 <Checkbox id="terms" />
               </th>
               <th className="px-6 py-3 text-left font-light">Date</th>
-              <th className="px-6 py-3 text-left font-light">Estimate Number</th>
-              <th className="px-6 py-3 text-left font-light">Customer Name</th>
+              <th className="px-6 py-3 text-left font-light">Bill Number</th>
+              <th className="px-6 py-3 text-left font-light">Merchant Name</th>
+              <th className="px-6 py-3 text-left font-light">Due date</th>
               <th className="px-6 py-3 text-left font-light">Amount</th>
               <th className="px-6 py-3 text-left font-light">Status</th>
               <th className="px-6 py-3 text-left font-light">Actions</th>
@@ -186,45 +207,13 @@ const estimates2 = () => {
                   <td className="px-6 py-4">{row.date}</td>
                   <td className="px-6 py-4">{row.estimateNumber}</td>
                   <td className="px-6 py-4">{row.customerName}</td>
+                  <td className="px-6 py-4">{row.dueDate}</td>
                   <td className="px-6 py-4">{row.amount}</td>
                   <td className="px-6 py-4">
                     <Badge className=" bg-slate-400 rounded">{row.status}</Badge>
                   </td>
                   <td className="px-6 py-4">
-                    <BsThreeDotsVertical onClick={toggleDropdown} />
-                    {showDropdown && (
-                      <DropdownMenu>
-                        <DropdownMenuTrigger></DropdownMenuTrigger>
-                        <DropdownMenuContent className="w-[170px]  rounded-[4px] flex flex-col gap-1 bg-[#fafafa] shadow-lg">
-                          <DropdownMenuItem className="font-medium text-sm text-[#101618]">
-                            View
-                          </DropdownMenuItem>
-                          <DropdownMenuItem className="font-medium text-sm text-[#101618]">
-                            Edit
-                          </DropdownMenuItem>
-                          <DropdownMenuItem className="font-medium text-sm text-[#101618]">
-                            Duplicate
-                          </DropdownMenuItem>
-                          <DropdownMenuSeparator className="border-b-[1px] border-b-solid border-b-[#e6e9ea]" />
-                          <DropdownMenuItem className="font-medium text-sm text-[#101618]">
-                            Print
-                          </DropdownMenuItem>
-                          <DropdownMenuItem className="font-medium text-sm text-[#101618]">
-                            Send to mail
-                          </DropdownMenuItem>
-                          <DropdownMenuItem className="font-medium text-sm text-[#101618]">
-                            Download
-                          </DropdownMenuItem>
-                          <DropdownMenuItem className="font-medium text-sm text-[#101618]">
-                            Convert to invoice
-                          </DropdownMenuItem>
-                          <DropdownMenuSeparator className="border-b-[1px] border-b-solid border-b-[#e6e9ea]" />
-                          <DropdownMenuItem className="text-[#d42620] text-sm font-medium">
-                            Delete
-                          </DropdownMenuItem>
-                        </DropdownMenuContent>
-                      </DropdownMenu>
-                    )}
+                    {row.actions}
                   </td>
                 </tr>
               );
@@ -284,4 +273,4 @@ const estimates2 = () => {
       </div></>
   )
 }
-export default estimates2
+export default Bills2

@@ -14,7 +14,7 @@ import {
 import CustomersList from "@/components/InvoiceItems/CustomersList";
 import BillingBadge from "@/components/InvoiceItems/BillingBadge";
 import ShippingBadge from "@/components/InvoiceItems/ShippingBadge";
-import RemarkBadge2 from "@/components/InvoiceItems/RemarkBadge2";
+import BillsRemarkBadge from "@/components/InvoiceItems/BillsRemarkBadge";
 
 const eczar = Eczar({ subsets: ["latin"] });
 const alegreya_sans = Alegreya_Sans({
@@ -46,11 +46,11 @@ const Shipping = () => (
 );
 const Remark = () => (
   <div>
-    <RemarkBadge2 />
+    <BillsRemarkBadge />
   </div>
 );
 
-const Estimates3 = () => {
+const Bills3 = () => {
   const [activeTab, setActiveTab] = useState("contact");
 
   const handleTabClick = (tab: React.SetStateAction<string>) => {
@@ -59,7 +59,7 @@ const Estimates3 = () => {
 
   return (
     <InvoiceBody>
-      <Header pageTitle="New Estimate" />
+      <Header pageTitle="New Bill" />
       <div className={`${alegreya_sans.className}  relative`}>
         <div className="flex justify-between items-center">
           <div className="flex flex-col gap-[8px] justify-center items-center">
@@ -303,4 +303,4 @@ const Estimates3 = () => {
   );
 };
 
-export default Estimates3;
+export default Bills3;
