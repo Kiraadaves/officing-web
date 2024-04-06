@@ -113,7 +113,7 @@ const Expenses2 = () => {
 
                 <div>
                     <Button variant="outline" className=' bg-slate-500 text-white rounded'>
-                        <Link href="/Estimates/Estimates3">New Expense</Link>
+                        <Link href="#">New Expense</Link>
                     </Button>
                 </div>
             </div>
