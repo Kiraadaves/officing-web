@@ -248,10 +248,10 @@ const NewItem4 = () => {
       <div className="flex justify-end">
         <div className="flex gap-8">
           <Button className="py-[10px] h-[48px] w-[86px] border-solid border-[1px] border-[#BFC3C5] shadow-md font-medium text-xl text-center px-6 bg-[#FFFFFF] hover:bg-[#FFFFFF] rounded-[6px]">
-            <Link href="/Invoice/NewItem2">Edit</Link>
+            <Link href="/invoice/newitem2">Edit</Link>
           </Button>
           <Button className="py-[10px] h-[48px] w-[188px] font-medium text-xl text-center px-6 bg-[#2F345D] hover:bg-[#2F345D] rounded-[6px] text-[#FFFFFF]">
-            <Link href="/Invoice/NewItem5" className="flex items-center gap-2">
+            <Link href="/invoice/newitem5" className="flex items-center gap-2">
               Save and Send
               <span>
                 <svg

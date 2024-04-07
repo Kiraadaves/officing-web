@@ -18,6 +18,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const alegreya_sans = Alegreya_Sans({
   subsets: ["latin"],
@@ -41,6 +42,7 @@ const NewItem3 = () => {
     resolver: zodResolver(formSchema),
   });
 
+  const router = useRouter();
   const fileRef = form.register("file");
 
   const onFileChange = (event: any) => {
@@ -55,6 +57,7 @@ const NewItem3 = () => {
 
   const onSubmit = (data: z.infer<typeof formSchema>) => {
     console.log(data);
+    //router.push('/invoice/newitem4')
   };
 
   return (
@@ -324,10 +327,10 @@ const NewItem3 = () => {
       <div className="flex justify-end">
         <div className="flex gap-8">
           <Button className="py-[10px] h-[48px] w-[86px] border-solid border-[1px] border-[#BFC3C5] shadow-md font-medium text-xl text-center px-6 bg-[#FFFFFF] hover:bg-[#FFFFFF] rounded-[6px]">
-            <Link href="/Invoice/NewItem2">Back</Link>
+            <Link href="/invoice/newitem2">Back</Link>
           </Button>
           <Button className="py-[10px] h-[48px] w-[112px] font-medium text-xl text-center px-6 bg-[#2F345D] hover:bg-[#2F345D] rounded-[6px] text-[#FFFFFF]">
-            <Link href="/Invoice/NewItem4">Proceed</Link>
+            <Link href="/invoice/newitem4">Proceed</Link>
           </Button>
         </div>
       </div>

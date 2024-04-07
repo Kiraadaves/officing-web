@@ -1,7 +1,7 @@
-import Settings from '.'
+import Settings from ".";
 
 const page = () => {
-  return <Settings />
-}
+  return <Settings />;
+};
 
 export default page;

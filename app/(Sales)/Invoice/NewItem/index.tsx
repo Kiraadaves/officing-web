@@ -1,17 +1,13 @@
 "use client";
 import Header from "@/components/Header";
 import InvoiceBody from "@/components/InvoiceBody";
-import React, { useState } from "react";
-import { Eczar, Alegreya_Sans } from "next/font/google";
+import { Alegreya_Sans } from "next/font/google";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import ContactBadge from "@/components/InvoiceItems/ContactBadge";
 import {
   Select,
   SelectContent,
-  SelectGroup,
   SelectItem,
-  SelectSeparator,
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
@@ -27,6 +23,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import CustomersList from "@/components/InvoiceItems/CustomersList";
+import { useRouter } from "next/navigation";
 
 const alegreya_sans = Alegreya_Sans({
   subsets: ["latin"],
@@ -47,9 +44,10 @@ const NewItem = () => {
     resolver: zodResolver(FormSchema),
     defaultValues: {},
   });
-
+  const router = useRouter();
   const handleSubmit = (values: z.infer<typeof FormSchema>) => {
     console.log(values);
+    router.push("/invoice/newitem2");
   };
   return (
     <InvoiceBody>
@@ -421,7 +419,7 @@ const NewItem = () => {
             <div className="flex justify-end">
               <div className="flex gap-8">
                 <Button className="py-[10px] h-[48px] w-[101px] border-solid border-[1px] border-[#BFC3C5] shadow-md font-medium text-base text-center px-6 bg-[#FFFFFF] hover:bg-[#FFFFFF] rounded-[6px]">
-                  <Link href="/Invoice">Cancel</Link>
+                  <Link href="/invoice">Cancel</Link>
                 </Button>
                 <Button
                   type="submit"
