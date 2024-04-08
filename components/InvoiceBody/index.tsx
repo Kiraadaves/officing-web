@@ -11,7 +11,7 @@ interface InvoiceBodyProps {
 
 const InvoiceBody: React.FC<InvoiceBodyProps> = ({ children }) => {
   return (
-    <div className={`${alegreya_sans.className} flex flex-col gap-6`}>
+    <div className={`${alegreya_sans.className} flex flex-col gap-6 p-10`}>
       {children}
     </div>
   );

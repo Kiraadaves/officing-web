@@ -1,7 +1,6 @@
 "use client";
 import Header from "@/components/Header";
 import InvoiceBody from "@/components/InvoiceBody";
-import { Alegreya_Sans } from "next/font/google";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
@@ -25,11 +24,6 @@ import { Input } from "@/components/ui/input";
 import CustomersList from "@/components/InvoiceItems/CustomersList";
 import { useRouter } from "next/navigation";
 
-const alegreya_sans = Alegreya_Sans({
-  subsets: ["latin"],
-  weight: ["400", "700"],
-});
-
 const FormSchema = z.object({
   customerName: z.string(),
   companyName: z.string(),
@@ -52,7 +46,7 @@ const NewItem = () => {
   return (
     <InvoiceBody>
       <Header pageTitle="New Invoice" />
-      <div className={`${alegreya_sans.className}  relative`}>
+      <div className={` relative`}>
         <div className="flex justify-between items-center">
           <div className="flex flex-col gap-[8px] justify-center items-center">
             <div>
@@ -210,12 +204,12 @@ const NewItem = () => {
         </div>
       </div>
       <div
-        className={`${alegreya_sans.className} bg-[#FAFAFA] rounded-[0.5rem] p-8 flex flex-col gap-6`}
+        className={` bg-[#FAFAFA] rounded-[0.5rem] p-8 flex flex-col gap-6`}
       >
         <FormProvider {...form}>
           <form
             onSubmit={form.handleSubmit(handleSubmit)}
-            className={`${alegreya_sans.className} flex flex-col gap-6`}
+            className={` flex flex-col gap-6`}
           >
             <div>
               <div className="w-full">
