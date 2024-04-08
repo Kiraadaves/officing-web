@@ -1,5 +1,7 @@
 "use client";
-import React from "react";
+import { ToastAction } from "../ui/toast";
+import { useToast } from "../ui/use-toast";
+import React, { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FormProvider, useForm } from "react-hook-form";
 import { z } from "zod";
@@ -35,6 +37,9 @@ const RemarkBadge = () => {
       remark: "",
     },
   });
+  const { toast } = useToast();
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const dispatch = useDispatch();
   const { contact, billing, shipping } = useSelector(
@@ -42,6 +47,7 @@ const RemarkBadge = () => {
   );
 
   const handleSubmit = async (values: z.infer<typeof FormSchema>) => {
+    setLoading(true);
     try {
       const customerDataToSend = {
         contact,
@@ -57,9 +63,14 @@ const RemarkBadge = () => {
       });
       console.log(customerDataToSend);
       console.log(response, "sent");
-    } catch (error) {
-      throw error;
+      form.reset();
+    } catch (error: any) {
+      //setError(error.message || "An error occurred");
+      toast({
+        description: "An error occured",
+      });
     }
+    setLoading(false);
   };
 
   return (
@@ -107,7 +118,7 @@ const RemarkBadge = () => {
               type="submit"
               className="py-[10px] h-[48px] w-[101px] font-medium text-base text-center px-6 bg-[#2F345D] hover:bg-[#2F345D] rounded-[6px] text-[#FFFFFF]"
             >
-              Next
+              {loading ? "Loading..." : "Next"}
             </Button>
           </div>
         </div>

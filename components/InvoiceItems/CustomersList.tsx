@@ -21,6 +21,12 @@ import ContactBadge from "./ContactBadge";
 import BillingBadge from "./BillingBadge";
 import ShippingBadge from "./ShippingBadge";
 import RemarkBadge from "./RemarkBadge";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTrigger,
+} from "../ui/dialog";
 
 const alegreya_sans = Alegreya_Sans({
   subsets: ["latin"],
@@ -118,15 +124,15 @@ const CustomersList = () => {
         </ScrollArea>
       </SelectGroup>
       <div className="w-full bg-[#ffffff] py-[10px] px-6 rounded-[6px] gap-[10px] shadow-md sticky bottom-0">
-        <Drawer>
-          <DrawerTrigger className=" flex items-center">
+        <Dialog>
+          <DialogTrigger className=" flex items-center">
             <AddIcon />
             <p className="text-xl font-medium text-[#272b4d]">
               Add new customer
             </p>
-          </DrawerTrigger>
-          <DrawerContent className="w-3/4 rounded-[0.375rem] bg-[#FAFAFA] px-8 ">
-            <DrawerHeader>
+          </DialogTrigger>
+          <DialogContent className="max-w-[720px] rounded-[0.375rem] bg-[#FAFAFA] px-8 ">
+            <DialogHeader>
               <div className={`flex justify-center`}>
                 <div
                   className={` ${alegreya_sans.className} bg-[#9FA5A8] rounded-[14px]  flex gap-2`}
@@ -189,9 +195,9 @@ const CustomersList = () => {
                 )}
                 {activeTab === "remark" && <RemarkBadge />}
               </div>
-            </DrawerHeader>
-          </DrawerContent>
-        </Drawer>
+            </DialogHeader>
+          </DialogContent>
+        </Dialog>
       </div>
     </SelectContent>
   );

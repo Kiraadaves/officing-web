@@ -46,7 +46,7 @@ const FormSchema = z.object({
   email: z.string().email(),
   phoneNumber: z.string().min(4),
   currency: z.string(),
-  website: z.string(),
+  // website: z.string(),
 });
 
 interface ContactBadgeProps {
@@ -240,32 +240,6 @@ const ContactBadge: React.FC<ContactBadgeProps> = ({ handleTabClick }) => {
                       autoComplete="phone"
                       id="phone"
                       type="phone"
-                      {...field}
-                      value={field.value ?? ""}
-                      className="focus-visible:ring-0 focus-visible:ring-offset-0 shadow-md px-4 py-3 border-[#BFC3C5] bg-[#FFFFFF] rounded-[6px]"
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              );
-            }}
-          />
-          <FormField
-            control={form.control}
-            name="website"
-            render={({ field }) => {
-              return (
-                <FormItem>
-                  <FormLabel
-                    htmlFor="website"
-                    className={`text-[#1E262A] font-medium text-base`}
-                  >
-                    Website
-                  </FormLabel>
-                  <FormControl>
-                    <Input
-                      id="website"
-                      type="text"
                       {...field}
                       value={field.value ?? ""}
                       className="focus-visible:ring-0 focus-visible:ring-offset-0 shadow-md px-4 py-3 border-[#BFC3C5] bg-[#FFFFFF] rounded-[6px]"
