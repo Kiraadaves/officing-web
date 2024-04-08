@@ -1,5 +1,4 @@
-import Header from "@/components/Header";
-import InvoiceBody from "@/components/InvoiceBody";
+import CustomerBody from "@/components/CustomerBody";
 import { Eczar, Alegreya_Sans } from "next/font/google";
 import Link from "next/link";
 
@@ -9,19 +8,19 @@ const alegreya_sans = Alegreya_Sans({
   weight: ["400", "700"],
 });
 
-const Estimates = () => {
+
+const Customers = () => {
   return (
-    <InvoiceBody>
+    <CustomerBody>
       {" "}
-      <Header pageTitle="Estimates" />
-      <div className="bg-[#FAFAFA] rounded-lg py-10 px-8 flex flex-col gap-14 relative">
+      <div className="bg-[#FAFAFA] rounded-lg py-10 px-8 flex flex-col gap-14 relative mt-6">
         <div className="heading flex flex-col gap-4">
           <h1 className="text-[2rem] font-extrabold text-[#101618] text-center">
-            Elevate Your Business With Effortless Estimating
+          Elevate your business efficiency with effortless Invovicing.
           </h1>
-          <p className="text-lg text-center font-normal text-[#101618] text-sm">
-           Experience the ease of simplicity!Generating and sending estimates has never been has straight forward.
-           Turning estimates into realized projects is not just a process, but a seamless journey towards success.
+          <p className="text-lg text-center font-normal text-[#101618]">
+             Streamline your operations by creating a new customer seamlessly, Boost productivity, stay organized and empower your business <br />
+            for success.
           </p>
         </div>
         <div className="infographic  flex justify-between">
@@ -39,38 +38,34 @@ const Estimates = () => {
               Select or Add New Customer
             </h1>
             <p
-              className={`${alegreya_sans.className} font-normal text-base text-center  text-[#1E262A]`}
+              className={`${alegreya_sans.className} font-normal text-base text-center  text-[#1E262A] w-[20rem]`}
             >
-              In the estimate process, start by selecting an existing <br />
-              customer or adding a new one for their first <br />
-              transaction. Accurate customer details are crucial for
-              <br /> proper billing.
+              Experience efficiency at its best by selecting "Add a 
+              new customer" button. Simplify customer onboarding and
+              enhance your workflow seemlessly 
             </p>
           </div>
-          <div className=" flex flex-col justify-center items-center gap-6">
+          <div className=" flex flex-col justify-center items-center gap-6 mt-6 pt-4">
             <div
               className={`${eczar.className} bg-[#D7E7EB] w-[4.5rem] h-[4.5rem] rounded-full relative`}
             >
-              <h1 className="text-[#1F233E] font-semibold text-4xl leading-10 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+              <h1 className="text-[#1F233E] font-semibold text-4xl leading-10 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ">
                 2
               </h1>
             </div>
             <h1
-              className={`${alegreya_sans.className} font-bold text-xl text-center  text-[#1F233E]`}
+              className={`${alegreya_sans.className} font-bold text-xl text-center  text-[#1F233E] `}
             >
-              Select or Add Inventory
+              Add customer details
             </h1>
             <p
-              className={`${alegreya_sans.className} font-normal text-base text-center  text-[#1E262A]`}
+              className={`${alegreya_sans.className} font-normal text-base text-center  text-[#1E262A] w-[20rem]`}
             >
-              Specify the products or services for billing. Select items
-              <br />
-              from your inventory or add new ones if not listed. This is
-              <br />
-              crucial for a clear transaction breakdown.
+               This efficient step ensures accurate and comprehensive information, enhancing the overall customer
+              onbroading experience. Simplify data entry and capture essential details seemlessly 
             </p>
           </div>
-          <div className=" flex flex-col justify-center items-center gap-6">
+          <div className=" flex flex-col justify-center items-center gap-6 mt-6">
             <div
               className={`${eczar.className} bg-[#D7E7EB] w-[4.5rem] h-[4.5rem] rounded-full relative`}
             >
@@ -81,18 +76,17 @@ const Estimates = () => {
             <h1
               className={`${alegreya_sans.className} font-bold text-xl text-center  text-[#1F233E]`}
             >
-              Preview and Send
+              Save details
             </h1>
             <p
-              className={`${alegreya_sans.className} font-normal text-base text-center  text-[#1E262A]`}
+              className={`${alegreya_sans.className} font-normal text-base text-center  text-[#1E262A] w-[20rem]`}
             >
-              In the last step, check the entire estimate to ensure
-              <br /> accuracy and completeness. Once satisfied with the
-              <br /> details, then proceed to send it to the customer
+              By saving details, you enhance efficiency and create, a comprehensive record for future interactions. Keep it,
+              simple, Click "Save", and seamlessly intergrate customer's data into your system.   
             </p>
           </div>
         </div>
-        <div className="absolute top-[266px] left-[295.95px]">
+        <div className="absolute top-[290px] left-[295.95px]">
           <svg
             width="215"
             height="18"
@@ -106,7 +100,7 @@ const Estimates = () => {
             />
           </svg>
         </div>
-        <div className="absolute top-[266px] left-[672.42px]">
+        <div className="absolute top-[290px] left-[672.42px]">
           <svg
             width="215"
             height="18"
@@ -122,12 +116,12 @@ const Estimates = () => {
         </div>
         <div className={`${alegreya_sans.className} flex justify-center`}>
           <button className="bg-[#1F233E] text-[#FFFFFF] py-[10px] px-6 text-xl font-medium rounded-[0.375rem]">
-            <Link href="/Estimates/Estimates2">Add new estimate</Link>
+          <Link href="/Customers/NewCustomer">Add new customer</Link>
           </button>
         </div>
       </div>
-    </InvoiceBody>
-  );
-};
+    </CustomerBody>
+  )
+}
 
-export default Estimates;
+export default Customers
