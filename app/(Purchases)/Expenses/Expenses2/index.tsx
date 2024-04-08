@@ -58,7 +58,7 @@ const Expenses2 = () => {
     return (
         <><Header pageTitle="Expenses" />
         <div className="bg-white rounded mt-5">
-            <div className="flex justify-start gap-7 p-4">
+            <div className="flex justify-start gap-3 p-4">
                 <div>
                     <select
                         value={selectedOption}
@@ -113,7 +113,7 @@ const Expenses2 = () => {
 
                 <div>
                     <Button variant="outline" className=' bg-slate-500 text-white rounded'>
-                        <Link href="#">New Expense</Link>
+                        <Link href="/Expenses/Expenses3">New Expense</Link>
                     </Button>
                 </div>
             </div>
