@@ -20,6 +20,7 @@ const Settings = () => {
 
   const handleTabChange = (tab: React.SetStateAction<string>) => {
     setActiveTab(tab);
+    
   };
 
   return (
@@ -36,7 +37,7 @@ const Settings = () => {
             <Button
               className={`${
                 activeTab === "account" ? "text-[#38869B] " : "text-[#3c4448]"
-              }  justify-start pl-0  hover:text-[#38869B]  text-base font-normal`}
+              }  justify-start pl-0  hover:text-[#38869B]  text-base font-bold`}
               onClick={() => handleTabChange("account")}
             >
               Account
@@ -47,7 +48,7 @@ const Settings = () => {
             <Button
               className={`${
                 activeTab === "invandEst" ? "text-[#38869B]" : "text-[#3c4448]"
-              }  justify-start pl-0  hover:text-[#38869B]  text-base font-normal`}
+              }  justify-start pl-0  hover:text-[#38869B]  text-base font-bold`}
               onClick={() => handleTabChange("invandEst")}
             >
               Invoices and Estimates
@@ -57,7 +58,7 @@ const Settings = () => {
                 activeTab === "salesandTaxes"
                   ? "text-[#38869B]"
                   : "text-[#3c4448]"
-              }  justify-start pl-0  hover:text-[#38869B]  text-base font-normal`}
+              }  justify-start pl-0  hover:text-[#38869B]  text-base font-bold`}
               onClick={() => handleTabChange("salesandTaxes")}
             >
               Sales Taxes
@@ -68,7 +69,7 @@ const Settings = () => {
             <Button
               className={`${
                 activeTab === "bills" ? "text-[#38869B]" : "text-[#3c4448]"
-              }  justify-start pl-0  hover:text-[#38869B]  text-base font-normal`}
+              }  justify-start pl-0  hover:text-[#38869B]  text-base font-bold`}
               onClick={() => handleTabChange("bills")}
             >
               Bills
@@ -79,7 +80,7 @@ const Settings = () => {
             <Button
               className={`${
                 activeTab === "appearance" ? "text-[#38869B]" : "text-[#3c4448]"
-              }  justify-start pl-0  hover:text-[#38869B]  text-base font-normal`}
+              }  justify-start pl-0  hover:text-[#38869B]  text-base font-bold`}
               onClick={() => handleTabChange("appearance")}
             >
               Appearance
@@ -89,7 +90,7 @@ const Settings = () => {
                 activeTab === "miscellaneous"
                   ? "text-[#38869B]"
                   : "text-[#3c4448]"
-              }  justify-start pl-0  hover:text-[#38869B]  text-base font-normal`}
+              }  justify-start pl-0  hover:text-[#38869B]  text-base font-bold`}
               onClick={() => handleTabChange("miscellaneous")}
             >
               Miscellaneous
@@ -97,7 +98,7 @@ const Settings = () => {
           </div>
         </div>
       </div>
-      <div className="bg-[#E3EFE0] w-5/6">
+      <div className="bg-[#fafafa] w-5/6">
         {activeTab === "account" && (
           <Accounts handleTabChange={handleTabChange} />
         )}
