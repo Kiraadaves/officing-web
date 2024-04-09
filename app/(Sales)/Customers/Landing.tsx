@@ -1,4 +1,3 @@
-import CustomerBody from "@/components/CustomerBody";
 import { Eczar, Alegreya_Sans } from "next/font/google";
 import Link from "next/link";
 
@@ -11,7 +10,7 @@ const alegreya_sans = Alegreya_Sans({
 
 const Customers = () => {
   return (
-    <CustomerBody>
+    <>
       {" "}
       <div className="bg-[#FAFAFA] rounded-lg py-10 px-8 flex flex-col gap-14 relative mt-6">
         <div className="heading flex flex-col gap-4">
@@ -120,7 +119,7 @@ const Customers = () => {
           </button>
         </div>
       </div>
-    </CustomerBody>
+    </>
   )
 }
 

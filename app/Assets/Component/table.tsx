@@ -155,7 +155,7 @@ const Table = () => {
               Deactivate</div>
             <div className="border px-4 py-2">Import Assets</div>
             <button className="bg-[#1F233E] text-[#FFFFFF] py-2 px-4 text-lg font-medium rounded-r-[0.375rem]">
-              <Link href="/Assets/addNew">Add new item</Link>
+              <Link href="/assets/addNew">Add new item</Link>
             </button>
           </div>
 
@@ -280,7 +280,7 @@ const Table = () => {
         </div>
       </div>
       {deactivate ? <Alert handleclose={handleDeactivate}/> : null}
-    </div>
+      </div>
   )
 }
 export default Table

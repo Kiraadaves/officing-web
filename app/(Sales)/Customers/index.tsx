@@ -1,17 +1,18 @@
 "use client"
 import Header from "@/components/Header";
-// import Landing from "./Landing"
-import Landing from "./CustomersList"
+import New from "./Landing"
+import CustomerList from "./CustomersList"
+import CustomerBody from "@/components/CustomerBody";
 
 const Index = () => {
  
 
   return (
-    <div>
+    <CustomerBody>
       <Header pageTitle="Customers" />
-      <Landing />
+      <CustomerList />
       
-    </div>
+    </CustomerBody>
   );
 };
 
