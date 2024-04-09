@@ -1,5 +1,6 @@
+"use client"
 import React from 'react'
-import Chart from "./chart"
+// import Chart from './chart'
 
 const months = [
   {value: "last12months", label: "Last 12 Months"},
@@ -23,7 +24,7 @@ const overview = () => {
       </select>
     </div>
 
-    <Chart />
+    {/* <Chart /> */}
     <h6 className="text-[1rem] font-extrabold text-[#101618]">
       Total inflow (last 12 months): ₦ 4,670
     </h6>
