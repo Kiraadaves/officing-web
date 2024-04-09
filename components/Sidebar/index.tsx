@@ -62,7 +62,7 @@ const Sidebar = () => {
             </p>
           </Link>
           <Link
-            href="/Assets"
+            href="/assets"
             className=" flex items-center gap-3 py-3 px-4  cursor-pointer"
           >
             <div className="">
@@ -90,17 +90,17 @@ const Sidebar = () => {
               </AccordionTrigger>
               <AccordionContent>
                 <ul className="">
-                  <Link href="/Estimates">
+                  <Link href="/estimates">
                     <li className="text-base hover:text-[#101618] text-[#60686c] py-3 pl-11 cursor-pointer  hover:bg-[#d7e7eb] transition-all rounded">
                       Estimates
                     </li>
                   </Link>
-                  <Link href="/Invoice">
+                  <Link href="/invoice">
                     <li className="text-base hover:text-[#101618] text-[#60686c] py-3 pl-11 cursor-pointer  hover:bg-[#d7e7eb] transition-all rounded">
                       Invoice
                     </li>
                   </Link>
-                  <Link href="/Customers">
+                  <Link href="/customers">
                     <li className="text-base hover:text-[#101618] text-[#60686c] py-3 pl-11 cursor-pointer  hover:bg-[#d7e7eb] transition-all rounded">
                       Customers
                     </li>
@@ -121,17 +121,17 @@ const Sidebar = () => {
               </AccordionTrigger>
               <AccordionContent>
                 <ul className="">
-                  <Link href="Bills">
+                  <Link href="bills">
                     <li className="text-base hover:text-[#101618] text-[#60686c] py-3 pl-11 cursor-pointer  hover:bg-[#d7e7eb] transition-all rounded">
                       Bills
                     </li>
                   </Link>
-                  <Link href="Merchants">
+                  <Link href="merchants">
                     <li className="text-base hover:text-[#101618] text-[#60686c] py-3 pl-11 cursor-pointer  hover:bg-[#d7e7eb] transition-all rounded">
                       Merchants
                     </li>
                   </Link>
-                  <Link href="Expenses">
+                  <Link href="expenses">
                     <li className="text-base hover:text-[#101618] text-[#60686c] py-3 pl-11 cursor-pointer  hover:bg-[#d7e7eb] transition-all rounded">
                       Expenses
                     </li>
@@ -141,7 +141,7 @@ const Sidebar = () => {
             </AccordionItem>
           </Accordion>
           <Link
-            href="/Accounting"
+            href="/accounting"
             className="flex items-center gap-3 py-3 px-4 cursor-pointer"
           >
             <div className="">
@@ -152,7 +152,7 @@ const Sidebar = () => {
             </p>
           </Link>
           <Link
-            href="/Payroll"
+            href="/payroll"
             className="flex items-center gap-3 py-3 px-4  cursor-pointer"
           >
             <div className="">
@@ -163,7 +163,7 @@ const Sidebar = () => {
             </p>
           </Link>
           <Link
-            href="/Banks"
+            href="/banks"
             className="flex items-center gap-3 py-3 px-4 cursor-pointer"
           >
             <div className="">
@@ -174,7 +174,7 @@ const Sidebar = () => {
             </p>
           </Link>
           <Link
-            href="/Reports"
+            href="/reports"
             className="flex items-center gap-3 py-3 px-4  cursor-pointer"
           >
             <div className="">
@@ -189,7 +189,7 @@ const Sidebar = () => {
       <div className="flex flex-col gap-6">
         <p className=" text-[#60686c] mt-4">Miscellaneous</p>
         <Link
-          href="/Terms"
+          href="/terms"
           className="flex items-center gap-3 py-3 px-4 cursor-pointer"
         >
           <div className="">
@@ -201,7 +201,7 @@ const Sidebar = () => {
           </p>
         </Link>
         <Link
-          href="/Settings"
+          href="/settings"
           className="flex items-center gap-3 py-3 px-4  cursor-pointer"
         >
           <div className="">
