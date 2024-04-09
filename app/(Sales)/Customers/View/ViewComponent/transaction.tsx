@@ -4,6 +4,7 @@ import { SetStateAction, useState } from "react";
 import { FaCalendar } from "react-icons/fa6";
 import { IoSearchSharp } from "react-icons/io5";
 import { HiDotsVertical } from "react-icons/hi";
+import Link from "next/link";
 
 const status = [
   {value: "allstatus", label:"All status"},
@@ -13,10 +14,10 @@ const status = [
 
 const transaction = () => {
   const [selectedOption, setSelectedOption] = useState("allcustomers");
-    const [search, setSearch] = useState("")
-    const handleOptionChange = (e: { target: { value: SetStateAction<string>; }; }) => {
-      setSelectedOption(e.target.value);
-    };
+  const [search, setSearch] = useState("")
+  const handleOptionChange = (e: { target: { value: SetStateAction<string>; }; }) => {
+    setSelectedOption(e.target.value);
+  };
 
 
   return (
@@ -42,7 +43,7 @@ const transaction = () => {
             </Button>
         </div>
 
-        <div className="relative flex justify-center items-center w-[40%]">
+        <div className="relative flex justify-center items-center w-[50%] rounded-[1rem] border-2-gray">
               
           <Input type='search' className="py-5 " placeholder='Search'value={search}
             onChange={(e) => setSearch(e.target.value)}/>
@@ -53,7 +54,9 @@ const transaction = () => {
           />
         </div>
 
-        <div className="bg-[#9FA5A8] px-10 py-2 rounded-[1rem]">View More</div>
+        <div className="bg-[#9FA5A8] px-10 py-2 rounded-[1rem] cursor-pointer">
+          <Link href="/Customers/viewmore">View More</Link>
+        </div>
       </div>
 
 
