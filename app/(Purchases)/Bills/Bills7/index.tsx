@@ -47,6 +47,7 @@ import { cn } from "@/lib/utils";
 import { format } from "date-fns";
 import { CalendarIcon } from "@radix-ui/react-icons";
 import { Calendar } from "@/components/ui/calendar";
+import BillsBody from "@/components/BillsBody";
 
 const alegreya_sans = Alegreya_Sans({
   subsets: ["latin"],
@@ -120,7 +121,7 @@ const Bills7 = () => {
   };
 
   return (
-    <InvoiceBody>
+    <BillsBody>
       <Header pageTitle="New Bill" />
 
       <div
@@ -257,7 +258,7 @@ const Bills7 = () => {
           </FormProvider>
         </div>
       </div>
-    </InvoiceBody>
+    </BillsBody>
   );
 };
 

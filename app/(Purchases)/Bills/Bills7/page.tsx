@@ -1,9 +1,8 @@
-import React from 'react'
-import Bills7 from '.'
-const page = () => {
-  return (
-    <div><Bills7/></div>
-  )
-}
+import Bills7 from "."
 
+const page = () =>  {
+    return (
+        <Bills7/>    
+    )
+}
 export default page

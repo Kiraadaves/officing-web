@@ -1,16 +1,5 @@
 "use client"
-import { SetStateAction, useEffect, useState } from "react";
-
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
-import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
-import { IoSearchSharp } from "react-icons/io5";
-import { HiDotsVertical } from "react-icons/hi";
-import { FaRegTrashAlt } from "react-icons/fa";
-import { HiOutlineClipboardCopy } from "react-icons/hi";
-import { Checkbox } from "@/components/ui/checkbox";
-import Alert from "./alert";
 import {
   Pagination,
   PaginationContent,
@@ -20,115 +9,36 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
-import axios from "axios";
-import { useDispatch, useSelector } from "react-redux";
-import { AssetsAction } from "@/app/Redux/slice/assestSlice";
-import { RootState } from "@/app/Redux/slice/interface";
-// import {AssetsAction} from "@/Redux/slice/assestSlice"
-
+import { Checkbox } from "@radix-ui/react-checkbox";
+import Link from "next/link";
+import { SetStateAction, useState } from "react";
+import { FaRegTrashAlt } from "react-icons/fa";
+import { HiDotsVertical, HiOutlineClipboardCopy } from "react-icons/hi";
+import { IoSearchSharp } from "react-icons/io5";
 
 
 const options = [
-  {value: "all items", label: "All items"},
-  {value: "product", label:"Products"},
-  {value: "service", label: "Services"},
-
+    {value: "allmerchants", label: "All Merchants"},
+    {value: "active", label: "Active"},
+    {value: "inactive", label: "Inactive"}
 ]
 
 
+const MerchantList = () => {
 
-interface YourItem {
-  id: number;
-  name: string;  // Add this line
-  sku: number;
-  type: string;
-  description: string;
-  price: number;
-  // other properties of YourItem
-}
-
-
-const Table = () => {
-  const [loading, setLoading] = useState(false)
-  const [search, setSearch] = useState("")
-  const [selectedOption, setSelectedOption] = useState("all items");
-  const dispatch = useDispatch()
-  const id =  useSelector((state:RootState) => state.asset.id)
-  
-  
-  const products = useSelector((state:RootState) => state.asset.products)
-  const deactivate = useSelector((state:RootState) => state.asset.deactivate)
-  
-  useEffect(() => {
-    const items = async () => {
-      try {
-          const response = await axios.get(`https://officing-node-api.onrender.com/api/v1/assets`);
-          console.log(response)
-          dispatch(AssetsAction.setProducts(response.data.assets))
-      } catch (error) {
-          console.error("Error fetching order:", error);
-          // Optionally, dispatch an action to handle the error state
-      }
+    const [selectedOption, setSelectedOption] = useState("allmerchants");
+    const [search, setSearch] = useState("")
+    const handleOptionChange = (e: { target: { value: SetStateAction<string>; }; }) => {
+      setSelectedOption(e.target.value);
     };
-    items()
-  }, [])
-
-  //@ts-ignore
-  const toggleAction = (itemId) => {
-    dispatch(AssetsAction.setId(itemId))
-  };
-
-  //@ts-ignore
-  const handleDeactivate =(itemId)=> {
-    dispatch(AssetsAction.setId(itemId))
-    dispatch(AssetsAction.setDeactivate(true))
-   
-  }
 
 
-  const handleOptionChange = (e: { target: { value: SetStateAction<string>; }; }) => {
-    setSelectedOption(e.target.value);
-  };
 
-  const filteredDataByOptionAndSearch = () => {
-    const lowerCaseSearch = search.toLowerCase();
-  
-    const filteredByOption = selectedOption.toLowerCase() === "all items"
-      ? products
-      : products.filter((item) => item.assetType.toLowerCase().includes(selectedOption.toLowerCase()));
-  
-    return filteredByOption.filter(
-      (item) =>
-        item.name.toLowerCase().includes(lowerCaseSearch) ||
-        item.assetType.toLowerCase().includes(lowerCaseSearch)
-    );
-  };
-
-  const handleChange = (e) => {
-    console.log("hello")
-    const {name, checked} = e.target
-    if (name === "allselect") {
-      const  checkedValue = products.map( (product) => {return {...product, ischecked:checked}})
-      console.log(checkedValue)
-      dispatch(AssetsAction.setProducts( checkedValue))
-    }
-  }
-  
-
-
-  return (
-      <div className='table-responsive px-2 pt-5'>
-      {loading ? (
-        <div className='d-flex justify-content-center align-content-center mt-5'>
-          <div className='spinner-grow spinner-grow-sm text-primary' role='status'>
-            <span className='sr-only'>Loading...</span>
-          </div>
-          <p>Loading...</p>
-        </div>
-      ) : (
+    return(
+      <div>
         <div className="bg-white mt-5 p-10">
-          <div className="flex gap-5 items-center">
-            <select className="py-3 px-5 border " onChange={handleOptionChange} value={selectedOption}>
+          <div className="flex justify-between items-center">
+            <select className="py-3 px-4 border " onChange={handleOptionChange} value={selectedOption}>
               {options.map((option) => (
                 <option key={option.value} value={option.value}>
                   {option.label}
@@ -136,7 +46,7 @@ const Table = () => {
               ))}
             </select>
             
-            <div className="relative flex justify-center items-center w-[20%]">
+            <div className="relative flex justify-center items-center w-[25%]">
               
               <Input type='search' className="py-5 " placeholder='Search'value={search}
                 onChange={(e) => setSearch(e.target.value)}/>
@@ -153,9 +63,9 @@ const Table = () => {
             <div className="flex items-center gap-2 border px-4 py-2">
               <FaRegTrashAlt />
               Deactivate</div>
-            <div className="border px-4 py-2">Import Assets</div>
-            <button className="bg-[#1F233E] text-[#FFFFFF] py-2 px-3 text-lg font-medium rounded-r-[0.375rem]">
-              <Link href="/Assets/addNew">Add new item</Link>
+            <div className="border px-4 py-2">Import Merchants</div>
+            <button className="bg-[#1F233E] text-[#FFFFFF] py-2 px-4 text-lg font-medium rounded-r-[0.375rem]">
+              <Link href="/merchants/newmerchant">Add new Merchant</Link>
             </button>
           </div>
 
@@ -168,23 +78,23 @@ const Table = () => {
                         <tr>
                             <th scope="col" className="p-4">
                               
-                              <input type="checkbox" name="allselect" checked={!products.some((products) => products?.isChecked!== true)} onChange={handleChange} />
+                              <input type="checkbox" name="allselect" />
                                 {/* <Checkbox name="allselect" onChange={handleChange} checked={!products.some((user) => user?.isChecked !== true)}/> */}
                             </th>
                             <th scope="col" className="py-3  text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
-                              Name
+                              Contact Person Name
                             </th>
                             <th scope="col" className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
-                                SKU
+                                Company Name
                             </th>
                             <th scope="col" className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
-                                Type
+                                Email
                             </th>
                             <th scope="col" className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
-                                Description
+                                Phone
                             </th>
                             <th scope="col" className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
-                                Price
+                                Balance
                             </th>
                             <th scope="col" className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
                                 Actions
@@ -193,12 +103,41 @@ const Table = () => {
                     </thead>
                       
                     <tbody className=" relative">
+                      <tr className="hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <td className="p-4 w-4">
+                        <input type="checkbox" />
+                        </td>
+                        <td className="py-4 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">James Brown</td>
+                        <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">Padding Tech</td>
+                        <td className="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">jb@padding.com</td>
+                        <td className="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">12345567</td>
+                        <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">$234</td>
+                        <td className="py-4 px-6 text-sm font-medium text-right whitespace-nowrap cursor-pointer">
+                          
+                            
+                            <HiDotsVertical size={24}   />
+                            {/* {id === items._id  && (
+                              <div className="grid gap-4 right-0 mt-4 bg-white border rounded shadow-md absolute p-5">
+                                <div className="border-b cursor-pointer text-center py-2" >
+                                  Edit
+                                </div>
+                                <div className="border-b cursor-pointer text-center py-2">
+                                  Duplicate
+                                </div>
+                                <div className="border-b cursor-pointer text-center py-2 text-red-500" onClick={() => handleDeactivate({id:items._id})}>
+                                  Deactivate
+                                </div>
+                              </div>
+                            )} */}
+                          
+                        </td>
+                      </tr>
                       
-                      {filteredDataByOptionAndSearch().map((items) => 
+                      {/* {filteredDataByOptionAndSearch().map((items) => 
                       <tr className="hover:bg-gray-100 dark:hover:bg-gray-700"key={items._id}>
                         <td className="p-4 w-4">
                         <input type="checkbox" name={items.name}  checked={items?.isChecked || false} onChange={handleChange}/>
-                          {/* <Checkbox name={items.name} checked={items?.isChecked || false} onChange={handleChange}/> */}
+                          
                         </td>
                         <td className="py-4 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">{items.name}</td>
                         <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">{items.sku}</td>
@@ -225,7 +164,7 @@ const Table = () => {
                           
                         </td>
                       </tr>
-                      )}
+                      )} */}
                     </tbody>
 
                   </table>
@@ -233,16 +172,12 @@ const Table = () => {
               </div>
             </div>
           </div>
-
-          
         </div>
-      )}
-      <div className="mt-12 items-center flex justify-between">
+
+        <div className="mt-12 items-center flex justify-between">
         <div>
           <p>
-            Showing <span className=" p-2 
-        
-        rounded-[6px] focus:bg-[#d7e7eb] bg-[#ffffff] focus:text-[#38869b] text-sm rounded-6">{products.length}</span> per page
+            Showing <span className=" p-2 rounded-[6px] focus:bg-[#d7e7eb] bg-[#ffffff] focus:text-[#38869b] text-sm rounded-6">20</span> per page
           </p>
         </div>
         <div>
@@ -278,9 +213,8 @@ const Table = () => {
             </PaginationContent>
           </Pagination>
         </div>
+        </div>
       </div>
-      {deactivate ? <Alert handleclose={handleDeactivate}/> : null}
-    </div>
-  )
+    )
 }
-export default Table
+export default MerchantList

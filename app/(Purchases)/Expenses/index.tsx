@@ -1,5 +1,5 @@
+import ExpenseBody from "@/components/ExpenseBody";
 import Header from "@/components/Header";
-import InvoiceBody from "@/components/InvoiceBody";
 import { Eczar, Alegreya_Sans } from "next/font/google";
 import Link from "next/link";
 
@@ -11,7 +11,7 @@ const alegreya_sans = Alegreya_Sans({
 
 const Expenses = () => {
   return (
-    <InvoiceBody>
+    <ExpenseBody>
       {" "}
       <Header pageTitle="Expenses" />
       <div className="bg-[#FAFAFA] rounded-lg py-10 px-8 flex flex-col gap-14 relative">
@@ -125,7 +125,7 @@ const Expenses = () => {
           </button>
         </div>
       </div>
-    </InvoiceBody>
+    </ExpenseBody>
   );
 };
 

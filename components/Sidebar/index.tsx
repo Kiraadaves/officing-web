@@ -126,7 +126,7 @@ const Sidebar = () => {
                       Bills
                     </li>
                   </Link>
-                  <Link href="Merchants">
+                  <Link href="/Merchants">
                     <li className="text-base hover:text-[#101618] text-[#60686c] py-3 pl-11 cursor-pointer  hover:bg-[#d7e7eb] transition-all rounded">
                       Merchants
                     </li>

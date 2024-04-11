@@ -1,6 +1,5 @@
 "use client";
 import Header from "@/components/Header";
-import InvoiceBody from "@/components/InvoiceBody";
 import React, { useEffect, useState } from "react";
 import { Alegreya_Sans } from "next/font/google";
 import { Input } from "@/components/ui/input";
@@ -18,6 +17,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import Link from "next/link";
+import EstimateBody from "@/components/EstimateBody";
 
 const alegreya_sans = Alegreya_Sans({
   subsets: ["latin"],
@@ -58,7 +58,7 @@ const Estimates5 = () => {
   };
 
   return (
-    <InvoiceBody>
+    <EstimateBody>
       <Header pageTitle="New Estimate" />
       <div className={`${alegreya_sans.className}  relative`}>
         <div className="flex justify-between items-center">
@@ -330,7 +330,7 @@ const Estimates5 = () => {
           </Button>
         </div>
       </div>
-    </InvoiceBody>
+    </EstimateBody>
   );
 };
 

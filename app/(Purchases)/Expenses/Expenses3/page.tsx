@@ -1,10 +1,8 @@
-import Header from '@/components/Header';
-import Sidebar from '@/components/Sidebar';
-import Expenses3 from '.';
-
+import Index from "."
 const page = () => {
-  <><Header pageTitle="Estimates" /><Sidebar /></>
-  return <Expenses3 />
+    return (
+        <Index />
+    )
 }
 
-export default page;
+export default page
