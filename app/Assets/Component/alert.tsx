@@ -17,7 +17,7 @@ function Alert ({handleclose}) {
     const id =  useSelector((state:RootState) => state.asset.id)
     const products = useSelector((state:RootState) => state.asset.products)
     const API_BASE_URL = "https://officing-node-api.onrender.com/api/v1/assets"
-    const idNo = id.id
+    const idNo = id
     console.log(idNo)
     console.log(products)
     interface Product {

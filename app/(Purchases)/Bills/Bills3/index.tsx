@@ -1,6 +1,5 @@
 "use client";
 import Header from "@/components/Header";
-import InvoiceBody from "@/components/InvoiceBody";
 import React, { useState } from "react";
 import { Eczar, Alegreya_Sans } from "next/font/google";
 import Link from "next/link";
@@ -15,6 +14,7 @@ import CustomersList from "@/components/InvoiceItems/CustomersList";
 import BillingBadge from "@/components/InvoiceItems/BillingBadge";
 import ShippingBadge from "@/components/InvoiceItems/ShippingBadge";
 import BillsRemarkBadge from "@/components/InvoiceItems/BillsRemarkBadge";
+import BillsBody from "@/components/BillsBody";
 
 const eczar = Eczar({ subsets: ["latin"] });
 const alegreya_sans = Alegreya_Sans({
@@ -58,7 +58,7 @@ const Bills3 = () => {
   };
 
   return (
-    <InvoiceBody>
+    <BillsBody>
       <Header pageTitle="New Bill" />
       <div className={`${alegreya_sans.className}  relative`}>
         <div className="flex justify-between items-center">
@@ -299,7 +299,7 @@ const Bills3 = () => {
           </div>
         </div>
       </div>
-    </InvoiceBody>
+    </BillsBody>
   );
 };
 

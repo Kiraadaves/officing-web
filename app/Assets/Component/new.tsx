@@ -1,5 +1,4 @@
 "use client"
-import AssestBody from "@/components/AssestBody";
 import { Eczar, Alegreya_Sans } from "next/font/google";
 import Link from "next/link";
 
@@ -13,7 +12,7 @@ const Landing = () => {
   
 
   return (
-    <AssestBody>
+    <>
       {" "}
         
         <div className="bg-[#FAFAFA] rounded-lg py-16 px-8 flex flex-col gap-14 relative mt-5">
@@ -123,11 +122,11 @@ const Landing = () => {
           </div>
           <div className={`${alegreya_sans.className} flex justify-center`}>
             <button className="bg-[#1F233E] text-[#FFFFFF] py-[10px] px-6 text-xl font-medium rounded-[0.375rem]">
-              <Link href="/Assets/addNew">Add new item</Link>
+              <Link href="/assets/addNew">Add new item</Link>
             </button>
           </div>
         </div>
-    </AssestBody>
+    </>
   );
 };
 

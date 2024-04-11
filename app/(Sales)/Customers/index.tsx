@@ -1,11 +1,19 @@
-import Header from '@/components/Header'
+"use client"
+import Header from "@/components/Header";
+import New from "./Landing"
+import CustomerList from "./CustomersList"
+import CustomerBody from "@/components/CustomerBody";
 
-const Customers = () => {
+const Index = () => {
+ 
+
   return (
-    <div>
+    <CustomerBody>
       <Header pageTitle="Customers" />
-    </div>
-  )
-}
+      <CustomerList />
+      
+    </CustomerBody>
+  );
+};
 
-export default Customers
+export default Index;

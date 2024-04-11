@@ -1,6 +1,5 @@
 "use client";
 import Header from "@/components/Header";
-import InvoiceBody from "@/components/InvoiceBody";
 import React, { useEffect, useState } from "react";
 import { Alegreya_Sans } from "next/font/google";
 import { Input } from "@/components/ui/input";
@@ -26,6 +25,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import Image from "next/image";
+import BillsBody from "@/components/BillsBody";
 
 const alegreya_sans = Alegreya_Sans({
   subsets: ["latin"],
@@ -46,7 +46,7 @@ const Bills6 = () => {
   };
 
   return (
-    <InvoiceBody>
+    <BillsBody>
       <Header pageTitle="New Bill" />
       <div className={`${alegreya_sans.className}  relative`}>
         <div className="flex justify-between items-center">
@@ -277,7 +277,7 @@ const Bills6 = () => {
           </Button>
         </div>
       </div>
-    </InvoiceBody>
+    </BillsBody>
   );
 };
 

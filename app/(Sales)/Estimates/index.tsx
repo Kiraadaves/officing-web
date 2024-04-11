@@ -1,5 +1,6 @@
+import EstimateBody from "@/components/EstimateBody";
 import Header from "@/components/Header";
-import InvoiceBody from "@/components/InvoiceBody";
+import { Button } from "@/components/ui/button";
 import { Eczar, Alegreya_Sans } from "next/font/google";
 import Link from "next/link";
 
@@ -11,7 +12,7 @@ const alegreya_sans = Alegreya_Sans({
 
 const Estimates = () => {
   return (
-    <InvoiceBody>
+    <EstimateBody>
       {" "}
       <Header pageTitle="Estimates" />
       <div className="bg-[#FAFAFA] rounded-lg py-10 px-8 flex flex-col gap-14 relative">
@@ -121,12 +122,12 @@ const Estimates = () => {
           </svg>
         </div>
         <div className={`${alegreya_sans.className} flex justify-center`}>
-          <button className="bg-[#1F233E] text-[#FFFFFF] py-[10px] px-6 text-xl font-medium rounded-[0.375rem]">
-            <Link href="/Estimates/estimates2">Add new estimate</Link>
-          </button>
+          <Button className="bg-[#1F233E] text-[#FFFFFF] py-[10px] px-6 text-xl font-medium rounded-[0.375rem]">
+            <Link href="/Estimates/Estimates2">Add new estimate</Link>
+          </Button>
         </div>
       </div>
-    </InvoiceBody>
+    </EstimateBody>
   );
 };
 

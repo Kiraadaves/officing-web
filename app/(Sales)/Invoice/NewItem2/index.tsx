@@ -16,12 +16,6 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
-import ItemList from "@/components/InvoiceItems/ItemList";
 import Link from "next/link";
 import { Select } from "@radix-ui/react-select";
 import {
@@ -31,7 +25,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { ChevronDownIcon } from "@radix-ui/react-icons";
+import { useRouter } from "next/navigation";
 
 interface Item {
   id: number;
@@ -61,7 +55,6 @@ const NewItem2 = () => {
     resolver: zodResolver(formSchema),
     defaultValues: {
       item_name: "",
-
       quantity: "",
       price: "",
       tax: "",
@@ -76,6 +69,7 @@ const NewItem2 = () => {
   const [items, setItems] = useState<Item[]>([]);
   const [idCounter, setIdCounter] = useState(0);
 
+  const router = useRouter();
   const handleAddItem = () => {
     const newId = idCounter + 1;
     setItems([...items, { id: newId }]);
@@ -90,6 +84,7 @@ const NewItem2 = () => {
 
   const handleSubmit = (values: z.infer<typeof formSchema>) => {
     console.log(values);
+    // router.push("/invoice/newitem3");
   };
 
   const AddItem = ({
@@ -675,10 +670,13 @@ const NewItem2 = () => {
               <div className="flex justify-end mt-2">
                 <div className="flex gap-8">
                   <Button className="py-[10px] h-[48px] w-[112px] border-solid border-[1px] border-[#BFC3C5] shadow-md font-medium text-xl text-center px-6 bg-[#FFFFFF] hover:bg-[#FFFFFF] rounded-[6px]">
-                    <Link href="/Invoice/NewItem">Back</Link>
+                    <Link href="/invoice/newitem">Back</Link>
                   </Button>
-                  <Button className="py-[10px] h-[48px] w-[112px] font-medium text-xl text-center px-6 bg-[#2F345D] hover:bg-[#2F345D] rounded-[6px] text-[#FFFFFF]">
-                    <Link href="/Invoice/NewItem3">Next</Link>
+                  <Button
+                    type="submit"
+                    className="py-[10px] h-[48px] w-[112px] font-medium text-xl text-center px-6 bg-[#2F345D] hover:bg-[#2F345D] rounded-[6px] text-[#FFFFFF]"
+                  >
+                    <Link href="/invoice/newitem3">Next</Link>
                   </Button>
                 </div>
               </div>
